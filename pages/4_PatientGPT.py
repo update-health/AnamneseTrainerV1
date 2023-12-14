@@ -1,6 +1,7 @@
 from openai import OpenAI
 import streamlit as st
 import os
+import pandas as pd
 from streamlit_dynamic_filters import DynamicFilters
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
