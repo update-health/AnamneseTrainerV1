@@ -1,8 +1,6 @@
 from openai import OpenAI
 import streamlit as st
 import os
-import pandas as pd
-from streamlit_dynamic_filters import DynamicFilters
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -12,37 +10,17 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+if "selectedPatient" not in st.session_state:
+    st.session_state.selectedPatient
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+#https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
+st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetz und ein neues beginnt",('Meier', 'Müller', 'Schulze'))
 
-data = {
-    'region': ['North America', 'North America', 'Europe', 'Oceania',
-               'North America', 'North America', 'Europe', 'Oceania',
-               'North America', 'North America', 'Europe', 'Oceania'],
-    'country': ['USA', 'Canada', 'UK', 'Australia',
-                'USA', 'Canada', 'UK', 'Australia',
-                'USA', 'Canada', 'UK', 'Australia'],
-    'city': ['New York', 'Toronto', 'London', 'Sydney',
-             'New York', 'Toronto', 'London', 'Sydney',
-             'New York', 'Toronto', 'London', 'Sydney'],
-    'district': ['Manhattan', 'Downtown', 'Westminster', 'CBD',
-                 'Brooklyn', 'Midtown', 'Kensington', 'Circular Quay',
-                 'Queens', 'Uptown', 'Camden', 'Bondi']
-}
-
-df = pd.DataFrame(data)
-
-dynamic_filters = DynamicFilters(df, filters=['region', 'country', 'city', 'district'])
-
-st.write("Apply filters in any order 👇")
-
-dynamic_filters.display_filters(location='columns', num_columns=2, gap='large')
-
-dynamic_filters.display_df()
-
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("What is up?"+st.session_state.selectedPatient):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
