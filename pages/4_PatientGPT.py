@@ -43,7 +43,7 @@ if st.session_state.messages == []:
 for message in st.session_state.messages:
     if message["role"] != "system":
         if message["role"] == "user":
-            avatar_icon="/workspaces/patientgptlit/pages/HP-PhysioLogo.svg"
+            avatar_icon=st.image('/workspaces/patientgptlit/pages/HP-PhysioLogo.svg')
         else:
             avatar_icon="😫"
         with st.chat_message(message["role"],avatar=avatar_icon):
