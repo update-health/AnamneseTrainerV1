@@ -28,7 +28,7 @@ if "selectedPatient" not in st.session_state:
 # Definieren Sie eine Funktion, die aufgerufen wird, wenn sich die Auswahl ändert
 def on_patient_change():
     # Diese Funktion könnte zum Beispiel das Gespräch zurücksetzen oder andere Aktionen ausführen
-    st.session_state.messages = []
+    st.session_state.clear()
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
 st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict.keys()),on_change=on_patient_change)
