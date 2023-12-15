@@ -42,7 +42,7 @@ if st.session_state.messages == []:
 
 for message in st.session_state.messages:
     if message["role"] != "system":
-        if message["role"] != "user":
+        if message["role"] == "user":
             avatar_icon="👨‍⚕️"
         else:
             avatar_icon="😫"
