@@ -43,10 +43,10 @@ if st.session_state.messages == []:
 for message in st.session_state.messages:
     if message["role"] != "system":
         if message["role"] != "user":
-            avatar="👨‍⚕️"
+            avatar_icon="👨‍⚕️"
         else:
-            avatar="😫"
-        with st.chat_message(message["role"],avatar):
+            avatar_icon="😫"
+        with st.chat_message(message["role"],avatar=avatar_icon):
             st.markdown(message["content"])
 
 
