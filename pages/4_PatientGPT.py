@@ -25,7 +25,7 @@ if "case_dict" not in st.session_state:
 if "selectedPatient" not in st.session_state:
     st.session_state.selectedPatient=""
 
-avatar_user="/workspaces/patientgptlit/pages/HP-PhysioLogo.png"
+avatar_user="👩‍⚕️"
 avatar_assistant="😫"
 
 # Definieren Sie eine Funktion, die aufgerufen wird, wenn sich die Auswahl ändert
