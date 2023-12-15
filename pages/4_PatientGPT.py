@@ -48,6 +48,7 @@ for message in st.session_state.messages:
             avatar_icon="😫"
         with st.chat_message(message["role"],avatar=avatar_icon):
             st.markdown(message["content"])
+            st.image('/workspaces/patientgptlit/pages/HP-PhysioLogo.svg')
 
 
 
