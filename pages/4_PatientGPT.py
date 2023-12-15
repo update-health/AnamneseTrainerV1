@@ -13,7 +13,7 @@ if "messages" not in st.session_state:
 
 if "case_dict" not in st.session_state:
     # 1. Laden der Excel-Datei und Extrahieren der Fallbeispiele
-    df = pd.read_excel('/Fallbeispiele.xlsx')
+    df = pd.read_excel('\Fallbeispiele.xlsx')
 
     # Fallbeispiele extrahieren
     cases = df["Zusammenfassung"].tolist()
