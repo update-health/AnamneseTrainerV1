@@ -24,7 +24,10 @@ if "case_dict" not in st.session_state:
 
 if "selectedPatient" not in st.session_state:
     st.session_state.selectedPatient=""
-    
+
+avatar_user="/workspaces/patientgptlit/pages/HP-PhysioLogo.png"
+avatar_assistant="😫"
+
 # Definieren Sie eine Funktion, die aufgerufen wird, wenn sich die Auswahl ändert
 def on_patient_change():
     # Diese Funktion könnte zum Beispiel das Gespräch zurücksetzen oder andere Aktionen ausführen
@@ -43,22 +46,18 @@ if st.session_state.messages == []:
 for message in st.session_state.messages:
     if message["role"] != "system":
         if message["role"] == "user":
-            avatar_icon='/workspaces/patientgptlit/pages/HP-PhysioLogo.png'
+            avatar_icon=avatar_user
         else:
-            avatar_icon="😫"
+            avatar_icon=avatar_assistant
         with st.chat_message(message["role"],avatar=avatar_icon):
             st.markdown(message["content"])
-            st.image('/workspaces/patientgptlit/pages/HP-PhysioLogo.png')
-
-
-
 
 if prompt := st.chat_input("What is up?"+st.session_state.selectedPatient):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
+    with st.chat_message("user",avatar=avatar_user):
         st.markdown(prompt)
 
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant",avatar=avatar_assistant):
         message_placeholder = st.empty()
         full_response = ""
         for response in client.chat.completions.create(
