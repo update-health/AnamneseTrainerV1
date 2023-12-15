@@ -30,7 +30,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
-st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",(st.session_state.case_dict['cases']))
+st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict.keys()))
 
 if prompt := st.chat_input("What is up?"+st.session_state.selectedPatient):
     st.session_state.messages.append({"role": "user", "content": prompt})
