@@ -33,6 +33,13 @@ def on_patient_change():
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
 st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict.keys()),on_change=on_patient_change)
 
+if st.session_state.messages == []:
+    if 'selectedPatient' in st.session_state:
+        selected_case_details = st.session_state.case_dict[st.session_state.selectedPatient]
+        system_message=("Vergiss alle vorherigen Anweisungen. Wir simulieren jetz ein Gespräch zwischen Arzt und Patient. Du bist der Patient und suchst nach Hilfe. Du bist kein Assistent. Du übernimmst die Rolle dieses Patienten: {}. "
+                "Bitte antworte immer nur als dieser Patient. Deine Antworten sind eher kurz. Die relevanten Details muss der Arzt schon gezielt erfragen, damit Du entsprechend antwortest.").format(selected_case_details)
+        st.session_state.messages.append({"role": "system", "content": system_message})
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
