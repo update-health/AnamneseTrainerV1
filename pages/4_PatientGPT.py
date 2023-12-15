@@ -41,7 +41,7 @@ if st.session_state.messages == []:
         st.session_state.messages.append({"role": "system", "content": system_message})
 
 for message in st.session_state.messages:
-    if st.chat_message(message["role"])!= "system":
+    if message["role"] != "system":
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
