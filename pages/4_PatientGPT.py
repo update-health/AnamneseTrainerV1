@@ -29,8 +29,15 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+# Definieren Sie eine Funktion, die aufgerufen wird, wenn sich die Auswahl ändert
+def on_patient_change():
+    # Diese Funktion könnte zum Beispiel das Gespräch zurücksetzen oder andere Aktionen ausführen
+    st.session_state.messages = []
+
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
-st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict.keys()))
+st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict.keys()),on_change=on_patient_change)
+
+
 
 if prompt := st.chat_input("What is up?"+st.session_state.selectedPatient):
     st.session_state.messages.append({"role": "user", "content": prompt})
