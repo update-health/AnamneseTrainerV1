@@ -1,6 +1,7 @@
 from openai import OpenAI
 import streamlit as st
 import os
+import pandas as pd
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -10,6 +11,17 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+if "case_dict" not in st.session_state:
+    # 1. Laden der Excel-Datei und Extrahieren der Fallbeispiele
+    df = pd.read_excel('Fallbeispiele.xlsx')
+
+    # Fallbeispiele extrahieren
+    cases = df["Zusammenfassung"].tolist()
+    details = df["Details"].tolist()
+
+    # Fallbeispiele als ein Wörterbuch für einfachen Zugriff
+    st.session_state.case_dict = dict(zip(cases, details))
+
 if "selectedPatient" not in st.session_state:
     st.session_state.selectedPatient=""
 
@@ -18,7 +30,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
-st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetz und ein neues beginnt",('Meier', 'Müller', 'Schulze'))
+st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",(st.session_state.case_dict.cases))
 
 if prompt := st.chat_input("What is up?"+st.session_state.selectedPatient):
     st.session_state.messages.append({"role": "user", "content": prompt})
