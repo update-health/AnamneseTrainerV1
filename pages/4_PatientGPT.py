@@ -53,8 +53,14 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 if prompt := st.chat_input("What is up?"):
+    repeating_system_message="Du bist Patient und antwortest immer nur als Patient. Frage mich niemals ob Du mir irgendwie helfen kannst!"
+    for index, message in enumerate(st.session_state.messages):
+        if message["content"] == repeating_system_message:
+            # Entfernen des Eintrags
+            st.session_state.messages.remove(index)
+            break  # Beendet die Schleife, nachdem der Eintrag gefunden wurde
     st.session_state.messages.append({"role": "user", "content": prompt, "display":True})
-    st.session_state.messages.append({"role": "system", "content": "Du bist Patient und antwortest immer nur als Patient. Frage mich niemals ob Du mir irgendwie helfen kannst!", "display":False})
+    st.session_state.messages.append({"role": "system", "content": repeating_system_message, "display":False})
     with st.chat_message("user",avatar=avatar_user):
         st.markdown(prompt)
 
