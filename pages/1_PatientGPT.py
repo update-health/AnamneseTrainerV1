@@ -71,7 +71,11 @@ def on_patient_change():
     st.session_state.clear()
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
-st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict["Zusammenfassung"]),on_change=on_patient_change)
+st.session_state.selectedPatient = st.selectbox(
+    "Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",
+    tuple(st.session_state.case_dict.keys()),  # Verwenden Sie die Schlüssel aus case_dict
+    on_change=on_patient_change
+)
 
 if st.session_state.messages == []:
     if 'selectedPatient' in st.session_state:
