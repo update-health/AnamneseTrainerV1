@@ -53,7 +53,7 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 if prompt := st.chat_input("What is up?"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "content": prompt, "display":True})
     with st.chat_message("user",avatar=avatar_user):
         st.markdown(prompt)
 
@@ -71,4 +71,4 @@ if prompt := st.chat_input("What is up?"):
             full_response += (response.choices[0].delta.content or "")
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+    st.session_state.messages.append({"role": "assistant", "content": full_response, "display":True})
