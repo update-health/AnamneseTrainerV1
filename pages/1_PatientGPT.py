@@ -12,50 +12,11 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 if "case_dict" not in st.session_state:
-    # 1. Laden der Excel-Datei und Extrahieren der Fallbeispiele
+    # Load the Excel file
     df = pd.read_excel('/workspaces/patientgptlit/pages/Fallbeispiele.xlsx')
 
-    # Spalten in separate Variablen extrahieren
-    zusammenfassung = df["Zusammenfassung"].tolist()
-    geschlecht = df["Geschlecht"].tolist()
-    alter = df["Alter"].tolist()
-    vorname = df["Vorname"].tolist()
-    nachname = df["Nachname"].tolist()
-    beruf = df["Beruf"].tolist()
-    hobbies = df["Hobbies"].tolist()
-    privates = df["Privates"].tolist()
-    sprache = df["Sprache"].tolist()
-    epidemiologie = df["Epidemiologie"].tolist()
-    symptome = df["Symptome"].tolist()
-    zeichen = df["Zeichen"].tolist()
-    verlauf = df["Verlauf"].tolist()
-    therapie = df["Therapie"].tolist()
-    eigenmassnahmen = df["Eigenmaßnahmen"].tolist()
-    untersuchungsbefunde = df["Untersuchungsbefunde"].tolist()
-    erkrankung = df["Erkrankung"].tolist()
-    sonstiges = df["sonstiges"].tolist()
-
-    # Fallbeispiele als ein Wörterbuch für einfachen Zugriff
-    case_dict = {
-        "Zusammenfassung": zusammenfassung,
-        "Geschlecht": geschlecht,
-        "Alter": alter,
-        "Vorname": vorname,
-        "Nachname": nachname,
-        "Beruf": beruf,
-        "Hobbies": hobbies,
-        "Privates": privates,
-        "Sprache": sprache,
-        "Epidemiologie": epidemiologie,
-        "Symptome": symptome,
-        "Zeichen": zeichen,
-        "Verlauf": verlauf,
-        "Therapie": therapie,
-        "Eigenmaßnahmen": eigenmassnahmen,
-        "Untersuchungsbefunde": untersuchungsbefunde,
-        "Erkrankung": erkrankung,
-        "sonstiges": sonstiges
-    }
+    # Create a dictionary with 'Zusammenfassung' as keys and rows as values
+    case_dict = df.set_index('Zusammenfassung').T.to_dict()
 
     st.session_state.case_dict = case_dict
 
@@ -71,9 +32,10 @@ def on_patient_change():
     st.session_state.clear()
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
+# SelectBox for choosing a patient
 st.session_state.selectedPatient = st.selectbox(
     "Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",
-    tuple(st.session_state.case_dict["Zusammenfassung"]),  # Verwenden Sie die Schlüssel aus case_dict
+    tuple(st.session_state.case_dict.keys()),  # Now the keys are 'Zusammenfassung'
     on_change=on_patient_change
 )
 
