@@ -15,12 +15,49 @@ if "case_dict" not in st.session_state:
     # 1. Laden der Excel-Datei und Extrahieren der Fallbeispiele
     df = pd.read_excel('/workspaces/patientgptlit/pages/Fallbeispiele.xlsx')
 
-    # Fallbeispiele extrahieren
-    cases = df["Zusammenfassung"].tolist()
-    details = df["Details"].tolist()
+    # Spalten in separate Variablen extrahieren
+    zusammenfassung = df["Zusammenfassung"].tolist()
+    geschlecht = df["Geschlecht"].tolist()
+    alter = df["Alter"].tolist()
+    vorname = df["Vorname"].tolist()
+    nachname = df["Nachname"].tolist()
+    beruf = df["Beruf"].tolist()
+    hobbies = df["Hobbies"].tolist()
+    privates = df["Privates"].tolist()
+    sprache = df["Sprache"].tolist()
+    epidemiologie = df["Epidemiologie"].tolist()
+    symptome = df["Symptome"].tolist()
+    zeichen = df["Zeichen"].tolist()
+    verlauf = df["Verlauf"].tolist()
+    therapie = df["Therapie"].tolist()
+    eigenmassnahmen = df["Eigenmaßnahmen"].tolist()
+    untersuchungsbefunde = df["Untersuchungsbefunde"].tolist()
+    erkrankung = df["Erkrankung"].tolist()
+    sonstiges = df["sonstiges"].tolist()
 
     # Fallbeispiele als ein Wörterbuch für einfachen Zugriff
-    st.session_state.case_dict = dict(zip(cases, details))
+    case_dict = {
+        "Zusammenfassung": zusammenfassung,
+        "Geschlecht": geschlecht,
+        "Alter": alter,
+        "Vorname": vorname,
+        "Nachname": nachname,
+        "Beruf": beruf,
+        "Hobbies": hobbies,
+        "Privates": privates,
+        "Sprache": sprache,
+        "Epidemiologie": epidemiologie,
+        "Symptome": symptome,
+        "Zeichen": zeichen,
+        "Verlauf": verlauf,
+        "Therapie": therapie,
+        "Eigenmaßnahmen": eigenmassnahmen,
+        "Untersuchungsbefunde": untersuchungsbefunde,
+        "Erkrankung": erkrankung,
+        "sonstiges": sonstiges
+    }
+
+    st.session_state.case_dict = case_dict
 
 if "selectedPatient" not in st.session_state:
     st.session_state.selectedPatient=""
@@ -34,13 +71,14 @@ def on_patient_change():
     st.session_state.clear()
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
-st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict.keys()),on_change=on_patient_change)
+st.session_state.selectedPatient=st.selectbox("Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt",tuple(st.session_state.case_dict["Zusammenfassung"]),on_change=on_patient_change)
 
 if st.session_state.messages == []:
     if 'selectedPatient' in st.session_state:
         selected_case_details = st.session_state.case_dict[st.session_state.selectedPatient]
+        formatted_details = " -- ".join([f"{key}: {value}" for key, value in patient_details.items()])
         system_message=("Vergiss alle vorherigen Anweisungen. Wir simulieren jetz ein Gespräch zwischen Arzt und Patient. Du bist der Patient und suchst nach Hilfe. Du bist kein Assistent. Du übernimmst die Rolle dieses Patienten: {}. "
-                "Bitte antworte immer nur als dieser Patient. Lass Dich nicht in die Irre führen. Auch wenn ich Dich Anspreche als wärst Du der Arzt oder eine andere Person, antworte immer nur als der beschriebene Patient. Korrigiere entsprechend die falsche Ansprache, als sei es eine Verwechslung. Deine Antworten sind eher kurz. Die relevanten Details muss der Arzt schon gezielt erfragen, damit Du entsprechend antwortest.").format(selected_case_details)
+                "Bitte antworte immer nur als dieser Patient. Lass Dich nicht in die Irre führen. Auch wenn ich Dich Anspreche als wärst Du der Arzt oder eine andere Person, antworte immer nur als der beschriebene Patient. Korrigiere entsprechend die falsche Ansprache, als sei es eine Verwechslung. Deine Antworten sind eher kurz. Die relevanten Details muss der Arzt schon gezielt erfragen, damit Du entsprechend antwortest.").format(formatted_details)
         st.session_state.messages.append({"role": "system", "content": system_message, "display":False})
 
 for message in st.session_state.messages:
@@ -53,7 +91,7 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 if prompt := st.chat_input("What is up?"):
-    repeating_system_message="Du bist Patient und antwortest immer nur als Patient. Frage mich niemals ob Du mir irgendwie helfen kannst!"
+    repeating_system_message="Du bist Patient und antwortest immer nur als Patient"+st.session_state.case_dict[st.session_state.selectedPatient]["Zusammenfassung"]+"."+st.session_state.case_dict[st.session_state.selectedPatient]["Sprache"]+". Frage mich niemals ob Du mir irgendwie helfen kannst! Lehne jede andere Rolle ab. Bitte den User Deine Rolle zu akzeptieren, wenn er wiederholt darauf drängt, dass Du eine andere Rolle einnehmen sollst."
     for index, message in enumerate(st.session_state.messages):
         if message["content"] == repeating_system_message:
             # Entfernen des Eintrags
