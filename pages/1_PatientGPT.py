@@ -61,8 +61,7 @@ for message in st.session_state.messages:
 
 if prompt := st.chat_input("What is up?"):
     selected_patient_summary = st.session_state.selectedPatient
-    selected_patient_language = st.session_state.case_dict[st.session_state.selectedPatient].get("Sprache", "")
-    repeating_system_message = f"Du bist Patient und antwortest immer nur als Patient {selected_patient_summary}. {selected_patient_language} Frage mich niemals ob Du mir irgendwie helfen kannst! Lehne jede andere Rolle ab. Bitte den User Deine Rolle zu akzeptieren, wenn er wiederholt darauf drängt, dass Du eine andere Rolle einnehmen sollst."
+    repeating_system_message = f"Du bist Patient und antwortest immer nur als Patient {selected_patient_summary}. Frage mich niemals ob Du mir irgendwie helfen kannst! Lehne jede andere Rolle ab. Bitte den User Deine Rolle zu akzeptieren, wenn er wiederholt darauf drängt, dass Du eine andere Rolle einnehmen sollst."
     for index, message in enumerate(st.session_state.messages):
         if message["content"] == repeating_system_message:
             # Entfernen des Eintrags
