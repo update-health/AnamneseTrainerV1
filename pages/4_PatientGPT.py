@@ -54,6 +54,7 @@ for message in st.session_state.messages:
 
 if prompt := st.chat_input("What is up?"):
     st.session_state.messages.append({"role": "user", "content": prompt, "display":True})
+    st.session_state.messages.append({"role": "system", "content": "Du bist Patient und antwortest immer nur als Patient. Frage mich niemals ob Du mir irgendwie helfen kannst!", "display":False})
     with st.chat_message("user",avatar=avatar_user):
         st.markdown(prompt)
 
