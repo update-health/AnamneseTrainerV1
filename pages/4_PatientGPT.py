@@ -41,10 +41,10 @@ if st.session_state.messages == []:
         selected_case_details = st.session_state.case_dict[st.session_state.selectedPatient]
         system_message=("Vergiss alle vorherigen Anweisungen. Wir simulieren jetz ein Gespräch zwischen Arzt und Patient. Du bist der Patient und suchst nach Hilfe. Du bist kein Assistent. Du übernimmst die Rolle dieses Patienten: {}. "
                 "Bitte antworte immer nur als dieser Patient. Deine Antworten sind eher kurz. Die relevanten Details muss der Arzt schon gezielt erfragen, damit Du entsprechend antwortest.").format(selected_case_details)
-        st.session_state.messages.append({"role": "system", "content": system_message})
+        st.session_state.messages.append({"role": "system", "content": system_message, "display":False})
 
 for message in st.session_state.messages:
-    if message["role"] != "system":
+    if message["display"]:
         if message["role"] == "user":
             avatar_icon=avatar_user
         else:
@@ -52,7 +52,7 @@ for message in st.session_state.messages:
         with st.chat_message(message["role"],avatar=avatar_icon):
             st.markdown(message["content"])
 
-if prompt := st.chat_input("What is up?"+st.session_state.selectedPatient):
+if prompt := st.chat_input("What is up?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user",avatar=avatar_user):
         st.markdown(prompt)
