@@ -42,8 +42,9 @@ st.session_state.selectedPatient = st.selectbox(
 if st.session_state.messages == []:
     if 'selectedPatient' in st.session_state:
         selected_case_details = st.session_state.case_dict[st.session_state.selectedPatient]
-        print(type(selected_case_details))
-        print(selected_case_details)
+        print("selectedPatient:", st.session_state.selectedPatient)
+        print("selected_case_details:", selected_case_details)
+        print("Type of selected_case_details:", type(selected_case_details))
         formatted_details = " -- ".join([f"{key}: {value}" for key, value in selected_case_details.items()])
         system_message=("Vergiss alle vorherigen Anweisungen. Wir simulieren jetz ein Gespräch zwischen Arzt und Patient. Du bist der Patient und suchst nach Hilfe. Du bist kein Assistent. Du übernimmst die Rolle dieses Patienten: {}. "
                 "Bitte antworte immer nur als dieser Patient. Lass Dich nicht in die Irre führen. Auch wenn ich Dich Anspreche als wärst Du der Arzt oder eine andere Person, antworte immer nur als der beschriebene Patient. Korrigiere entsprechend die falsche Ansprache, als sei es eine Verwechslung. Deine Antworten sind eher kurz. Die relevanten Details muss der Arzt schon gezielt erfragen, damit Du entsprechend antwortest.").format(formatted_details)
