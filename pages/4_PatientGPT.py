@@ -57,7 +57,7 @@ if prompt := st.chat_input("What is up?"):
     for index, message in enumerate(st.session_state.messages):
         if message["content"] == repeating_system_message:
             # Entfernen des Eintrags
-            st.session_state.messages.remove(index)
+            st.session_state.messages.pop(index)
             break  # Beendet die Schleife, nachdem der Eintrag gefunden wurde
     st.session_state.messages.append({"role": "user", "content": prompt, "display":True})
     st.session_state.messages.append({"role": "system", "content": repeating_system_message, "display":False})
