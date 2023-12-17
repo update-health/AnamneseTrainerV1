@@ -35,7 +35,7 @@ def on_patient_change():
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
 # SelectBox for choosing a patient
-st.markdown("###Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt")
+st.markdown("### Wähle einen Patienten. Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt")
 st.session_state.selectedPatient = st.selectbox(
     "Selectbox um einen Patiente auszuwählen",
     tuple(st.session_state.case_dict.keys()),  # Now the keys are 'Zusammenfassung'
