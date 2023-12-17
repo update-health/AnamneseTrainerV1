@@ -18,7 +18,7 @@ if "case_dict" not in st.session_state:
     df = pd.read_json(json_file_path)
 
     # Create a dictionary with 'Zusammenfassung' as keys and rows as values
-    case_dict = df.set_index('Zusammenfassung').T.to_dict()
+    case_dict = df.set_index('Kurzform').T.to_dict()
 
     st.session_state.case_dict = case_dict
 
@@ -47,8 +47,9 @@ if st.session_state.messages == []:
         print("selectedPatient:", st.session_state.selectedPatient)
         print("selected_case_details:", selected_case_details)
         print("Type of selected_case_details:", type(selected_case_details))
-        formatted_details = " -- ".join([f"{key}: {value}" for key, value in selected_case_details.items()])
-        system_message=().format(formatted_details)
+        with open('system_message_template.txt', 'r', encoding='utf-8') as file:
+            system_message_template = file.read()
+        system_message = system_message_template.format(selected_case_details)
         st.session_state.messages.append({"role": "system", "content": system_message, "display":False})
 
 for message in st.session_state.messages:

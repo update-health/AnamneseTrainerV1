@@ -1,0 +1,50 @@
+{
+    "Zusammenfassung": "",
+    "Basisdaten": {
+        "Vorname": "",
+        "Nachname": "",
+        "Geschlecht": "",
+        "Alter": "",
+        "Nationalitaet": ""
+    },
+    "Epidemiologie":{
+        "Familienanamnese":"",
+        "Lebensstilfaktore":""
+    },
+    "Person": {
+        "Beruf": "",
+        "Familienstand": "",
+        "Wohnsituation": "",
+        "Hobbies": "",
+        "Sprache und Kommunikationstil": "",
+        "Charakter": ""
+    },
+    "Psychosoziales": {
+        "Psychische Verfassung": "",
+        "Soziale Beziehungen": "",
+        "Coping": "",
+        "Emotion": ""
+    },
+    "Eigenanamnese": {
+        "Aktuelle Problematik": {
+            "Auslöser für den Arztbesuch": "",
+            "Hauptbeschwerden": "",
+            "Beginn und Dauer": "",
+            "Intensität und Charakter": "",
+            "Beinflussbarkeit": "",
+            "Partizipation":""
+        },
+        "Medizinische Vorgeschichte": {
+            "Frühere Krankheiten": "",
+            "Chronische Erkrankungen": "",
+            "Vorhandene Untersuchungbefunde": "",
+            "Vorbehandlung":""
+        },
+        "Medikamentenanamnese": {
+            "Aktuelle Medikamente": "",
+            "Allergien": "",
+            "Reaktionen auf Medikamente": ""
+        }
+    },
+    "Sonstiges": ""
+}
