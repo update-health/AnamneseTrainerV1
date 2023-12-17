@@ -49,7 +49,7 @@ if st.session_state.messages == []:
         with open('/workspaces/patientgptlit/pages/system_message_template.txt', 'r', encoding='utf-8') as file:
             system_message_template = file.read()
             selected_case_details_string = ", ".join([f"{key}: {value}" for key, value in selected_case_details.items()])
-            system_message = system_message_template.format(Patientendetails=selected_case_details_string, SpracheCharakter=selected_case_details["Person"]["Charakter"]+selected_case_details["Person"]["Sprache und Kommunikationstil"])
+            system_message = system_message_template.format(Patientendetails=selected_case_details_string, SpracheCharakter="Charakter: "+selected_case_details["Person"]["Charakter"]+", Sprache: "selected_case_details["Person"]["Sprache und Kommunikationstil"])
             print(system_message)
         st.session_state.messages.append({"role": "system", "content": system_message, "display":False})
 
