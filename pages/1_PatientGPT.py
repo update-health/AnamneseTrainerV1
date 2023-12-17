@@ -12,8 +12,10 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 if "case_dict" not in st.session_state:
-    # Load the Excel file
-    df = pd.read_excel('/workspaces/patientgptlit/pages/Fallbeispiele.xlsx')
+    json_file_path = '/workspaces/patientgptlit/pages/Fallbeispiele.json'
+
+    # Read the JSON file
+    df = pd.read_json(json_file_path)
 
     # Create a dictionary with 'Zusammenfassung' as keys and rows as values
     case_dict = df.set_index('Zusammenfassung').T.to_dict()
