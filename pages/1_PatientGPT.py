@@ -49,7 +49,7 @@ if st.session_state.messages == []:
         print("Type of selected_case_details:", type(selected_case_details))
         with open('/workspaces/patientgptlit/pages/system_message_template.txt', 'r', encoding='utf-8') as file:
             system_message_template = file.read()
-        system_message = system_message_template.format(selected_case_details)
+        system_message = system_message_template.format(Patientendetails=selected_case_details)
         st.session_state.messages.append({"role": "system", "content": system_message, "display":False})
 
 for message in st.session_state.messages:
