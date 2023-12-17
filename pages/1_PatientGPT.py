@@ -45,12 +45,12 @@ if st.session_state.messages == []:
     if 'selectedPatient' in st.session_state:
         selected_case_details = st.session_state.case_dict[st.session_state.selectedPatient]
         print("selectedPatient:", st.session_state.selectedPatient)
-        print("selected_case_details:", selected_case_details)
         print("Type of selected_case_details:", type(selected_case_details))
         with open('/workspaces/patientgptlit/pages/system_message_template.txt', 'r', encoding='utf-8') as file:
             system_message_template = file.read()
             selected_case_details_string = ", ".join([f"{key}: {value}" for key, value in selected_case_details.items()])
             system_message = system_message_template.format(Patientendetails=selected_case_details_string)
+            print(system_message)
         st.session_state.messages.append({"role": "system", "content": system_message, "display":False})
 
 for message in st.session_state.messages:
