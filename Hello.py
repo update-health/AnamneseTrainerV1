@@ -2,7 +2,7 @@ import streamlit as st
 import hmac
 from streamlit.logger import get_logger
 from streamlit_extras.switch_page_button import switch_page
-from st_pages import show_pages, Page, hide_pages
+
 
 LOGGER = get_logger(__name__)
 
@@ -12,14 +12,6 @@ def display_homepage():
     if st.button("PatientGPT"):
         switch_page("PatientGPT")
 
-def add_pages():
-    """Add pages to the sidebar after successful password entry."""
-    show_pages(
-        [
-            Page("Hello.py", "Home", icon="🏠"),
-            Page("pages/1_PatientGPT.py", "PatientGPT", icon="👩‍⚕️")
-        ]
-    )
 
 def check_password():
     """Check the user's password and control page access."""
@@ -28,7 +20,6 @@ def check_password():
         if hmac.compare_digest(st.session_state["password"], st.secrets["PASSWORD"]):
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # Don't store the password.
-            add_pages()  # Add pages after successful password check
         else:
             st.session_state["password_correct"] = False
 
@@ -47,12 +38,7 @@ def run():
     # Check password before showing pages or homepage content
     if check_password():
         display_homepage()
-    elif "password_correct" not in st.session_state or not st.session_state.get("password_correct", False):
-        show_pages(
-        [
-            Page("Hello.py", "Home", icon="🏠")
-        ]
-    )
+
 
 if __name__ == "__main__":
     run()
