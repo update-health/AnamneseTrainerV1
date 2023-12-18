@@ -47,7 +47,7 @@ def run():
     # Check password before showing pages or homepage content
     if check_password():
         display_homepage()
-    else:
+    elif "password_correct" not in st.session_state or not st.session_state.get("password_correct", False):
         show_pages(
         [
             Page("Hello.py", "Home", icon="🏠")
