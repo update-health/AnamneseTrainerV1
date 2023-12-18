@@ -2,6 +2,7 @@ import streamlit as st
 import hmac
 from streamlit.logger import get_logger
 from streamlit_extras.switch_page_button import switch_page
+from st_pages import show_pages, Page, hide_pages
 
 
 LOGGER = get_logger(__name__)
@@ -12,7 +13,11 @@ def run():
         page_icon="👩‍⚕️",
     )
 
+if __name__ == "__main__":
+    run()
+
 st.write("# Herzlich Willkommen zum Anamnesetrainer")
+
 
 #password Check
 def check_password():
@@ -42,6 +47,12 @@ def check_password():
 if not check_password():
     st.stop()  # Do not continue if check_password is not True.
 
+show_pages(
+    [
+        Page("Hello.py", "Home", icon="🏠"),
+        Page("pages/1_PatientGPT.py", "PatientGPT", icon="👩‍⚕️")
+    ]
+)
 #actual page
 st.markdown("### Um zu starten, wechsel jetzt auf die Seite")
 
@@ -49,5 +60,4 @@ if st.button("PatientGPT"):
     switch_page("PatientGPT")
 
 
-if __name__ == "__main__":
-    run()
+
