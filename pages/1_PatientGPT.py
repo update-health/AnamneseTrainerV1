@@ -63,7 +63,7 @@ for message in st.session_state.messages:
         with st.chat_message(message["role"],avatar=avatar_icon):
             st.markdown(message["content"])
 
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("Begrüße den Patienten und führe ein Anamnesegespräch"):
     selected_patient_summary = st.session_state.selectedPatient
     st.session_state.messages.append({"role": "user", "content": prompt, "display":True})
     with st.chat_message("user",avatar=avatar_user):
