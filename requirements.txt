@@ -5,5 +5,4 @@ pydeck
 streamlit
 openai
 streamlit_extras
-st_pages
 pyyaml
