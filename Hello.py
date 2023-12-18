@@ -16,6 +16,11 @@ def run():
 if __name__ == "__main__":
     run()
 
+show_pages(
+    [
+        Page("Hello.py", "Home", icon="🏠")
+    ]
+)
 st.write("# Herzlich Willkommen zum Anamnesetrainer")
 
 
