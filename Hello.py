@@ -4,65 +4,55 @@ from streamlit.logger import get_logger
 from streamlit_extras.switch_page_button import switch_page
 from st_pages import show_pages, Page, hide_pages
 
-
 LOGGER = get_logger(__name__)
 
+def display_homepage():
+    """Display the content of the homepage."""
+    st.markdown("### Um zu starten, wechsel jetzt auf die Seite")
+    if st.button("PatientGPT"):
+        switch_page("PatientGPT")
+
+def add_pages():
+    """Add pages to the sidebar after successful password entry."""
+    show_pages(
+        [
+            Page("Hello.py", "Home", icon="🏠"),
+            Page("pages/1_PatientGPT.py", "PatientGPT", icon="👩‍⚕️")
+        ]
+    )
+
+def check_password():
+    """Check the user's password and control page access."""
+    def password_entered():
+        """Verify the entered password."""
+        if hmac.compare_digest(st.session_state["password"], st.secrets["PASSWORD"]):
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store the password.
+            add_pages()  # Add pages after successful password check
+        else:
+            st.session_state["password_correct"] = False
+
+    if "password_correct" not in st.session_state or not st.session_state.get("password_correct", False):
+        # Show input for password.
+        st.text_input("Password", type="password", on_change=password_entered, key="password")
+        if "password_correct" in st.session_state:
+            st.error("😕 Password incorrect")
+        return False
+    return True
+
 def run():
-    st.set_page_config(
-        page_title="PatientGPT",
-        page_icon="👩‍⚕️",
+    st.set_page_config(page_title="PatientGPT", page_icon="👩‍⚕️")
+    st.write("# Herzlich Willkommen zum Anamnesetrainer")
+
+    # Check password before showing pages or homepage content
+    if check_password():
+        display_homepage()
+    else:
+        show_pages(
+        [
+            Page("Hello.py", "Home", icon="🏠")
+        ]
     )
 
 if __name__ == "__main__":
     run()
-
-show_pages(
-    [
-        Page("Hello.py", "Home", icon="🏠")
-    ]
-)
-st.write("# Herzlich Willkommen zum Anamnesetrainer")
-
-
-#password Check
-def check_password():
-    """Returns `True` if the user had the correct password."""
-
-    def password_entered():
-        """Checks whether a password entered by the user is correct."""
-        if hmac.compare_digest(st.session_state["password"], st.secrets["PASSWORD"]):
-            st.session_state["password_correct"] = True
-            del st.session_state["password"]  # Don't store the password.
-        else:
-            st.session_state["password_correct"] = False
-
-    # Return True if the passward is validated.
-    if st.session_state.get("password_correct", False):
-        return True
-
-    # Show input for password.
-    st.text_input(
-        "Password", type="password", on_change=password_entered, key="password"
-    )
-    if "password_correct" in st.session_state:
-        st.error("😕 Password incorrect")
-    return False
-
-
-if not check_password():
-    st.stop()  # Do not continue if check_password is not True.
-
-show_pages(
-    [
-        Page("Hello.py", "Home", icon="🏠"),
-        Page("pages/1_PatientGPT.py", "PatientGPT", icon="👩‍⚕️")
-    ]
-)
-#actual page
-st.markdown("### Um zu starten, wechsel jetzt auf die Seite")
-
-if st.button("PatientGPT"):
-    switch_page("PatientGPT")
-
-
-

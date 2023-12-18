@@ -1,7 +1,13 @@
 from openai import OpenAI
 import streamlit as st
-import os
 import pandas as pd
+
+# Initialize a session state variable that tracks the sidebar state (either 'expanded' or 'collapsed').
+if 'sidebar_state' not in st.session_state:
+    st.session_state.sidebar_state = 'collapsed'
+
+# Streamlit set_page_config method has a 'initial_sidebar_state' argument that controls sidebar state.
+st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -85,3 +91,6 @@ if prompt := st.chat_input("Begrüße den Patienten und führe ein Anamnesegespr
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response, "display":True})
     print(st.session_state.messages)
+
+
+
