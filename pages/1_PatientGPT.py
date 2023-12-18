@@ -11,7 +11,7 @@ if 'sidebar_state' not in st.session_state:
 # Streamlit set_page_config method has a 'initial_sidebar_state' argument that controls sidebar state.
 st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
 if 'password_correct' not in st.session_state or st.session_state["password_correct"]==False:
-    switch_page("home")
+    switch_page("hello")
     st.stop()
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
