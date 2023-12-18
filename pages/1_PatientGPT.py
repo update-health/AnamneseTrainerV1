@@ -1,6 +1,7 @@
 from openai import OpenAI
 import streamlit as st
 import pandas as pd
+import yaml
 from streamlit_extras.switch_page_button import switch_page
 from st_pages import show_pages, Page, hide_pages
 
@@ -10,8 +11,8 @@ if 'sidebar_state' not in st.session_state:
 
 # Streamlit set_page_config method has a 'initial_sidebar_state' argument that controls sidebar state.
 st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
-
-if 'password_correct' not in st.session_state or st.session_state.password_correct==False:
+print(st.session_state["password_correct"])
+if 'password_correct' not in st.session_state or st.session_state["password_correct"]==False:
     switch_page("Home")
     st.stop()
 
@@ -24,13 +25,14 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 if "case_dict" not in st.session_state:
-    json_file_path = 'data/Fallbeispiele.json'
+    yaml_file_path = 'data/Fallbeispiele.yaml'
 
-    # Read the JSON file
-    df = pd.read_json(json_file_path)
+    # Read the YAML file
+    with open(yaml_file_path, 'r', encoding='utf-8') as file:
+        case_list = yaml.safe_load(file)
 
-    # Create a dictionary with 'Zusammenfassung' as keys and rows as values
-    case_dict = df.set_index('Kurzform').T.to_dict()
+    # Convert the list of cases to a dictionary with 'Kurzform' as keys and rows as values
+    case_dict = {case['Kurzform']: case for case in case_list}
 
     st.session_state.case_dict = case_dict
 
@@ -43,7 +45,8 @@ avatar_assistant="😫"
 # Definieren Sie eine Funktion, die aufgerufen wird, wenn sich die Auswahl ändert
 def on_patient_change():
     # Diese Funktion könnte zum Beispiel das Gespräch zurücksetzen oder andere Aktionen ausführen
-    st.session_state.clear()
+    del st.session_state.messages
+    del st.session_state.selectedPatient
 
 #https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
 # SelectBox for choosing a patient
@@ -57,14 +60,35 @@ st.session_state.selectedPatient = st.selectbox(
 if st.session_state.messages == []:
     if 'selectedPatient' in st.session_state:
         selected_case_details = st.session_state.case_dict[st.session_state.selectedPatient]
-        print("selectedPatient:", st.session_state.selectedPatient)
-        print("Type of selected_case_details:", type(selected_case_details))
-        with open('data/system_message_template.txt', 'r', encoding='utf-8') as file:
-            system_message_template = file.read()
-            selected_case_details_string = ", ".join([f"{key}: {value}" for key, value in selected_case_details.items()])
-            system_message = system_message_template.format(Patientendetails=selected_case_details_string, SpracheCharakter="Charakter: "+selected_case_details["Person"]["Charakter"]+", Sprache: "+selected_case_details["Person"]["Sprache und Kommunikationstil"])
-            print(system_message)
-        st.session_state.messages.append({"role": "system", "content": system_message, "display":False})
+
+        # Read the YAML file for instruction messages
+        with open('data/instruction_messages.yaml', 'r', encoding='utf-8') as file:
+            instruction_content = file.read()
+
+        # Prepare the data to replace placeholders
+        patient_details_str = ", ".join([f"{key}: {value}" for key, value in selected_case_details.items()])
+        replacements = {
+            "Vorname": selected_case_details["Basisdaten"]["Vorname"],
+            "Nachname": selected_case_details["Basisdaten"]["Nachname"],
+            "Charakter": selected_case_details["Person"]["Charakter"],
+            "Sprache": selected_case_details["Person"]["Sprache und Kommunikationstil"],
+            "Gruss": selected_case_details["Person"]["Gruss"],
+            "PatientenDetails": patient_details_str
+        }
+
+        # Replace placeholders in the entire YAML content
+        formatted_content = instruction_content.format(**replacements)
+
+        # Convert the formatted content back to YAML structure
+        instruction_messages = yaml.safe_load(formatted_content)
+
+        # Append messages to st.session_state.messages
+        for message in instruction_messages['messages']:
+            st.session_state.messages.append({
+                "role": message['role'],
+                "content": message['content'],
+                "display": False
+            })         
 
 for message in st.session_state.messages:
     if message["display"]:
