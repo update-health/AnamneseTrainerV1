@@ -1,6 +1,8 @@
 from openai import OpenAI
 import streamlit as st
 import pandas as pd
+from streamlit_extras.switch_page_button import switch_page
+from st_pages import show_pages, Page, hide_pages
 
 # Initialize a session state variable that tracks the sidebar state (either 'expanded' or 'collapsed').
 if 'sidebar_state' not in st.session_state:
@@ -8,6 +10,10 @@ if 'sidebar_state' not in st.session_state:
 
 # Streamlit set_page_config method has a 'initial_sidebar_state' argument that controls sidebar state.
 st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
+
+if 'password_correct' not in st.session_state or st.session_state.password_correct==False:
+    switch_page("Home")
+    st.stop()
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
