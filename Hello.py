@@ -32,7 +32,7 @@ def check_password():
     return True
 
 def run():
-    st.set_page_config(page_title="PatientGPT", page_icon="👩‍⚕️")
+    st.set_page_config(page_title="Anamnesetrainer", page_icon="👩‍⚕️")
     st.write("# Herzlich Willkommen zum Anamnesetrainer")
 
     # Check password before showing pages or homepage content
