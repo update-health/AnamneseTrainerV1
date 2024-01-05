@@ -14,6 +14,15 @@ if 'password_correct' not in st.session_state or st.session_state["password_corr
     switch_page("hello")
     st.stop()
 
+def language_changed():
+    st.session_state['language_changed'] = True
+    on_patient_change()
+
+language = st.sidebar.selectbox('Choose your language:', 
+                                ('Deutsch', 'English'), 
+                                on_change=language_changed)
+st.session_state['language'] = language
+
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 if "openai_model" not in st.session_state:
@@ -22,17 +31,21 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-if "case_dict" not in st.session_state:
-    yaml_file_path = 'data/Fallbeispiele.yaml'
+if "case_dict" not in st.session_state or 'language_changed' in st.session_state:
+    if st.session_state['language'] == 'Deutsch':
+        Fallbeispiele_yaml = 'data/Fallbeispiele.yaml'
+    else:
+        Fallbeispiele_yaml = 'data/Fallbeispiele_English.yaml'
 
     # Read the YAML file
-    with open(yaml_file_path, 'r', encoding='utf-8') as file:
+    with open(Fallbeispiele_yaml, 'r', encoding='utf-8') as file:
         case_list = yaml.safe_load(file)
 
     # Convert the list of cases to a dictionary with 'Kurzform' as keys and rows as values
     case_dict = {case['Kurzform']: case for case in case_list}
 
     st.session_state.case_dict = case_dict
+    st.session_state.pop('language_changed', None)  # Clear the flag
 
 if "selectedPatient" not in st.session_state:
     st.session_state.selectedPatient=""
@@ -58,9 +71,12 @@ st.session_state.selectedPatient = st.selectbox(
 if st.session_state.messages == []:
     if 'selectedPatient' in st.session_state:
         selected_case_details = st.session_state.case_dict[st.session_state.selectedPatient]
-
+        if st.session_state['language'] == 'Deutsch':
+            instructions_yaml = 'data/instruction_messages.yaml'
+        else:
+            instructions_yaml = 'data/instruction_messages_English.yaml'
         # Read the YAML file for instruction messages
-        with open('data/instruction_messages.yaml', 'r', encoding='utf-8') as file:
+        with open(instructions_yaml, 'r', encoding='utf-8') as file:
             instruction_content = file.read()
 
         # Prepare the data to replace placeholders

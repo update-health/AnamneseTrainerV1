@@ -1,0 +1,5 @@
+---
+sidebar_language_prompt: "Sprache wählen:"
+patient_select_heading: "Wähle einen Patienten"
+patient_selection_warning: "Achtung: Das bisherige Gespräch wird zurückgesetzt und ein neues beginnt"
+chat_input_prompt: "Begrüße den Patienten und führe ein Anamnesegespräch"
