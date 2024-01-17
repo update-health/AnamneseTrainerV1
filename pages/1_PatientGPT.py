@@ -138,7 +138,7 @@ def process_messages():
                     for m in st.session_state.messages if m['display'] == False
                 ]
             )
-            generated_response = response.choices[0].text.strip()
+            generated_response = response.choices[0].message.content;
             # Hinzufügen der Antwort zur Message History
             st.session_state.messages.append({"role": "assistant", "content": generated_response, "display": True})
 
