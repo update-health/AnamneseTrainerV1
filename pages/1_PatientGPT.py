@@ -106,53 +106,43 @@ if st.session_state.messages == []:
 
 if prompt := st.chat_input("Begrüße den Patienten und führe ein Anamnesegespräch"):
     selected_patient_summary = st.session_state.selectedPatient
-    st.session_state.messages.append({"role": "user", "content": prompt, "display":True})
-    with st.chat_message("user",avatar=avatar_user):
-        st.markdown(prompt)
+    st.session_state.messages.append({"role": "user", "content": prompt, "display": True})
 
-    with st.chat_message("assistant",avatar=avatar_assistant):
-        message_placeholder = st.empty()
-        full_response = ""
-        for response in client.chat.completions.create(
-            model=st.session_state["openai_model"],
-            messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
-            ],
-            stream=True, frequency_penalty=0.2, presence_penalty=0.4, temperature=1.2
-        ):
-            full_response += (response.choices[0].delta.content or "")
-            message_placeholder.markdown(full_response + "▌")
-        message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response, "display":True})
-    print(st.session_state.messages)
 
 def process_messages():
     for message in st.session_state.messages:
-        if "{Generated}" in message['content']:
-            # Senden der bisherigen Messages an die OpenAI API
-            response = client.chat.completions.create(
-                model=st.session_state["openai_model"],
-                messages=[
-                    {"role": m["role"], "content": m["content"]}
-                    for m in st.session_state.messages if m['display'] == False
-                ]
-            )
-            generated_response = response.choices[0].message.content;
-            # Hinzufügen der Antwort zur Message History
-            st.session_state.messages.append({"role": "assistant", "content": generated_response, "display": True})
+        if not message["display"]:
+            if message["role"] == "assistant" and "{Generated}" in message["content"]:
+                # Erstellen eines Platzhalters für die Streaming-Antwort
+                message_placeholder = st.empty()
+                full_response = ""
 
-            # Löschen des {Generated} Markers
-            message['content'] = message['content'].replace("{Generated}", generated_response)
+                # Streamen der Antwort von der OpenAI API
+                response_stream = client.chat.completions.create(
+                    model=st.session_state["openai_model"],
+                    messages=[
+                        {"role": m["role"], "content": m["content"]}
+                        for m in st.session_state.messages if m["display"] == False
+                    ],
+                    stream=True,
+                    frequency_penalty=0.2,
+                    presence_penalty=0.4,
+                    temperature=1.2
+                )
 
-        if message['display']:
+                for response in response_stream:
+                    full_response += (response.choices[0].delta.content or "")
+                    message_placeholder.markdown(full_response + "▌")
+
+                message["content"] = full_response
+
+            message["display"] = True
+
             # Anzeigen der Nachricht im Chat
-            if message["role"] == "user":
-                avatar_icon = avatar_user
-            else:
-                avatar_icon = avatar_assistant
+            avatar_icon = avatar_user if message["role"] == "user" else avatar_assistant
             with st.chat_message(message["role"], avatar=avatar_icon):
                 st.markdown(message["content"])
+
 
 if st.button("Beende Anamnese, Starte Feedback"):
     st.session_state.messageHistory = st.session_state.messages
