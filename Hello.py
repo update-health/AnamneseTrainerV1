@@ -7,7 +7,7 @@ from streamlit_extras.switch_page_button import switch_page
 LOGGER = get_logger(__name__)
 
 def display_homepage():
-    """Display the content of the homepage."""
+    #Display the content of the homepage.
     st.markdown("### Um zu starten, wechsel jetzt auf die Seite")
     if st.button("PatientGPT"):
         switch_page("PatientGPT")
