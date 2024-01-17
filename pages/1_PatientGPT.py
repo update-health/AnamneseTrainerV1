@@ -104,15 +104,6 @@ if st.session_state.messages == []:
                 "display": False
             })         
 
-for message in st.session_state.messages:
-    if message["display"]:
-        if message["role"] == "user":
-            avatar_icon=avatar_user
-        else:
-            avatar_icon=avatar_assistant
-        with st.chat_message(message["role"],avatar=avatar_icon):
-            st.markdown(message["content"])
-
 if prompt := st.chat_input("Begrüße den Patienten und führe ein Anamnesegespräch"):
     selected_patient_summary = st.session_state.selectedPatient
     st.session_state.messages.append({"role": "user", "content": prompt, "display":True})
@@ -135,22 +126,6 @@ if prompt := st.chat_input("Begrüße den Patienten und führe ein Anamnesegespr
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response, "display":True})
     print(st.session_state.messages)
-
-if st.button("Beende Anamnese, Starte Feedback"):
-    st.session_state.messageHistory = st.session_state.messages
-    st.session_state.messages = []
-    # Weiter im Button-Event-Block
-    with open('data/Tutor_instructions.yaml', 'r', encoding='utf-8') as file:
-        tutor_instructions = yaml.safe_load(file)
-
-    for message in tutor_instructions['messages']:
-        if "{MessageHistory}" in message['content']:
-            formatted_history = ""
-            for msg in st.session_state.messageHistory:
-                role = "Student: " if msg["role"] == "user" else "Patient: "
-                formatted_history += role + msg["content"] + "\n"
-            message['content'] = message['content'].replace("{MessageHistory}", formatted_history)
-        st.session_state.messages.append({"role": message["role"], "content": message["content"], "display": False})
 
 def process_messages():
     for message in st.session_state.messages:
@@ -178,6 +153,22 @@ def process_messages():
                 avatar_icon = avatar_assistant
             with st.chat_message(message["role"], avatar=avatar_icon):
                 st.markdown(message["content"])
+
+if st.button("Beende Anamnese, Starte Feedback"):
+    st.session_state.messageHistory = st.session_state.messages
+    st.session_state.messages = []
+    # Weiter im Button-Event-Block
+    with open('data/Tutor_instructions.yaml', 'r', encoding='utf-8') as file:
+        tutor_instructions = yaml.safe_load(file)
+
+    for message in tutor_instructions['messages']:
+        if "{MessageHistory}" in message['content']:
+            formatted_history = ""
+            for msg in st.session_state.messageHistory:
+                role = "Student: " if msg["role"] == "user" else "Patient: "
+                formatted_history += role + msg["content"] + "\n"
+            message['content'] = message['content'].replace("{MessageHistory}", formatted_history)
+        st.session_state.messages.append({"role": message["role"], "content": message["content"], "display": False})
 
 # Aufruf der Funktion am Ende des Streamlit-Codes
 process_messages()

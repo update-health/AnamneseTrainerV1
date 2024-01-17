@@ -55,9 +55,9 @@ messages:
       Gebe als Antwort die eine kurze Zusammenfassung Deiner Vorbereitung.
     
   - role: assistant
-  content: |
-    {Generated}
-  
+    content: |
+      {Generated}
+    
   - role: user
     content: |
       Versuche diese Aspekte im Feedbackgespräch einfließen zu lassen. Achte jedoch auf die Pendleton Rules. 
