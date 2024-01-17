@@ -48,7 +48,9 @@ messages:
       ###
       {MessageHistory}
       ###
-      Bereite Dich nun auf das Feedbackgespräch vor. Analysiere zunächst das Anamnesegespräch. Was war gut? Was sollte verbessert werden? Gab es erhebliche Fehler? Was möchtest Du im Feedbackgespräch erreichen und vermitteln? 
+      Bereite Dich nun auf das Feedbackgespräch vor. 
+      Fasse für Dich noch einmal zusammen, was die wichtigesten Aspekte einer guten Anamneseführung sind. 
+      Analysiere dann das Anamnesegespräch. Was war gut? Was sollte verbessert werden? Gab es erhebliche Fehler? Was möchtest Du im Feedbackgespräch erreichen und vermitteln? 
       Diese Liste wird der Student nicht zu sehen bekommen. Sie dient nur als Hilfe für Dich.
       Gebe als Antwort die eine kurze Zusammenfassung Deiner Vorbereitung.
     
@@ -58,6 +60,7 @@ messages:
   
   - role: user
     content: |
+      Versuche diese Aspekte im Feedbackgespräch einfließen zu lassen. Achte jedoch auf die Pendleton Rules. 
       Ab jetzt startet das Feedbackgespräch. Beachte die Abfolge der Pendleton Rules. Dem Studenten musst Du die Pendleton Rules aber nicht beschreiben.
       Begrüße nun den Studenten entsprechend und stelle sicher, dass dieser bereit für das Feedbackgespäch ist.
 

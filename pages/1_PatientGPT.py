@@ -136,5 +136,49 @@ if prompt := st.chat_input("Begrüße den Patienten und führe ein Anamnesegespr
     st.session_state.messages.append({"role": "assistant", "content": full_response, "display":True})
     print(st.session_state.messages)
 
+if st.button("Beende Anamnese, Starte Feedback"):
+    st.session_state.messageHistory = st.session_state.messages
+    st.session_state.messages = []
+    # Weiter im Button-Event-Block
+    with open('data/Tutor_instructions.yaml', 'r', encoding='utf-8') as file:
+        tutor_instructions = yaml.safe_load(file)
 
+    for message in tutor_instructions['messages']:
+        if "{MessageHistory}" in message['content']:
+            formatted_history = ""
+            for msg in st.session_state.messageHistory:
+                role = "Student: " if msg["role"] == "user" else "Patient: "
+                formatted_history += role + msg["content"] + "\n"
+            message['content'] = message['content'].replace("{MessageHistory}", formatted_history)
+        st.session_state.messages.append({"role": message["role"], "content": message["content"], "display": False})
+
+def process_messages():
+    for message in st.session_state.messages:
+        if "{Generated}" in message['content']:
+            # Senden der bisherigen Messages an die OpenAI API
+            response = client.chat.completions.create(
+                model=st.session_state["openai_model"],
+                messages=[
+                    {"role": m["role"], "content": m["content"]}
+                    for m in st.session_state.messages if m['display'] == False
+                ]
+            )
+            generated_response = response.choices[0].text.strip()
+            # Hinzufügen der Antwort zur Message History
+            st.session_state.messages.append({"role": "assistant", "content": generated_response, "display": True})
+
+            # Löschen des {Generated} Markers
+            message['content'] = message['content'].replace("{Generated}", generated_response)
+
+        if message['display']:
+            # Anzeigen der Nachricht im Chat
+            if message["role"] == "user":
+                avatar_icon = avatar_user
+            else:
+                avatar_icon = avatar_assistant
+            with st.chat_message(message["role"], avatar=avatar_icon):
+                st.markdown(message["content"])
+
+# Aufruf der Funktion am Ende des Streamlit-Codes
+process_messages()
 
