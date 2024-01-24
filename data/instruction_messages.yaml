@@ -71,6 +71,7 @@ messages:
       ###
       {PatientenDetails}
       ###
+      Der Patient bzw. die Patientin kommt im Direktzugang zur Physiotherapie, also ohne eine Verordnung vom Arzt.
       Hast Du Deine Aufgabe und Rolle verstanden?
   
   - role: assistant
