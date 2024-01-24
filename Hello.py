@@ -9,9 +9,7 @@ LOGGER = get_logger(__name__)
 def display_homepage():
     #Display the content of the homepage.
     st.markdown("""
-### Herzlich Willkommen zum Anamnesetrainer
-
-Welchen potentiellen Einsatzzweck hat der Anamnesetrainer?
+### Welchen potentiellen Einsatzzweck hat der Anamnesetrainer?
 
 In der Ausbildung von Therapeuten und Medizinern ist das Erlernen einer strukturierten Anamnese und die Entwicklung zielführender Kommunikationsfähigkeiten und Interview-Techniken von herausragender Bedeutung. Dabei müssen wesentliche Merkmale von Erkrankungen erfasst und sinnvoll interpretiert werden, um so differentialdiagnostische Entscheidungen auf einer fundierten Basis treffen zu können.
 
