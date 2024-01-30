@@ -11,7 +11,7 @@ def display_homepage():
     st.markdown("""
 ### Welchen potentiellen Einsatzzweck hat der Anamnesetrainer?
 
-Die Ausbildung von Therapeuten und Medizinern betont das Erlernen strukturierter Anamnese und effektiver Kommunikationsfähigkeiten. Praktische Übungen, oft durch Rollenspiele und Simulationen, sind wesentlich, um echte Patienten nicht zu belasten. Die Effektivität dieser Übungen hängt jedoch von den schauspielerischen Fähigkeiten der Teilnehmer ab. Chatbots, basierend auf Large Language Models, könnten eine alternative oder ergänzende Methode bieten, um Anamnese und Feedbackprozesse zu trainieren.
+Die Ausbildung von Therapeuten und Medizinern betont das Erlernen strukturierter Anamnese und effektiver Kommunikationsfähigkeiten. Praktische Übungen, oft durch Rollenspiele und Simulationen, sind wesentlich, um echte Patienten nicht zu belasten. Die Effektivität dieser Übungen hängt jedoch von den schauspielerischen Fähigkeiten der Teilnehmer ab. Chatbots, basierend auf Large Language Models, könnten eine alternative oder ergänzende Methode bieten, um Anamnesegespräche zu trainieren.
 
 ### Was soll im Rahmen der Studie evaluiert werden?
 
