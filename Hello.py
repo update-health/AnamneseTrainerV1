@@ -11,13 +11,7 @@ def display_homepage():
     st.markdown("""
 ### Welchen potentiellen Einsatzzweck hat der Anamnesetrainer?
 
-In der Ausbildung von Therapeuten und Medizinern ist das Erlernen einer strukturierten Anamnese und die Entwicklung zielführender Kommunikationsfähigkeiten und Interview-Techniken von herausragender Bedeutung. Dabei müssen wesentliche Merkmale von Erkrankungen erfasst und sinnvoll interpretiert werden, um so differentialdiagnostische Entscheidungen auf einer fundierten Basis treffen zu können.
-
-Neben der Schulung grundlegender Kenntnisse, Theorien und Hilfsmittel zur Anamnese, ist das praktische Üben essentieller Teil der Ausbildung. Um das Risiko und übermäßige Belastung für echte Patienten zu vermeiden und eine kontrollierte Lernumgebung zu schaffen, werden in der medizinischen Ausbildung Rollenspiele und Simulationen eingesetzt, die es erlauben, Fähigkeiten, ohne die Komplexität und den Druck realer Patientensituationen zu entwickeln. Das Üben unter Mitstudierenden im Rollenspiel ist eine häufig verwendete Methode. Der Lerneffekt hängt jedoch von den schauspielerischen Fähigkeiten und der Intensität der Auseinandersetzung mit der Rolle des Patienten ab.
-
-Eine weitere Möglichkeit ist das Üben der Anamnese mit professionellen Schauspielern als standardisierte Patienten. Das Gespräch wird häufig als deutlich realistischer empfunden, der Aufwand ist jedoch enorm. Auch benötigt es in beiden Szenarios eine qualifizierte Person, die das Gespräch verfolgt und im Anschluss eine qualitativ hochwertiges reflektierendes Feedbackgespräch anbieten kann. Die Abhängigkeit zu anderen Personen ist in beiden Fällen groß, was sowohl Qualität als auch Quantität der Lernerfahrungen limitieren kann.
-
-Chatbots, basierend auf Large Language Models, könnten als Ergänzung und vielleicht auch Alternative zu konventionellen Methoden zum Einsatz kommen, um die Anamneseführung zu trainieren, in dem diese sowohl Patienten als auch Tutoren (für das Feedback nach dem Anamnesegespräch) simulieren.
+Die Ausbildung von Therapeuten und Medizinern betont das Erlernen strukturierter Anamnese und effektiver Kommunikationsfähigkeiten. Praktische Übungen, oft durch Rollenspiele und Simulationen, sind wesentlich, um echte Patienten nicht zu belasten. Die Effektivität dieser Übungen hängt jedoch von den schauspielerischen Fähigkeiten der Teilnehmer ab. Chatbots, basierend auf Large Language Models, könnten eine alternative oder ergänzende Methode bieten, um Anamnese und Feedbackprozesse zu trainieren.
 
 ### Was soll im Rahmen der Studie evaluiert werden?
 
