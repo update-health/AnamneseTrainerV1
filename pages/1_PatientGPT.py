@@ -163,7 +163,7 @@ if st.session_state.chatMode=="patient" and len(st.session_state.messages)>8:
                 if "{Generated}" in message['content']:
                     # Senden der bisherigen Messages an die OpenAI API
                     response = client.chat.completions.create(
-                        model=st.session_state["openai_model"],
+                        model="gpt-3.5-turbo-16k",
                         messages=[
                             {"role": m["role"], "content": m["content"]}
                             for m in st.session_state.messages
