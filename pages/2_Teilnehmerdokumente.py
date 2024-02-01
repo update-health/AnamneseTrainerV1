@@ -5,12 +5,9 @@ from streamlit_extras.switch_page_button import switch_page
 
 # embed streamlit docs in a streamlit app
 st.set_page_config(layout="wide")
-st.markdown("""### Vielen Dank, dass Du an der Pilotstudie teilnimmst.             
-Im Anhang findest Du Dokumente, welche die späteren Teilnehmenden der Studie lesen muss unterzeichnen müssen.  
+st.markdown("""Unten auf der Seite findest Du Dokumente, welche die späteren Teilnehmenden der Studie lesen und unterzeichnen müssen.  
 Die weitere Einverständniserklärung am Ende musst Du nicht unterzeichnen, aber bitte durchlesen und auf Verständlichkeit prüfen.  
 Ich erinnere an die bereits zuvor dargestellten Methoden "read-aloud" und "think-aloud".  
-Diese funktioniert so, dass Teilnehmende, während Sie sich durch die Dokumente und Fragebögen arbeiten, einfach laut vorlesen, und zudem versuchen Ihre Gedanken laut zu äußern wie z.B. „oh, das war aber ein langer Satz, den muss ich nochmal lesen.“ oder „Das verstehe ich aber nicht, meint das X oder meint das Y?“ oder „Ja ich gebe 6 Punkte weil…“. Dabei nehmen die Teilnehmenden sich mit einem Sprachrekorder auf und stellen diese Aufnahme dem Forschenden danach zur Verfügung.
-Beim „Laut-lesen“ sollen Teilnehmende versuchen Ihr Leseverhalten möglichst wenig zu verändern. Wenn Du also ein Informationsblatt als Studienteilnehmende*r sonst gar nicht lesen würdest, dann äußere einfach kurz warum nicht. Wenn Du eine solche Information nur überfliegst, dann versuche auch entsprechend einfach die Wörter und Satzbrocken auszusprechen, die Du beim Überfliegen erfasst, eventuell mit kurzen Äußerungen welche Aspekte Dir wichtig sind.
 Nahezu jedes Smartphone, jedes Tablet oder Laptop hat ein Mikrofon und einen Sprachrekorder.  
 Diese heißen oft auf „Sprachrekorder“, „Diktiergerät“ oder ähnlich.  
 Aufgezeichnet werden sollen:  
@@ -22,7 +19,7 @@ Aufgezeichnet werden sollen:
 Das kann auch in mehreren Abschnitten erfolgen. Das größte Augenmerk ist dabei auf den Fragebogen zu richten. Dieser ist allerdings erst nach der Interaktion mit dem KI-Chatbot auszufüllen.  
 Anschließend lade die Audiodatei(en) bitte in folgenden Cloudordner:  
 ### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Audio recording Pilot</a>
-Du kannst die Anzeige der Dokumente unten hereinzoomen. Falls diese dennoch nicht gut angeeigt werden folge diesem  
+Du kannst die Anzeige der Dokumente unten hereinzoomen. Falls diese dennoch nicht gut angezeigt werden folge diesem  
 ### <a href="https://cf-my.sharepoint.com/:b:/g/personal/brodela_cardiff_ac_uk/EbNNZBO6k91FidHrGyrC5jsB6tFkvVfUCh-X-3FRJZsrPg?e=hscXCb" target="_blank">Link zu den Teilnehmerdokumenten</a>
             """, unsafe_allow_html=True)
 
@@ -34,5 +31,5 @@ if st.button("Anleitung"):
     switch_page("Anleitung")
 st.markdown("""Dort geht es dann auch zum KI-Chatbot.   
             """)
-st.markdown("""Das Passwort hast Du nach dem Ausfüllen der Einverständniserklärung von per Email an die dort angegebene Adresse erhalten.  
+st.markdown("""Das Passwort hast Du nach dem Ausfüllen der Einverständniserklärung per Email an die dort angegebene Adresse erhalten.  
             Ansonsten frag bei Arne über brodela@cardiff.ac.uk nach""")

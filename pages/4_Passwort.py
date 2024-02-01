@@ -15,9 +15,18 @@ def check_password():
 
     if "password_correct" not in st.session_state or not st.session_state.get("password_correct", False):
         # Show input for password.
-        st.text_input("Password", type="password", on_change=password_entered, key="password")
+        st.markdown("Bitte geben Sie Ihr Passwort ein. Dieses wurde oder wird Ihnen nach Zusenden der Einverständniserklärung per Email zugesendet.")
+        st.text_input("Passwort", type="password", on_change=password_entered, key="password")
         if "password_correct" in st.session_state:
             st.error("😕 Password incorrect")
         return False
     return True
 check_password()
+
+def display_content():
+    st.markdown("Wenn Sie alle vorherigen Schritte abgeschlossen und alle Dokumente gelesen haben, können Sie nun mit dem Anamnesetrainer arbeiten.")
+    if st.button("Anamnesetrainer"):
+        switch_page("Anamnesetrainer")
+
+if "password_correct" in st.session_state and st.session_state.get("password_correct", True):
+    display_content()

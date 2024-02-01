@@ -14,20 +14,21 @@ Du musst wie folgt vorgehen:
         1. Auf der Seite "Konsent" das entsprechende Formular ausfüllen und absenden. Du musst dabei Deine E-Mail-Adresse angeben und bestätigen. Danach erhälst Du eine E-Mail von mir mit dem Zugangspasswort für den Anamnesetrainer.  
         2. Auf der Seite "Teilnehmerdokumente" die Informationen für die Teilnehmenden der Studie durchlesen. Auf der Seite "Konsent" ist die "read-aloud, think-aloud" Methode vorgestellt, die Du hier anwenden sollst.  
         3. Auf der Seite "Anleitung" die detaillierte Anleitung zur Nutzung des Anamnesetrainers lesen.  
-        4. Auf der Seite "Passwort" das Passwort eingeben welches Du per Email von mir bekommst. Wenn Du bis dahin keines erhalten hast, melde Dich bitte bei mir.
-        5. Auf der Seite "Anamnesetrainer" entsprechend der Anleitung zwei Runden Anamnesegespräch mit Patienten führen.
+        4. Auf der Seite "Passwort" das Passwort eingeben welches Du per Email von mir bekommst. Wenn Du bis dahin keines erhalten hast, melde Dich bitte bei mir.  
+        5. Auf der Seite "Anamnesetrainer" entsprechend der Anleitung zwei Runden Anamnesegespräch mit Patienten führen.  
         6. Auf der Seite "Fragebogen" den Fragenbogen für die Studie ausfüllen. Hierbei bitte auch wieder eine Sprachaufnahme mit der "read-aloud, think-aloud" Methode machen.   
+        7. Auf der Seite "Sprachaufnahme" den Link öffnen um dort Deine Sprachaufnahmen im Rahmen der Pilotstudie zu teilen. 
                         
 ### Wohin wende ich mich bei Fragen?
 
 Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Tools haben, wenden Sie sich per E-Mail an Arne Brödel unter brodela@cardiff.ac.uk.
 
-Um zu starten, klicken Sie den Button. Sie wechseln dann zur Seite "Anamnesetrainer".
-  
     """)
+    st.markdown('Wechsel jetzt zur Seite "Konsent"')
+    if st.button("Konsent"):
+        switch_page("Konsent")
     
-    if st.button("Anamnesetrainer"):
-        switch_page("Anamnesetrainer")
+
 
 
 def run():
