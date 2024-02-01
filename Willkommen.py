@@ -22,7 +22,7 @@ Du musst wie folgt vorgehen:
                         
 ### Wohin wende ich mich bei Fragen?
 
-Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Tools haben, wenden Sie sich per E-Mail an Arne Brödel unter brodela@cardiff.ac.uk.
+Wenn Du Fragen zur Pilotstudie oder der nachfolgenden Studie oder Unklarheiten bei der Verwendung des Anamnesetrainers hast, wende Dich per E-Mail an Arne Brödel unter brodela@cardiff.ac.uk.
 
     """)
     st.markdown('Wechsel jetzt zur Seite "Konsent"')
