@@ -2,22 +2,29 @@ from openai import OpenAI
 import streamlit as st
 import pandas as pd
 import yaml
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.pdfgen import canvas
+
 from streamlit_extras.switch_page_button import switch_page
 # Initialize a session state variable that tracks the sidebar state (either 'expanded' or 'collapsed').
 if 'sidebar_state' not in st.session_state:
-    st.session_state.sidebar_state = 'collapsed'
+    st.session_state.sidebar_state = 'expanded'
 # Streamlit set_page_config method has a 'initial_sidebar_state' argument that controls sidebar state.
 st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
 if 'password_correct' not in st.session_state or st.session_state["password_correct"]==False:
-    switch_page("hello")
+    switch_page("Passwort")
     st.stop()
 def language_changed():
     st.session_state['language_changed'] = True
     on_patient_change()
-language = st.sidebar.selectbox('Choose your language:', 
-                                ('Deutsch', 'English'), 
-                                on_change=language_changed)
-st.session_state['language'] = language
+#language = st.sidebar.selectbox('Choose your language:', 
+                                #('Deutsch', 'English'), 
+                                #on_change=language_changed)
+    
+st.session_state['language'] = 'Deutsch'
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-4-1106-preview"
@@ -133,7 +140,6 @@ if prompt := st.chat_input(st.session_state.chatinputPlaceholder):
     print(st.session_state.messages)
 
 
-
 if st.session_state.chatMode=="patient" and len(st.session_state.messages)>8:
     with st.spinner('Warte bis der Anamnese-Tutor bereit ist...'):
         if st.button("Beende Anamnese, Starte Feedback"):
@@ -174,3 +180,33 @@ if st.session_state.chatMode=="patient" and len(st.session_state.messages)>8:
                     message['content'] = message['content'].replace("{Generated}", generated_response)
                 st.session_state.messages.append({"role": message["role"], "content": message["content"], "display": message["display"]})
             st.rerun()
+
+def create_pdf(messages, filename="chat_history.pdf"):
+    doc = SimpleDocTemplate(filename, pagesize=A4)
+    styles = getSampleStyleSheet()
+    flowables = []
+    style = styles["BodyText"]
+
+    for message in messages:
+        if message.get("display", False):  # Check if display property is True
+            text = f"{message['role']}: {message['content']}"
+            p = Paragraph(text, style)
+            flowables.append(p)
+            flowables.append(Spacer(1, 12))
+
+    doc.build(flowables)
+    return filename
+
+# Generate PDF and get filename
+pdf_file = create_pdf(st.session_state.messages)
+
+# Use Streamlit's download button
+with open(pdf_file, "rb") as file:
+    with st.sidebar:
+        st.write("Speichern Sie das Gespräch mit dem Patienten (oder Tutor) zu einem beliebigen Zeitpunkt als PDF")
+        btn = st.download_button(
+                label="Gespräch als PDF speichern",
+                data=file,
+                file_name="chat_history.pdf",
+                mime="application/octet-stream"
+            )
