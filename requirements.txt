@@ -7,4 +7,3 @@ openai
 streamlit_extras
 pyyaml
 reportlab
-base64
