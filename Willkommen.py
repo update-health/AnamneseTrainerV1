@@ -10,6 +10,7 @@ def display_homepage():
     #Display the content of the homepage.
     st.markdown("""
 ### Herzlich Willkommen zur Pilotstudie zum KI-basierten Anamnesetrainer
+Vielen Dank, dass Du mich unterstützt.  
 Du musst wie folgt vorgehen:  
         1. Auf der Seite "Konsent" das entsprechende Formular ausfüllen und absenden. Du musst dabei Deine E-Mail-Adresse angeben und bestätigen. Danach erhälst Du eine E-Mail von mir mit dem Zugangspasswort für den Anamnesetrainer.  
         2. Auf der Seite "Teilnehmerdokumente" die Informationen für die Teilnehmenden der Studie durchlesen. Auf der Seite "Konsent" ist die "read-aloud, think-aloud" Methode vorgestellt, die Du hier anwenden sollst.  
@@ -33,8 +34,6 @@ Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Tools haben,
 
 def run():
     st.set_page_config(page_title="Anamnesetrainer", page_icon="👩‍⚕️")
-    st.write("# Herzlich Willkommen zum Anamnesetrainer")
-
     display_homepage()
 
 
