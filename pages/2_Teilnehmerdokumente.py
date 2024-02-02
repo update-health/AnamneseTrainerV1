@@ -17,7 +17,8 @@ Aufgezeichnet werden sollen:
 Das kann auch in mehreren Abschnitten erfolgen. Das größte Augenmerk ist dabei auf den Fragebogen zu richten. Dieser ist allerdings erst nach der Interaktion mit dem KI-Chatbot auszufüllen.  
 Anschließend lade die Audiodatei(en) bitte in folgenden Cloudordner:  
 #### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Upload für die Audiodateien</a>
-#### Starte also jetzt einen beliebigen Sprachrekorder und klicke dann auf den folgenden Link um die Teilnehmerdokumente in einem neuen Tab zu öffnen      
+#### Starte also jetzt einen beliebigen Sprachrekorder und klicke dann auf den folgenden Link um die Teilnehmerdokumente in einem neuen Tab zu öffnen.  
+Wenn Du fertig bist mit Lesen schließe einfach den Tab mit dem PDF und kehre hierhin zurück.        
 #### <a href="https://cf-my.sharepoint.com/:b:/g/personal/brodela_cardiff_ac_uk/EbNNZBO6k91FidHrGyrC5jsBtgZcpMtMaJHcMYkBUIRM7g" target="_blank">Link zu den Teilnehmerdokumente</a>
             """, unsafe_allow_html=True)
 
