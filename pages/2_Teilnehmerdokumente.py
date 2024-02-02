@@ -1,6 +1,4 @@
 import streamlit as st
-import streamlit.components.v1 as components
-import base64
 from streamlit_extras.switch_page_button import switch_page
 
 # embed streamlit docs in a streamlit app
@@ -18,49 +16,11 @@ Aufgezeichnet werden sollen:
 - Das Ausfüllen des Fragebogens (später nach Verwendung des Chatbots)  
 Das kann auch in mehreren Abschnitten erfolgen. Das größte Augenmerk ist dabei auf den Fragebogen zu richten. Dieser ist allerdings erst nach der Interaktion mit dem KI-Chatbot auszufüllen.  
 Anschließend lade die Audiodatei(en) bitte in folgenden Cloudordner:  
-### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Audio recording Pilot</a>
-Du kannst die Anzeige der Dokumente unten hereinzoomen. Falls diese dennoch nicht gut angezeigt werden folge diesem  
-### <a href="https://cf-my.sharepoint.com/:b:/g/personal/brodela_cardiff_ac_uk/EbNNZBO6k91FidHrGyrC5jsBtgZcpMtMaJHcMYkBUIRM7g" target="_blank">Link zu den Teilnehmerdokumenten</a>
+#### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Upload für die Audiodateien</a>
+#### Starte also jetzt einen beliebigen Sprachrekorder und klicke dann auf den folgenden Link um die Teilnehmerdokumente in einem neuen Tab zu öffnen      
+#### <a href="https://cf-my.sharepoint.com/:b:/g/personal/brodela_cardiff_ac_uk/EbNNZBO6k91FidHrGyrC5jsBtgZcpMtMaJHcMYkBUIRM7g" target="_blank">Link zu den Teilnehmerdokumente</a>
             """, unsafe_allow_html=True)
 
-def get_pdf_base64(file_path):
-    with open(file_path, "rb") as f:
-        pdf_file = f.read()
-    pdf_base64 = base64.b64encode(pdf_file).decode('utf-8')
-    return pdf_base64
-
-def display_pdf(file_path):
-    pdf_base64 = get_pdf_base64(file_path)
-    
-    # Create the HTML to embed the PDF
-    pdf_display = f'''
-    <iframe src="data:application/pdf;base64,{pdf_base64}" width="700" height="1000" type="application/pdf">
-    '''
-    
-    st.markdown(pdf_display, unsafe_allow_html=True)
-
-# Path to your local PDF file
-pdf_file_path = "docs/Pilot_Studie_Dokumente_Read_Aloud.pdf"
-
-display_pdf(pdf_file_path)
-
-def displayPDF(file):
-    # Opening file from file path
-    with open(file, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-
-    # Embedding PDF in HTML
-    pdf_display =  f"""<embed
-    class="pdfobject"
-    type="application/pdf"
-    title="Embedded PDF"
-    src="data:application/pdf;base64,{base64_pdf}"
-    style="overflow: auto; width: 100%; height: 800px;">"""
-
-    # Displaying File
-    st.markdown(pdf_display, unsafe_allow_html=True)
-displayPDF("docs/Pilot_Studie_Dokumente_Read_Aloud.pdf")
-#components.iframe("https://cf-my.sharepoint.com/personal/brodela_cardiff_ac_uk/_layouts/15/embed.aspx?id=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie%2FPilot%20Studie%20Dokumente%20Read%20Aloud%2Epdf&parent=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie&ga=1")
 st.markdown("""
             Wenn das erledigt ist kommt der nächste Schritt, die Arbeit mit dem KI-Chatbot. Gehe dabei vor wie im vorherigen Dokument unter "4. Was beinhaltet die Teilnahme am Projekt?" beschrieben.
 Die detaillierte Anleitung findest Du über folgenden Button""",True)
