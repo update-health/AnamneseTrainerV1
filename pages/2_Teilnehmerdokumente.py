@@ -22,6 +22,7 @@ Anschließend lade die Audiodatei(en) bitte in folgenden Cloudordner:
 Du kannst die Anzeige der Dokumente unten hereinzoomen. Falls diese dennoch nicht gut angezeigt werden folge diesem  
 ### <a href="https://cf-my.sharepoint.com/:b:/g/personal/brodela_cardiff_ac_uk/EbNNZBO6k91FidHrGyrC5jsBtgZcpMtMaJHcMYkBUIRM7g" target="_blank">Link zu den Teilnehmerdokumenten</a>
             """, unsafe_allow_html=True)
+
 def get_pdf_base64(file_path):
     with open(file_path, "rb") as f:
         pdf_file = f.read()
@@ -43,8 +44,8 @@ pdf_file_path = "docs/Pilot_Studie_Dokumente_Read_Aloud.pdf"
 
 display_pdf(pdf_file_path)
 #components.iframe("https://cf-my.sharepoint.com/personal/brodela_cardiff_ac_uk/_layouts/15/embed.aspx?id=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie%2FPilot%20Studie%20Dokumente%20Read%20Aloud%2Epdf&parent=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie&ga=1")
-#<iframe src="https://cf-my.sharepoint.com/personal/brodela_cardiff_ac_uk/_layouts/15/embed.aspx?id=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie%2FPilot%20Studie%20Dokumente%20Read%20Aloud%2Epdf&parent=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie&ga=1" width="100%" height="800"/>
-st.markdown("""Wenn das erledigt ist kommt der nächste Schritt, die Arbeit mit dem KI-Chatbot. Gehe dabei vor wie im vorherigen Dokument unter "4. Was beinhaltet die Teilnahme am Projekt?" beschrieben.
+st.markdown("""
+            Wenn das erledigt ist kommt der nächste Schritt, die Arbeit mit dem KI-Chatbot. Gehe dabei vor wie im vorherigen Dokument unter "4. Was beinhaltet die Teilnahme am Projekt?" beschrieben.
 Die detaillierte Anleitung findest Du über folgenden Button""",True)
 if st.button("Anleitung"):
     switch_page("Anleitung")
