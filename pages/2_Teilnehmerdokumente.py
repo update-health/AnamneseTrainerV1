@@ -43,6 +43,23 @@ def display_pdf(file_path):
 pdf_file_path = "docs/Pilot_Studie_Dokumente_Read_Aloud.pdf"
 
 display_pdf(pdf_file_path)
+
+def displayPDF(file):
+    # Opening file from file path
+    with open(file, "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+    # Embedding PDF in HTML
+    pdf_display =  f"""<embed
+    class="pdfobject"
+    type="application/pdf"
+    title="Embedded PDF"
+    src="data:application/pdf;base64,{base64_pdf}"
+    style="overflow: auto; width: 100%; height: 800px;">"""
+
+    # Displaying File
+    st.markdown(pdf_display, unsafe_allow_html=True)
+displayPDF("docs/Pilot_Studie_Dokumente_Read_Aloud.pdf")
 #components.iframe("https://cf-my.sharepoint.com/personal/brodela_cardiff_ac_uk/_layouts/15/embed.aspx?id=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie%2FPilot%20Studie%20Dokumente%20Read%20Aloud%2Epdf&parent=%2Fpersonal%2Fbrodela%5Fcardiff%5Fac%5Fuk%2FDocuments%2FMedical%20Education%2FYear3%20Dissertation%2FChatBot%2FPilotstudie&ga=1")
 st.markdown("""
             Wenn das erledigt ist kommt der nächste Schritt, die Arbeit mit dem KI-Chatbot. Gehe dabei vor wie im vorherigen Dokument unter "4. Was beinhaltet die Teilnahme am Projekt?" beschrieben.
