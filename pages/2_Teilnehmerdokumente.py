@@ -5,12 +5,11 @@ from streamlit_extras.switch_page_button import switch_page
 st.set_page_config(layout="wide")
 st.markdown("""Unten auf der Seite findest Du Dokumente, welche die späteren Teilnehmenden der Studie lesen und unterzeichnen müssen.  
 Die weitere Einverständniserklärung am Ende musst Du nicht unterzeichnen, aber bitte durchlesen und auf Verständlichkeit prüfen.  
-Ich erinnere an die bereits zuvor dargestellten Methoden "read-aloud" und "think-aloud".  
+Ich erinnere an die bereits zuvor dargestellten Methoden "read-aloud" und "think-aloud", die nicht zwingend erforderlich, aber für mich hilfreich ist.  
 Nahezu jedes Smartphone, jedes Tablet oder Laptop hat ein Mikrofon und einen Sprachrekorder.  
 Diese heißen oft auf „Sprachrekorder“, „Diktiergerät“ oder ähnlich.  
 Aufgezeichnet werden sollen:  
 - Das Lesen der folgenden Dokumente:
-    - Einladungsbrief für potenzielle Teilnehmende
     - Informationsblatt für Teilnehmende
     - Einverständniserklärung
 - Das Ausfüllen des Fragebogens (später nach Verwendung des Chatbots)  

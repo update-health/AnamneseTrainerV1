@@ -13,7 +13,7 @@ def display_homepage():
 Vielen Dank, dass Du mich unterstützt.  
 Du musst wie folgt vorgehen:  
         1. Auf der Seite "Einverständnis" das entsprechende Formular ausfüllen und absenden. Du musst dabei Deine E-Mail-Adresse angeben und bestätigen. Danach erhälst Du eine E-Mail von mir mit dem Zugangspasswort für den Anamnesetrainer.  
-        2. Auf der Seite "Teilnehmerdokumente" die Informationen für die Teilnehmenden der Studie durchlesen. Auf der Seite "Einverständnis" ist die "read-aloud, think-aloud" Methode vorgestellt, die Du hier anwenden sollst.  
+        2. Auf der Seite "Teilnehmerdokumente" die Informationen für die Teilnehmenden der Studie durchlesen.   
         3. Auf der Seite "Anleitung" die detaillierte Anleitung zur Nutzung des Anamnesetrainers lesen.  
         4. Auf der Seite "Passwort" das Passwort eingeben welches Du per Email von mir bekommst. Wenn Du bis dahin keines erhalten hast, melde Dich bitte bei mir.  
         5. Auf der Seite "Anamnesetrainer" entsprechend der Anleitung zwei Runden Anamnesegespräch mit Patienten führen.  
