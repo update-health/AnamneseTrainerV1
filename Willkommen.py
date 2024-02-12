@@ -9,23 +9,24 @@ LOGGER = get_logger(__name__)
 def display_homepage():
     #Display the content of the homepage.
     st.markdown("""
-### Herzlich Willkommen zur Pilotstudie zum KI-basierten Anamnesetrainer
-Vielen Dank, dass Du mich unterstützt.  
-Du musst wie folgt vorgehen:  
-        1. Auf der Seite "Einverständnis" das entsprechende Formular ausfüllen und absenden. Du musst dabei Deine E-Mail-Adresse angeben und bestätigen. Danach erhälst Du eine E-Mail von mir mit dem Zugangspasswort für den Anamnesetrainer.  
-        2. Auf der Seite "Teilnehmerdokumente" die Informationen für die Teilnehmenden der Studie durchlesen.   
+### Herzlich Willkommen zur Studie zum KI-basierten Anamnesetraining
+Vielen Dank, für Ihre Teilnahme  
+Diese besteht aus den folgenden Schritten:  
+        1. Auf der Seite "Teilnehmerdokumente" die Informationen für die Teilnehmenden der Studie durchlesen.  
+        2. Auf der Seite "Einverständnis" das entsprechende Formular ausfüllen und absenden. Sie müssen dabei Ihre E-Mail-Adresse angeben und bestätigen. Danach erhalten Sie eine E-Mail von mir mit dem Zugangspasswort für den Anamnesetrainer.   
         3. Auf der Seite "Anleitung" die detaillierte Anleitung zur Nutzung des Anamnesetrainers lesen.  
-        4. Auf der Seite "Passwort" das Passwort eingeben welches Du per Email von mir bekommst. Wenn Du bis dahin keines erhalten hast, melde Dich bitte bei mir.  
-        5. Auf der Seite "Anamnesetrainer" entsprechend der Anleitung zwei Runden Anamnesegespräch mit Patienten führen.  
-        6. Auf der Seite "Fragebogen" den Fragenbogen für die Studie ausfüllen. Hierbei bitte auch wieder eine Sprachaufnahme mit der "read-aloud, think-aloud" Methode machen.   
-        7. Auf der Seite "Sprachaufnahme" den Link öffnen um dort Deine Sprachaufnahmen im Rahmen der Pilotstudie zu teilen. 
+        4. Auf der Seite "Passwort" das Passwort eingeben welches Sie per Email von mir erhalten haben. Wenn Sie auch 24 Stunden nach Einsendung der Einverständniserklrärung keines erhalten hast, melden Sie sich bitte beim Forschenden unter brodela@cardiff.ac.uk  
+        5. Auf der Seite "Anamnesetrainer" entsprechend der Anleitung Anamnesegespräch mit mindestens zwei KI-Patienten führen und die Anamnesegespräche mit dem KI-Tutor evaluieren.  
+        6. Auf der Seite "Fragebogen" den Fragenbogen mit Antwort-Wahl-Fragen für die Studie ausfüllen.  
+        7. Auf der Seite "Think-aloud" die aufgeführten Themen evaluieren und die eigenen Gedanken aussprechen und eine oder mehrere Sprachaufnahmen anfertigen.  
+        8. Auf der Seite "Upload" den Link öffnen um dort Ihre Sprachaufnahmen auf einen sicheren Cloud-Speicher der Cardiff University hochladen. 
                         
 ### Wohin wende ich mich bei Fragen?
 
-Wenn Du Fragen zur Pilotstudie oder der nachfolgenden Studie oder Unklarheiten bei der Verwendung des Anamnesetrainers hast, wende Dich per E-Mail an Arne Brödel unter brodela@cardiff.ac.uk.
+Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Anamnesetrainers haben, wenden Sie sich bitte per E-Mail an Arne Brödel unter brodela@cardiff.ac.uk.
 
     """)
-    st.markdown('Wechsel jetzt zur Seite "Einverständnis"')
+    st.markdown('Wechseln Sie jetzt zur Seite "Einverständnis"')
     if st.button("Einverständnis"):
         switch_page("Einverständnis")
     
