@@ -146,8 +146,8 @@ else:
 headercontainer=st.container(border=True)  
 with headercontainer:
     st.markdown('##### Verwendung')
-    st.write("Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten bzw. Tutor. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie hier einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.") 
     if st.session_state.chatMode=="patient":
+        st.write("Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie hier einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.") 
         st.session_state.selectedPatient = st.selectbox(
         "Wählen Sie nach Wunsch einen neuen Patienten",
         tuple(st.session_state.case_dict.keys()),  # Now the keys are 'Zusammenfassung'
@@ -164,6 +164,7 @@ with headercontainer:
             if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
                 startFeedback()
     elif st.session_state.chatMode=="feedback":
+        st.write("Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück. Wenn Sie mit dem Gespräch fertig sind, können Sie einen neuen Patienten wählen, um ein neues Anamnesegespräch zu starten.") 
         st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF")
         btn = st.download_button(
                 label="Gespräch als PDF speichern",
@@ -178,7 +179,7 @@ with headercontainer:
             tuple(st.session_state.case_dict.keys()),  # Now the keys are 'Zusammenfassung'
             on_change=on_patient_change
             )  
-        st.write("Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zum Fragebogen.")
+        st.write("Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zum Fragebogen um den nächsten Schritt der Studienteilnahme zu absolvieren.")
         if st.button("Fragebogen der Studie"):
             switch_page("Fragebogen")
     
