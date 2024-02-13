@@ -13,7 +13,7 @@ def initialize_session_state():
         st.session_state.sidebar_state = 'expanded'
 
     if "openai_model" not in st.session_state:
-        st.session_state["openai_model"] = "gpt-4-1106-preview"
+        st.session_state["openai_model"] = "gpt-4-0125-preview"
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
