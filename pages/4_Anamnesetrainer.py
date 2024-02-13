@@ -8,49 +8,51 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from streamlit_extras.switch_page_button import switch_page
 
-# Initialisierung einer Sitzungsvariablen, die den Zustand der Seitenleiste verfolgt (entweder 'erweitert' oder 'zusammengeklappt').
-if 'sidebar_state' not in st.session_state:
-    st.session_state.sidebar_state = 'expanded'
+def initialize_session_state():
+    if 'sidebar_state' not in st.session_state:
+        st.session_state.sidebar_state = 'expanded'
+
+    if "openai_model" not in st.session_state:
+        st.session_state["openai_model"] = "gpt-4-1106-preview"
+
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    if "chat_mode" not in st.session_state:
+        st.session_state.chat_mode = "patient"
+
+    if "selected_patient" not in st.session_state:
+        st.session_state.selected_patient = ""
+
+    # Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
+    if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
+        switch_page("Passwort")
+        st.stop()
+
+    # Initialisierung der OpenAI-Clientinstanz
+    if "ai_client" not in st.session_state:    
+        st.session_state.ai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
+    if "case_dict" not in st.session_state:
+        Fallbeispiele_yaml = 'data/Fallbeispiele.yaml'
+        # Lesen der YAML-Datei
+        with open(Fallbeispiele_yaml, 'r', encoding='utf-8') as file:
+            case_list = yaml.safe_load(file)
+        # Umwandlung der Liste von Fällen in ein Wörterbuch mit 'Kurzform' als Schlüssel und Zeilen als Werte
+        case_dict = {case['Kurzform']: case for case in case_list}
+        st.session_state.case_dict = case_dict# Weitere Initialisierungen können hier hinzugefügt werden, falls erforderlich
+
+# Aufrufen der initialize_session_state Funktion, um die Sitzungsvariablen zu initialisieren
+initialize_session_state()
+
 # Streamlit set_page_config-Methode hat ein 'initial_sidebar_state'-Argument, das den Zustand der Seitenleiste steuert.
 st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
+
+
 # Einbinden von benutzerdefinierten CSS-Stilen für die App
 with open("styles/styles.css") as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
-if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
-    switch_page("Passwort")
-    st.stop()
-
-# Funktion, die aufgerufen wird, wenn die Sprache geändert wird
-def language_changed():
-    st.session_state['language_changed'] = True
-    on_patient_change()
-
-# Initialisierung der OpenAI-Clientinstanz
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-
-# Überprüfung und Initialisierung von Sitzungsvariablen
-if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-4-1106-preview"
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-if "case_dict" not in st.session_state or 'language_changed' in st.session_state:
-    Fallbeispiele_yaml = 'data/Fallbeispiele.yaml'
-    # Lesen der YAML-Datei
-    with open(Fallbeispiele_yaml, 'r', encoding='utf-8') as file:
-        case_list = yaml.safe_load(file)
-    # Umwandlung der Liste von Fällen in ein Wörterbuch mit 'Kurzform' als Schlüssel und Zeilen als Werte
-    case_dict = {case['Kurzform']: case for case in case_list}
-    st.session_state.case_dict = case_dict
-    st.session_state.pop('language_changed', None)  # Flag löschen
-
-# Überprüfung und Initialisierung von Sitzungsvariablen
-if "selected_patient" not in st.session_state:
-    st.session_state.selected_patient = ""
-
-if "chat_mode" not in st.session_state:
-    st.session_state.chat_mode = "patient"
 
 # Festlegen von Avatar-Icons und Eingabeplatzhalter basierend auf dem aktuellen Chat-Modus
 if st.session_state.chat_mode == "patient":
@@ -64,7 +66,7 @@ else:
 
 
 # Funktion zum Erstellen eines PDF im Speicher
-def create_pdf_in_memory(messages):
+def create_pdf_in_memory():
     buffer = io.BytesIO()  # Puffer für das PDF erstellen
     doc = SimpleDocTemplate(buffer, pagesize=A4)
     styles = getSampleStyleSheet()
@@ -73,7 +75,7 @@ def create_pdf_in_memory(messages):
     # Flag zum Verfolgen, ob eine Nachricht den Anzeigekriterien entspricht
     message_displayed = False
 
-    for message in messages:
+    for message in st.session_state.messages:
         if message.get("display", False):  # Überprüfen, ob die Anzeige-Eigenschaft True ist
             message_displayed = True
             text = f"{message['role']}: {message['content']}"
@@ -91,6 +93,7 @@ def create_pdf_in_memory(messages):
 
 
 def start_feedback():
+    client=st.session_state.ai_client
     st.session_state.chat_mode = "feedback"
     st.session_state.message_history = st.session_state.messages
     st.session_state.messages = []
@@ -132,8 +135,6 @@ def start_feedback():
     st.rerun()
 
 
-# https://docs.streamlit.io/library/api-reference/widgets/st.selectbox
-# SelectBox zur Auswahl eines Patienten
 
 # Funktion, die aufgerufen wird, wenn sich die Auswahl ändert
 def on_patient_change():
@@ -152,47 +153,48 @@ else:
     # Optional: Festlegung eines Standardwerts für headerlabel, wenn chatMode nicht festgelegt ist oder einen unerwarteten Wert hat
     headerlabel = "weitere Optionen"
 
+
+def print_button():
+    btn = st.download_button(
+                label="Gespräch als PDF speichern",
+                data=create_pdf_in_memory(),
+                file_name="chat_history.pdf",
+                mime="application/octet-stream"
+            )
+    return btn
+
+def patient_selectbox():
+    pt_sbx=st.selectbox(
+            "Wählen Sie nach Wunsch einen neuen Patienten",
+            tuple(st.session_state.case_dict.keys()),  # Jetzt sind die Schlüssel 'Zusammenfassung'
+            on_change=on_patient_change
+        )
+    return pt_sbx
+
 # Erstellung eines Header-Containers
+
 headercontainer = st.container(border=True)
 with headercontainer:
     st.markdown('##### Verwendung')
     if st.session_state.chat_mode == "patient":
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie hier einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.")
-        st.session_state.selected_patient = st.selectbox(
-            "Wählen Sie nach Wunsch einen neuen Patienten",
-            tuple(st.session_state.case_dict.keys()),  # Jetzt sind die Schlüssel 'Zusammenfassung'
-            on_change=on_patient_change
-        )
+        st.session_state.selected_patient = patient_selectbox()
         with st.spinner('Warte bis der Anamnese-Tutor bereit ist...'):
             st.write("Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF")
-            btn = st.download_button(
-                label="Gespräch als PDF speichern",
-                data=create_pdf_in_memory(st.session_state.messages),
-                file_name="chat_history.pdf",
-                mime="application/octet-stream"
-            )
+            print_button()
             if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
                 start_feedback()
     elif st.session_state.chat_mode == "feedback":
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück. Wenn Sie mit dem Gespräch fertig sind, können Sie einen neuen Patienten wählen, um ein neues Anamnesegespräch zu starten.")
         st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF")
-        btn = st.download_button(
-            label="Gespräch als PDF speichern",
-            data=create_pdf_in_memory(st.session_state.messages),
-            file_name="chat_history.pdf",
-            mime="application/octet-stream"
-        )
+        print_button()
         with st.expander(
                 "Wenn Sie ein neues Anamnesegespräch beginnen wollen, wählen Sie einfach einen neuen Patienten."):
             st.write(
                 "Achtung: Das vorherige Anamnesegespräch wird dann gelöscht. Weder Sie noch der Tutor kann dann darauf zurückgreifen.")
-            st.session_state.selected_patient = st.selectbox(
-                "Wählen Sie nach Wunsch einen neuen Patienten",
-                tuple(st.session_state.case_dict.keys()),  # Jetzt sind die Schlüssel 'Zusammenfassung'
-                on_change=on_patient_change
-            )
+            st.session_state.selected_patient =  patient_selectbox()
         st.write(
             "Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zum Fragebogen um den nächsten Schritt der Studienteilnahme zu absolvieren.")
         if st.button("Fragebogen der Studie"):
@@ -249,6 +251,7 @@ display_messages()
 
 # Überprüfung der Eingabe und Erstellung einer Antwort
 if prompt := st.chat_input(st.session_state.chat_input_placeholder):
+    client=st.session_state.ai_client
     selected_patient_summary = st.session_state.selected_patient
     st.session_state.messages.append({"role": "user", "content": prompt, "display": True})
     with st.chat_message("user", avatar=st.session_state.avatar_user):
@@ -269,6 +272,8 @@ if prompt := st.chat_input(st.session_state.chat_input_placeholder):
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response, "display": True})
     print(st.session_state.messages)
+    #rerun dient nur dazu, dass die beiden letzten Messages auch im PDF enthalten sind wenn auf Drucken geklickt wird
+    st.rerun()
 st.markdown('[Zurück nach oben scrollen für weitere Optionen](#verwendung)')
 
 
