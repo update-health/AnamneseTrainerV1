@@ -24,6 +24,9 @@ Es sollten mindestens 2 ausführliche Anamnesegespräche und anschließende Ausw
 Es gibt kein Maximum an Gesprächen im Rahmen dieser Studienteilnahme.  
 Nutzer sollten den Fokus auf die Qualität und Realitätsnähe der Gespräche legen.
 
+### Speichern der Gespräche
+Sobald Sie im Anamnesetrainer einen neuen Patienten wählen oder zwischen dem Modus KI-Patient und KI-Tutor wechseln, ist der Gesprächsverlauf gelöscht. Sie haben jederzeit die Möglichkeit das aktuelle Gespräch als PDF zu speichern. Bitte machen Sie davon Gebrauch, um später in der Auswertung exakter auf bestimmte Aspekte der Interaktion eingehen zu können. Ebenso wäre es für die Studie wertvoll, Interaktionen exakt zitieren zu können. Daher wäre es hilfreich, wenn Sie Ihre gespeicherten Gesprächsverläufe als PDF auf der letzen Seite "Upload" mit hochladen. Es ist auch möglich nur Auszüge der Gespräch hochzuladen, in dem Sie das gespeicherte PDF bearbeiten, Text daraus in eine neue Datei kopieren oder einfach Screenshots des Chatverlaufs als Bilder speichern. 
+
 ### Kontakt bei Fragen
 
 Bei Fragen oder Unklarheiten steht Arne Brödel unter brodela@cardiff.ac.uk zur Verfügung.  

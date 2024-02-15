@@ -7,3 +7,4 @@ openai
 streamlit_extras
 pyyaml
 reportlab
+extra_streamlit_components

@@ -19,7 +19,7 @@ def initialize_session_state():
         st.session_state.messages = []
 
     if "chat_mode" not in st.session_state:
-        st.session_state.chat_mode = "patient"
+        st.session_state.chat_mode = "KI-Patient"
 
     if "selected_patient" not in st.session_state:
         st.session_state.selected_patient = ""
@@ -55,7 +55,7 @@ with open("styles/styles.css") as f:
 
 
 # Festlegen von Avatar-Icons und Eingabeplatzhalter basierend auf dem aktuellen Chat-Modus
-if st.session_state.chat_mode == "patient":
+if st.session_state.chat_mode == "KI-Patient":
     st.session_state.avatar_user = "👩‍⚕️"
     st.session_state.avatar_assistant = "😫"
     st.session_state.chat_input_placeholder = "Sprechen Sie mit Ihrem Patienten"
@@ -94,7 +94,7 @@ def create_pdf_in_memory():
 
 def start_feedback():
     client=st.session_state.ai_client
-    st.session_state.chat_mode = "feedback"
+    st.session_state.chat_mode = "KI-Tutor"
     st.session_state.message_history = st.session_state.messages
     st.session_state.messages = []
     # Entfernen von Einträgen aus st.session_state.messages, bei denen display == False ist
@@ -141,17 +141,7 @@ def on_patient_change():
     # Diese Funktion könnte zum Beispiel das Gespräch zurücksetzen oder andere Aktionen ausführen
     del st.session_state.messages
     del st.session_state.selected_patient
-    st.session_state.chat_mode = "patient"
-
-
-# Überprüfen des aktuellen Chat-Modus und Festlegen des Headerlabels entsprechend
-if st.session_state.chat_mode == "patient":
-    headerlabel = "Neuen Patient wählen, Feedback/Tutor Modus starten...hier klicken"
-elif st.session_state.chat_mode == "feedback":
-    headerlabel = "Neue Anamnese starten, Training beenden...hier klicken"
-else:
-    # Optional: Festlegung eines Standardwerts für headerlabel, wenn chatMode nicht festgelegt ist oder einen unerwarteten Wert hat
-    headerlabel = "weitere Optionen"
+    st.session_state.chat_mode = "KI-Patient"
 
 
 def print_button():
@@ -175,8 +165,8 @@ def patient_selectbox():
 
 headercontainer = st.container(border=True)
 with headercontainer:
-    st.markdown('##### Verwendung')
-    if st.session_state.chat_mode == "patient":
+    st.subheader('Modus: ' + st.session_state.chat_mode,"top")
+    if st.session_state.chat_mode == "KI-Patient":
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie hier einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.")
         st.session_state.selected_patient = patient_selectbox()
@@ -185,7 +175,7 @@ with headercontainer:
             print_button()
             if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
                 start_feedback()
-    elif st.session_state.chat_mode == "feedback":
+    elif st.session_state.chat_mode == "KI-Tutor":
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück. Wenn Sie mit dem Gespräch fertig sind, können Sie einen neuen Patienten wählen, um ein neues Anamnesegespräch zu starten.")
         st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF")
@@ -201,7 +191,7 @@ with headercontainer:
             switch_page("Fragebogen")
 
 # Anzeige des aktuellen Patienten
-st.write(f"Aktueller Patient: {st.session_state.case_dict[st.session_state.selected_patient]['Kurzform']}")
+st.write('**Aktueller Patient: ' +st.session_state.case_dict[st.session_state.selected_patient]['Kurzform']+'**')
 
 # Überprüfung, ob Nachrichten vorhanden sind, und Anzeigen von Anweisungen, falls nicht
 if st.session_state.messages == []:
@@ -274,7 +264,7 @@ if prompt := st.chat_input(st.session_state.chat_input_placeholder):
     print(st.session_state.messages)
     #rerun dient nur dazu, dass die beiden letzten Messages auch im PDF enthalten sind wenn auf Drucken geklickt wird
     st.rerun()
-st.markdown('[Zurück nach oben scrollen für weitere Optionen](#verwendung)')
+st.markdown('[Zurück nach oben scrollen für weitere Optionen](#top)')
 
 
 
