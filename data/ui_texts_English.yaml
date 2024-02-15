@@ -1,5 +1,0 @@
----
-sidebar_language_prompt: "Choose your language:"
-patient_select_heading: "Choose a patient"
-patient_selection_warning: "Attention: The current conversation will be reset, and a new one will begin"
-chat_input_prompt: "Greet the patient and start a medical history conversation"

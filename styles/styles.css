@@ -3,7 +3,7 @@
 }
 
 
-p:has(> a[href="#verwendung"]) {
+p:has(> a[href="#top"]) {
     position: fixed;
     bottom: 10px;
     z-index: 999;
