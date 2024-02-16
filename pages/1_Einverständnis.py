@@ -12,5 +12,5 @@ st.markdown("""Auf dieser Seite finden Sie umfassende Informationen über die St
 <iframe src="https://na1.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhCAGq8oqJb6o6-j3DH4OU5DHjivejCGQnalw8fjfY335sKphPllxVwRNpl-AvoIdg4*&hosted=false" width="100%" frameborder="0" style="border: 0; overflow: hidden; height: 1400px; max-height: 94vh; min-height: 500px; min-width: 600px;"></iframe>
             """, unsafe_allow_html=True)
 st.markdown("Wenn das Dokument ausgefüllt und signiert ist, und auch die Unterschrift per E-Mail bestätigt wurde, wechseln Sie zur Anleitung.")
-if st.button("Anleitung"):
+if st.button("Anleitung", use_container_width=True):
     switch_page("Anleitung")

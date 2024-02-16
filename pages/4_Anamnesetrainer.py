@@ -7,16 +7,20 @@ from reportlab.lib.pagesizes import A4
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from streamlit_extras.switch_page_button import switch_page
-
+# Streamlit set_page_config-Methode hat ein 'initial_sidebar_state'-Argument, das den Zustand der Seitenleiste steuert.
+if 'sidebar_state' not in st.session_state:
+    st.session_state.sidebar_state = 'expanded'
+st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
 def initialize_session_state():
-    if 'sidebar_state' not in st.session_state:
-        st.session_state.sidebar_state = 'expanded'
+    if 'anamnesetrainer_is_init' not in st.session_state:
+        st.session_state.anamnesetrainer_is_init = True
 
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-4-0125-preview"
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
+
 
     if "chat_mode" not in st.session_state:
         st.session_state.chat_mode = "KI-Patient"
@@ -43,10 +47,9 @@ def initialize_session_state():
         st.session_state.case_dict = case_dict# Weitere Initialisierungen können hier hinzugefügt werden, falls erforderlich
 
 # Aufrufen der initialize_session_state Funktion, um die Sitzungsvariablen zu initialisieren
-initialize_session_state()
 
-# Streamlit set_page_config-Methode hat ein 'initial_sidebar_state'-Argument, das den Zustand der Seitenleiste steuert.
-st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
+if 'anamnesetrainer_is_init' not in st.session_state:
+    initialize_session_state()
 
 
 # Einbinden von benutzerdefinierten CSS-Stilen für die App
@@ -144,14 +147,18 @@ def on_patient_change():
     st.session_state.chat_mode = "KI-Patient"
 
 
-def print_button():
+def print_button(key):
     btn = st.download_button(
+                key=key,
                 label="Gespräch als PDF speichern",
                 data=create_pdf_in_memory(),
                 file_name="chat_history.pdf",
                 mime="application/octet-stream"
             )
     return btn
+
+with st.sidebar:
+    print_button("sidebar_print_btn")
 
 def patient_selectbox():
     pt_sbx=st.selectbox(
@@ -170,25 +177,25 @@ with headercontainer:
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie hier einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.")
         st.session_state.selected_patient = patient_selectbox()
+        st.write("Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF")
+        print_button("ki_patient_print_btn")
         with st.spinner('Warte bis der Anamnese-Tutor bereit ist...'):
-            st.write("Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF")
-            print_button()
             if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
                 start_feedback()
     elif st.session_state.chat_mode == "KI-Tutor":
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück. Wenn Sie mit dem Gespräch fertig sind, können Sie einen neuen Patienten wählen, um ein neues Anamnesegespräch zu starten.")
         st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF")
-        print_button()
+        print_button("ki_tutor_print_btn")
         with st.expander(
                 "Wenn Sie ein neues Anamnesegespräch beginnen wollen, wählen Sie einfach einen neuen Patienten."):
             st.write(
                 "Achtung: Das vorherige Anamnesegespräch wird dann gelöscht. Weder Sie noch der Tutor kann dann darauf zurückgreifen.")
             st.session_state.selected_patient =  patient_selectbox()
         st.write(
-            "Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zum Fragebogen um den nächsten Schritt der Studienteilnahme zu absolvieren.")
-        if st.button("Fragebogen der Studie"):
-            switch_page("Fragebogen")
+            "Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zur Anleitung des Fragebogens, um den nächsten Schritt der Studienteilnahme zu absolvieren.")
+        if st.button("Fragebogen der Studie", use_container_width=True):
+            switch_page("Anleitung_Fragebogen")
 
 # Anzeige des aktuellen Patienten
 st.write('**Aktueller Patient: ' +st.session_state.case_dict[st.session_state.selected_patient]['Kurzform']+'**')

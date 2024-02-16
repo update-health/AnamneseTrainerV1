@@ -25,7 +25,7 @@ Es gibt kein Maximum an Gesprächen im Rahmen dieser Studienteilnahme.
 Nutzer sollten den Fokus auf die Qualität und Realitätsnähe der Gespräche legen.
 
 ### Speichern der Gespräche
-Sobald Sie im Anamnesetrainer einen neuen Patienten wählen oder zwischen dem Modus KI-Patient und KI-Tutor wechseln, ist der Gesprächsverlauf gelöscht. Sie haben jederzeit die Möglichkeit das aktuelle Gespräch als PDF zu speichern. Bitte machen Sie davon Gebrauch, um später in der Auswertung exakter auf bestimmte Aspekte der Interaktion eingehen zu können. Ebenso wäre es für die Studie wertvoll, Interaktionen exakt zitieren zu können. Daher wäre es hilfreich, wenn Sie Ihre gespeicherten Gesprächsverläufe als PDF auf der letzen Seite "Upload" mit hochladen. Es ist auch möglich nur Auszüge der Gespräch hochzuladen, in dem Sie das gespeicherte PDF bearbeiten, Text daraus in eine neue Datei kopieren oder einfach Screenshots des Chatverlaufs als Bilder speichern. 
+Sobald Sie im Anamnesetrainer einen neuen Patienten wählen oder zwischen dem Modus KI-Patient und KI-Tutor wechseln, ist der Gesprächsverlauf gelöscht. Sie haben jederzeit die Möglichkeit das aktuelle Gespräch als PDF zu speichern. Bitte machen Sie davon Gebrauch, um später in der Auswertung exakter auf bestimmte Aspekte der Interaktion eingehen zu können. Ebenso wäre es für die Studie wertvoll, Interaktionen exakt zitieren zu können. Daher wäre es hilfreich, wenn Sie Ihre gespeicherten Gesprächsverläufe als PDF auf der letzen Seite "Dateiupload" mit hochladen. Es ist auch möglich nur Auszüge der Gespräch hochzuladen, in dem Sie das gespeicherte PDF bearbeiten, Text daraus in eine neue Datei kopieren oder einfach Screenshots des Chatverlaufs als Bilder speichern. 
 
 ### Kontakt bei Fragen
 
@@ -37,5 +37,5 @@ Um zu starten, ist zunächst ein Passwort auf der entsprechenden Seite einzugebe
 Um das Passwort einzugeben, wechseln Sie bitte jetzt auf die Seite Passwort
  
     """)
-if st.button("Passwort"):
+if st.button("Passwort", use_container_width=True):
         switch_page("Passwort")
