@@ -32,7 +32,7 @@ st.markdown("""Das Uploadformular sieht vor, dass die Nutzer*innen einen Vorname
             Sie sollen nicht Ihren tatsächlichen Vornamen und Nachnamen eingeben, sondern stattdessen die beiden Hälften Ihres Zifferncodes eingeben.  
             """)
 if random_id_string[2]==True:
-      st.markdown("""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt sobald die Seite verlassen wurde.  
+      st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt sobald die Seite verlassen wurde.  
                   Der folgende Code ist daher nur beispielhaft.***  
                   Wäre Ihr Code also {random_id_string[0]} - {random_id_string[1]}""")
 st.write("***"+"Dann nutzen Sie einfach:  First name: :red["+random_id_string[0]+"] Last name: :red["+random_id_string[1]+"]***")
