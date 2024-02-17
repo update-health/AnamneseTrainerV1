@@ -11,7 +11,9 @@ st.markdown("""Auf dieser Seite finden Sie umfassende Informationen über die St
             Dann ist Ihre Einverständniserkärung vollständig und Sie bekommen das Passwort für den Anamnesetrainer.  
             Sollte das Formular hier nicht richtig angezeigt werden, können Sie es über folgenden Link in einem neuen Tab öffnen:  
             <a href="https://drive.google.com/file/d/1TzYIduwwkN61J8eE_Qm2XFp2VtUdymhp/view">Link zu den Teilnehmenden Informationen</a>
-            <iframe src="https://drive.google.com/file/d/1TzYIduwwkN61J8eE_Qm2XFp2VtUdymhp/preview" style="width: 100%; height: 1000px; max-height: 94vh " allow="autoplay"></iframe>""", unsafe_allow_html=True)
+            <iframe src="https://drive.google.com/file/d/1TzYIduwwkN61J8eE_Qm2XFp2VtUdymhp/preview" style="width: 100%; height: 1000px; max-height: 94vh" allow="autoplay"></iframe>
+            <iframe style="width: 100%; height: 1000px; max-height: 94vh" src="https://forms.office.com/Pages/ResponsePage.aspx?id=MEu3vWiVVki9vwZ1l3j8vIm_B-OUVLdPhs3ozbSACf9UNTU4WU5IOFhQMzVXSlI1VlkxQlhMWlBRQS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            """, unsafe_allow_html=True)
 st.markdown("Wenn das Dokument ausgefüllt und signiert ist, und auch die Unterschrift per E-Mail bestätigt wurde, wechseln Sie zur Anleitung.")
 if st.button("Anleitung", use_container_width=True):
     switch_page("Anleitung")
