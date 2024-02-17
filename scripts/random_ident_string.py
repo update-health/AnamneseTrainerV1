@@ -7,4 +7,5 @@ def generate_random_string():
     char_pool = string.ascii_letters + string.digits
     random_chars1 = ''.join(random.choices(char_pool, k=4))
     random_chars2 = ''.join(random.choices(char_pool, k=4))
-    return [random_chars1,random_chars2]
+    is_example=False
+    return [random_chars1,random_chars2,is_example]
