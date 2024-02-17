@@ -14,4 +14,3 @@ st.markdown("""Auf dieser Seite finden Sie umfassende Informationen über die St
 st.markdown("Wenn das Dokument ausgefüllt und signiert ist, und auch die Unterschrift per E-Mail bestätigt wurde, wechseln Sie zur Anleitung.")
 if st.button("Anleitung", use_container_width=True):
     switch_page("Anleitung")
-pdf_viewer("docs/Pilot_Studie_Dokumente_Read_Aloud.pdf")
