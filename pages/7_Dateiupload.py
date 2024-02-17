@@ -18,14 +18,14 @@ else:
 
 st.header("Dateiupload")
 st.write("Auf dieser Seite sollen Sie alle Aufnahmen und Gesprächsprotokolle von Ihnen hochladen.")
-if random_id_string[2]==True:
+if random_id_string[2]==False:
       st.write("Zur Erinnerung: Dies ist Ihr Zifferncode um den ausgefüllten Fragenbogen den hochgeladenen Dateien zuordnen zu können:")
       st.write("#### "+random_id_string[0]+" - "+random_id_string[1])
 
 st.markdown("""Das Uploadformular sieht vor, dass die Nutzer*innen einen Vornamen und Nachnamen eingeben. Dieser wird dann den Dateinamen angehangen.  
             Sie sollen nicht Ihren tatsächlichen Vornamen und Nachnamen eingeben, sondern stattdessen die beiden Hälften Ihres Zifferncodes eingeben.  
             """)
-if random_id_string[2]==False:
+if random_id_string[2]==True:
       st.write("Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt sobald die Seite verlassen wurde. Der folgende Code ist daher nur beispielhaft.")
 st.write("#### "+"Sie nutzen also einfach:  First name: :red["+random_id_string[0]+"] Last name: :red["+random_id_string[1]+"]")
 st.markdown("""Über den folgenden Link gelangen Sie zu einer Seite über die Sie die Bildschirm- bzw. Sprachaufzeichnungen, aber auch z.B. gespeicherte Gesprächsprotokolle, auf meinen Cloudspeicher bei der Cardiff University hochladen können.  
