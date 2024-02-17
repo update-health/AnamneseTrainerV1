@@ -34,7 +34,7 @@ st.markdown("""Das Uploadformular sieht vor, dass die Nutzer*innen einen Vorname
 if random_id_string[2]==True:
       st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt sobald die Seite verlassen wurde.  
                   Der folgende Code ist daher nur beispielhaft.***  
-                  ***Wäre Ihr Code also {random_id_string[0]} - {random_id_string[1]}***""")
+                  ***Wäre Ihr Code also {random_id_string[0]} - {random_id_string[1]},***""")
 st.write("***"+"Dann nutzen Sie einfach:  First name: :red["+random_id_string[0]+"] Last name: :red["+random_id_string[1]+"]***")
 st.markdown("""### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Webseite zum Hochladen der Audiodateien</a>  
                         """,unsafe_allow_html=True)
