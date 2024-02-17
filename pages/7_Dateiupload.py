@@ -18,10 +18,9 @@ else:
 
 st.header("Dateiupload")
 st.write("Auf dieser Seite sollen Sie alle Aufnahmen und Gesprächsprotokolle von Ihnen hochladen.")
-st.markdown("""Über den folgenden Link gelangen Sie zu einer Seite über die Sie die Bildschirm- bzw. Sprachaufzeichnungen, aber auch z.B. gespeicherte Gesprächsprotokolle, auf meinen Cloudspeicher bei der Cardiff University hochladen können.  
-            Es handelt sich um einen Microsoft Dienst. Falls Sie in Ihrem Browser mit einem Microsoft Konto angemeldet sind, wird daraus Ihr Vorname und Nachname einfach übernommen. 
-            Aufgrund der angestrebten Anonymität, soll aber nicht Ihr tatsächlicher Name verwendet werden.    
-            Um dies zu verhindern, kopieren Sie den Link einfach in ein neues privates Browser Fenster. Je nach Browser heißen diese "Privat", "In-private", "Inkognito" oder ähnlich.""")    
+st.markdown("""Über den folgenden Link gelangen Sie zu einer Seite, auf der Sie Bildschirm- und Sprachaufzeichnungen sowie gespeicherte Gesprächsprotokolle in meinen Cloudspeicher bei der Cardiff University hochladen können.  
+            Dieser Service wird von Microsoft bereitgestellt. Falls Sie in Ihrem Browser mit einem Microsoft-Konto angemeldet sind, werden automatisch Ihr Vorname und Nachname übernommen.  
+            Um Ihre Anonymität zu wahren, bitte ich Sie, den Link in einem neuen privaten Browserfenster zu öffnen. Je nach Browser können diese Modi als “Privat”, “In-private” oder “Inkognito” bezeichnet sein.""")    
 st.image("assets/InkognitoFenster.jpg")
 st.write('oder klicken auf den unten stehenden Link mit der rechten Maustaste und wählen dann dort "InPrivate-Fenster" öffnen, wie in diesem Bild zu sehen:')
 st.image("assets/InkognitoFensterRechtsklick.jpg")
@@ -31,15 +30,16 @@ st.markdown("""Statt Ihrem Vornamen und Nachnamen, sollen Sie die beiden Hälfte
 if random_id_string[2]==False:
       st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.***  
                   In sofern Sie direkt nach dem ausfüllen des Fragebogens zu dieser Seite gewechselt sind, ist Ihr Zifferncode:  
-                  {random_id_string[0]} - {random_id_string[1]}""",unsafe_allow_html=True)
+                  {random_id_string[0]} - {random_id_string[1]}.  
+                  Nutzen Sie dann einfach:  First name: :red[{random_id_string[0]}] Last name: :red[{random_id_string[1]}]""",unsafe_allow_html=True)
       st.write("#### ")
 
 
 if random_id_string[2]==True:
       st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.  
                   Der folgende Code ist daher nur beispielhaft.***  
-                  ***Wäre Ihr Code also {random_id_string[0]} - {random_id_string[1]},***""")
-st.write("***"+"Dann nutzen Sie einfach:  First name: :red["+random_id_string[0]+"] Last name: :red["+random_id_string[1]+"]***")
+                  ***Wäre Ihr Code also {random_id_string[0]} - {random_id_string[1]},  
+                  dann nutzen Sie einfach:  First name: :red[{random_id_string[0]}] Last name: :red[{random_id_string[1]}]""")
 st.markdown("""### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Webseite zum Hochladen der Audiodateien</a>  
                         """,unsafe_allow_html=True)
 st.markdown("""Sollte es irgendwelche Probleme beim Hochladen der Dateien geben, melden Sie sich bitte umgehend bei mir.  
