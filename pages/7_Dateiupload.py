@@ -29,7 +29,7 @@ st.markdown("""Statt Ihrem Vornamen und Nachnamen, sollen Sie die beiden Hälfte
 
 if random_id_string[2]==False:
       st.markdown(f"""***Nutzen Sie unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.***  
-                  Insofern Sie direkt nach dem ausfüllen des Fragebogens zu dieser Seite gewechselt sind, ist Ihr Zifferncode:  
+                  Insofern Sie direkt nach dem Ausfüllen des Fragebogens zu dieser Seite gewechselt sind, ist Ihr Zifferncode:  
                   {random_id_string[0]} - {random_id_string[1]}.  
                   Nutzen Sie dann einfach:  First name: :red[{random_id_string[0]}] Last name: :red[{random_id_string[1]}]""",unsafe_allow_html=True)
       st.write("#### ")
