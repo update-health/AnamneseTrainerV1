@@ -10,7 +10,7 @@ from streamlit_extras.switch_page_button import switch_page
 # Streamlit set_page_config-Methode hat ein 'initial_sidebar_state'-Argument, das den Zustand der Seitenleiste steuert.
 if 'sidebar_state' not in st.session_state:
     st.session_state.sidebar_state = 'expanded'
-st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
+st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state, layout="centered")
 # Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
 if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
     switch_page("Passwort")

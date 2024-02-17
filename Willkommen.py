@@ -36,7 +36,7 @@ Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Anamnesetrai
 
 
 def run():
-    st.set_page_config(page_title="Anamnesetrainer", page_icon="👩‍⚕️")
+    st.set_page_config(page_title="Anamnesetrainer", page_icon="👩‍⚕️",layout="centered")
     display_homepage()
     if "random_id_string" not in st.session_state:
         st.session_state.random_id_string=ris.generate_random_string()
