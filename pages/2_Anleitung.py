@@ -8,11 +8,11 @@ Der Anamnesetrainer soll das Erlernen strukturierter Anamnese und Kommunikations
 
 ### Studienziele
 
-Die Studie evaluiert die Eignung und Nützlichkeit von KI-Chatbots im Anamnesetraining, insbesondere die Anwendungsfreundlichkeit, den Realitätsgrad der Konversationen und den potentiellen Einsatz in der Ausbildung. Der Fokus liegt auf der Nutzererfahrung gegenüber dem Chatbot als Patient*in.
+Den Einsatz von KI-Chatbots als simulierte Patienten im Anamnesetraining von Physiotherapeut*innen in Bezug auf Akzeptanz, Benutzererfahrung und Lehrpotenzial zu evaluieren.
 
 ### Nutzung des Anamnesetrainers
 
-Nutzer*innen wählen aus einer Dropdownliste einen Patienten aus, dessen Daten im System hinterlegt sind. Das Gespräch erfolgt über eine Chatbox. Nach den ersten vier Antworten ermöglicht ein Button das Gespräch zu beenden und ein Feedbackgespräch mit einem virtuellen Tutor zu starten. Gespräche können gespeichert werden, um in Reflektionen und Fokusgruppen genutzt zu werden.
+Nutzer*innen wählen aus einer Dropdownliste einen Patienten aus, dessen Daten im System hinterlegt sind. Das Gespräch erfolgt über eine Chatbox. Jederzeit ermöglicht ein Button das Anamnesegespräch zu beenden und ein Feedbackgespräch mit einem virtuellen Tutor zu starten. Es sollte aber immer erst das Anamnesegespräch vollständig zuende geführt werden. Gespräche können als PDF gespeichert werden, um in Reflektionen und Fokusgruppen genutzt zu werden.
 
 ### Verhaltenshinweise
 

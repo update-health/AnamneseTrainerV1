@@ -11,45 +11,42 @@ from streamlit_extras.switch_page_button import switch_page
 if 'sidebar_state' not in st.session_state:
     st.session_state.sidebar_state = 'expanded'
 st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
-def initialize_session_state():
-    if 'anamnesetrainer_is_init' not in st.session_state:
-        st.session_state.anamnesetrainer_is_init = True
-
-    if "openai_model" not in st.session_state:
-        st.session_state["openai_model"] = "gpt-4-0125-preview"
-
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-
-    if "chat_mode" not in st.session_state:
-        st.session_state.chat_mode = "KI-Patient"
-
-    if "selected_patient" not in st.session_state:
-        st.session_state.selected_patient = ""
-
-    # Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
-    if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
-        switch_page("Passwort")
-        st.stop()
-
-    # Initialisierung der OpenAI-Clientinstanz
-    if "ai_client" not in st.session_state:    
-        st.session_state.ai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-
-    if "case_dict" not in st.session_state:
-        Fallbeispiele_yaml = 'data/Fallbeispiele.yaml'
-        # Lesen der YAML-Datei
-        with open(Fallbeispiele_yaml, 'r', encoding='utf-8') as file:
-            case_list = yaml.safe_load(file)
-        # Umwandlung der Liste von Fällen in ein Wörterbuch mit 'Kurzform' als Schlüssel und Zeilen als Werte
-        case_dict = {case['Kurzform']: case for case in case_list}
-        st.session_state.case_dict = case_dict# Weitere Initialisierungen können hier hinzugefügt werden, falls erforderlich
-
-# Aufrufen der initialize_session_state Funktion, um die Sitzungsvariablen zu initialisieren
+# Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
+if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
+    switch_page("Passwort")
+    st.stop()
 
 if 'anamnesetrainer_is_init' not in st.session_state:
-    initialize_session_state()
+    st.session_state.anamnesetrainer_is_init = True
+
+if "openai_model" not in st.session_state:
+    st.session_state["openai_model"] = "gpt-4-0125-preview"
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+if "chat_mode" not in st.session_state:
+    st.session_state.chat_mode = "KI-Patient"
+
+if "selected_patient" not in st.session_state:
+    st.session_state.selected_patient = ""
+
+# Initialisierung der OpenAI-Clientinstanz
+if "ai_client" not in st.session_state:    
+    st.session_state.ai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
+if "case_dict" not in st.session_state:
+    Fallbeispiele_yaml = 'data/Fallbeispiele.yaml'
+    # Lesen der YAML-Datei
+    with open(Fallbeispiele_yaml, 'r', encoding='utf-8') as file:
+        case_list = yaml.safe_load(file)
+    # Umwandlung der Liste von Fällen in ein Wörterbuch mit 'Kurzform' als Schlüssel und Zeilen als Werte
+    case_dict = {case['Kurzform']: case for case in case_list}
+    st.session_state.case_dict = case_dict
+
+# Weitere Initialisierungen können hier hinzugefügt werden, falls erforderlich
+
+# Aufrufen der initialize_session_state Funktion, um die Sitzungsvariablen zu initialisieren
 
 
 # Einbinden von benutzerdefinierten CSS-Stilen für die App

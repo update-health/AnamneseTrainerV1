@@ -56,7 +56,7 @@ with st.expander("Alternative: Nur Ton aufzeichnen"):
         st.markdown("""Bevorzugt wird die Aufzeichnung von Bildschirmaktivität und Ton gemeinsam, da diese die Auswertung erleichtert.  
         Sollte keine der oben genannten Varianten der Aufzeichnung möglich sein oder Sie nicht zu einer Aufzeichnung Ihres Bildschirmes bereit sein, können Sie alternativ auch nur Ton über eine entsprechende Anwendung aufnehmen. Eine App mit der Funktion der Sprachaufnahme ist auf nahezu jedem Gerät vorinstalliert. Diese haben meist Bezeichnungen wie "Diktiergerät" oder "Sprachrekorder".     
 """)
-st.write("Sollte keine der oben genannten Möglichkeit der akustischen Aufnahme Bestehen, treten Sie bitte mit mir in Kontakt: brodela@cardiff.ac.uk")
+st.write("Sollte keine der oben genannten Möglichkeit der akustischen Aufnahme bestehen, treten Sie bitte mit mir in Kontakt: brodela@cardiff.ac.uk")
 st.markdown("""Sollten in den Aufnahmen irgendwelche vertraulichen Informationen erscheinen oder Ihre Identität daraus hervorgehen, werden diese Informationen nach Möglichkeit umgehend von mir entfernt, aber in jedem Falle streng vertraulich behandelt. Dennoch bitte ich Sie darum die Aufnahmen möglichst frei von persönlichen Informationen zu halten.  
         Um eine anonyme Datenübermittlung zu ermöglichen und dennoch die Aufnahmen der Laut-Denken-Methode eindeutig verknüpfen zu können, erhalten Sie auf der kommenden Seite einen Zifferncode.  
 """)
