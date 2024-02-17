@@ -27,7 +27,7 @@ st.markdown("""Das Uploadformular sieht vor, dass die Nutzer*innen einen Vorname
             """)
 if random_id_string[2]==True:
       st.write("***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt sobald die Seite verlassen wurde. Der folgende Code ist daher nur beispielhaft.***")
-st.write("#### "+"Sie nutzen also einfach:  First name: :red["+random_id_string[0]+"] Last name: :red["+random_id_string[1]+"]")
+st.write("*** "+"Sie nutzen also einfach:  First name: :red["+random_id_string[0]+"] Last name: :red["+random_id_string[1]+"]***")
 st.markdown("""Über den folgenden Link gelangen Sie zu einer Seite über die Sie die Bildschirm- bzw. Sprachaufzeichnungen, aber auch z.B. gespeicherte Gesprächsprotokolle, auf meinen Cloudspeicher bei der Cardiff University hochladen können.  
             Es handelt sich um einen Microsoft Dienst. Falls Sie in Ihrem Browser mit einem Microsoft Konto angemeldet sind, wird daraus Ihr Vorname und Nachname einfach übernommen.  
             Um dies zu verhindern, kopieren Sie den Link einfach in ein neues privates Browser Fenster. Je nach Browser heißen diese "Privat", "In-private", "Inkognito" oder ähnlich.""")    
