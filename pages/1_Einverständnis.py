@@ -10,7 +10,7 @@ st.markdown("""Auf dieser Seite finden Sie umfassende Informationen über die St
             Insofern Sie sich weiterhin für die Teilnahme entscheiden, müssen Sie das Einverständnisformular ausfüllrn und digital unterschreiben.  
             ***Nach dem Signieren müssen Sie Ihre E-Mail-Adresse angeben. Sie erhalten dann eine E-Mail in der Sie einen Link zur Bestätigung klicken müssen. Erst dann ist die Einverständniserklärung vollständig.***  
             Sollte das Formular hier nicht richtig angezeigt werden, können Sie es über folgenden Link in einem neuen Tab öffnen:  
-            <iframe src="https://drive.google.com/file/d/0B8-azs9_jXsNbmFLQjJoZ0lwcW8/preview?resourcekey=0-z2c-id26IxhNKbr_SyLF3A" style="width: 100%; height: 1000px; max-height: 94vh " allow="autoplay"></iframe>""", unsafe_allow_html=True)
+            <iframe src="https://drive.google.com/file/d/1TzYIduwwkN61J8eE_Qm2XFp2VtUdymhp/preview" style="width: 100%; height: 1000px; max-height: 94vh " allow="autoplay"></iframe>""", unsafe_allow_html=True)
 st.markdown("Wenn das Dokument ausgefüllt und signiert ist, und auch die Unterschrift per E-Mail bestätigt wurde, wechseln Sie zur Anleitung.")
 if st.button("Anleitung", use_container_width=True):
     switch_page("Anleitung")
