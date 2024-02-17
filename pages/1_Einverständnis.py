@@ -14,15 +14,4 @@ st.markdown("""Auf dieser Seite finden Sie umfassende Informationen über die St
 st.markdown("Wenn das Dokument ausgefüllt und signiert ist, und auch die Unterschrift per E-Mail bestätigt wurde, wechseln Sie zur Anleitung.")
 if st.button("Anleitung", use_container_width=True):
     switch_page("Anleitung")
-#pdf_viewer("docs/Pilot_Studie_Dokumente_Read_Aloud.pdf")
-def displayPDF(file):
-    # Opening file from file path
-    with open(file, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-
-    # Embedding PDF in HTML
-    pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" type="application/pdf" width="100%" frameborder="0" style="border: 0; overflow: hidden; height: 1400px; max-height: 94vh; min-height: 500px; min-width: 600px;"></iframe>'
-
-    # Displaying File
-    st.markdown(pdf_display, unsafe_allow_html=True)
-displayPDF("docs/Pilot_Studie_Dokumente_Read_Aloud.pdf")
+pdf_viewer("docs/Pilot_Studie_Dokumente_Read_Aloud.pdf")
