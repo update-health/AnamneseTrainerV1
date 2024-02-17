@@ -3,6 +3,7 @@ import hmac
 from streamlit.logger import get_logger
 from streamlit_extras.switch_page_button import switch_page
 
+st.set_page_config(layout="centered")
 def check_password():
     #Check the user's password and control page access.
     def password_entered():
