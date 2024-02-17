@@ -19,20 +19,24 @@ else:
 st.header("Dateiupload")
 st.write("Auf dieser Seite sollen Sie alle Aufnahmen und Gesprächsprotokolle von Ihnen hochladen.")
 st.markdown("""Über den folgenden Link gelangen Sie zu einer Seite über die Sie die Bildschirm- bzw. Sprachaufzeichnungen, aber auch z.B. gespeicherte Gesprächsprotokolle, auf meinen Cloudspeicher bei der Cardiff University hochladen können.  
-            Es handelt sich um einen Microsoft Dienst. Falls Sie in Ihrem Browser mit einem Microsoft Konto angemeldet sind, wird daraus Ihr Vorname und Nachname einfach übernommen.  
+            Es handelt sich um einen Microsoft Dienst. Falls Sie in Ihrem Browser mit einem Microsoft Konto angemeldet sind, wird daraus Ihr Vorname und Nachname einfach übernommen. 
+            Aufgrund der angestrebten Anonymität, soll aber nicht Ihr tatsächlicher Name verwendet werden.    
             Um dies zu verhindern, kopieren Sie den Link einfach in ein neues privates Browser Fenster. Je nach Browser heißen diese "Privat", "In-private", "Inkognito" oder ähnlich.""")    
 st.image("assets/InkognitoFenster.jpg")
 st.write('oder klicken auf den unten stehenden Link mit der rechten Maustaste und wählen dann dort "InPrivate-Fenster" öffnen, wie in diesem Bild zu sehen:')
 st.image("assets/InkognitoFensterRechtsklick.jpg")
-if random_id_string[2]==False:
-      st.write("Zur Erinnerung: Dies ist Ihr Zifferncode um den ausgefüllten Fragenbogen den hochgeladenen Dateien zuordnen zu können:")
-      st.write("#### "+random_id_string[0]+" - "+random_id_string[1])
-
-st.markdown("""Das Uploadformular sieht vor, dass die Nutzer*innen einen Vornamen und Nachnamen eingeben. Dieser wird dann den Dateinamen angehangen.  
-            Sie sollen nicht Ihren tatsächlichen Vornamen und Nachnamen eingeben, sondern stattdessen die beiden Hälften Ihres Zifferncodes eingeben.  
+st.markdown("""Statt Ihrem Vornamen und Nachnamen, sollen Sie die beiden Hälften Ihres Zifferncodes eingeben.  
             """)
+
+if random_id_string[2]==False:
+      st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.***  
+                  In sofern Sie direkt nach dem ausfüllen des Fragebogens zu dieser Seite gewechselt sind, ist Ihr Zifferncode:  
+                  {random_id_string[0]} - {random_id_string[1]}""",unsafe_allow_html=True)
+      st.write("#### ")
+
+
 if random_id_string[2]==True:
-      st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt sobald die Seite verlassen wurde.  
+      st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.  
                   Der folgende Code ist daher nur beispielhaft.***  
                   ***Wäre Ihr Code also {random_id_string[0]} - {random_id_string[1]},***""")
 st.write("***"+"Dann nutzen Sie einfach:  First name: :red["+random_id_string[0]+"] Last name: :red["+random_id_string[1]+"]***")
