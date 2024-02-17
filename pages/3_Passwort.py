@@ -24,9 +24,15 @@ def check_password():
 check_password()
 
 def display_content():
-    st.markdown("Wenn Sie alle vorherigen Schritte abgeschlossen und alle Dokumente gelesen haben, können Sie nun mit dem Anamnesetrainer arbeiten.")
-    if st.button("Anamnesetrainer"):
+    st.markdown("Wenn Sie die Einverständniserklärung unterschrieben, die Anleitung gelesen und keine weiteren Fragen haben, können Sie nun mit dem Anamnesetrainer arbeiten.")
+    if st.button("Anamnesetrainer", use_container_width=True):
         switch_page("Anamnesetrainer")
+    
+    st.markdown('Falls Sie den Anamnesetrainer bereits verwendent haben und von der Seite "Fragebogen" oder "Dateiupload" hierhin umgeleitet wurden, können Sie nun über die beiden Buttons dorthin zurückkehren:')
+    if st.button("Fragebogen", use_container_width=True):
+        switch_page("Fragebogen")
+    if st.button("Dateiupload", use_container_width=True):
+        switch_page("Dateiupload")
 
 if "password_correct" in st.session_state and st.session_state.get("password_correct", True):
     display_content()

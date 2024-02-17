@@ -4,6 +4,11 @@ import streamlit.components.v1 as components
 from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="wide")
+# Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
+if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
+        switch_page("Passwort")
+        st.stop()
+        
 if "random_id_string" not in st.session_state:
     st.session_state.random_id_string=ris.generate_random_string()
 
