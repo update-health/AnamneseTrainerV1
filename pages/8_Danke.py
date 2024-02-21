@@ -1,7 +1,7 @@
 import streamlit as st
 
 # embed streamlit docs in a streamlit app
-st.set_page_config(layout="centered")
+st.set_page_config(layout="wide")
 st.header("Nachinformation für Teilnehmende")
 st.markdown(""" 
             <iframe src="https://drive.google.com/file/d/15yijN2-iZ2TPGFdiCgNtKyTiqSVdAsa-/preview" style="width: 100%; height: 1000px; max-height: 94vh" allow="autoplay"></iframe>  
