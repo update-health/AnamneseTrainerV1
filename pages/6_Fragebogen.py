@@ -1,6 +1,5 @@
 import streamlit as st
 import scripts.random_ident_string as ris
-import streamlit.components.v1 as components
 from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")

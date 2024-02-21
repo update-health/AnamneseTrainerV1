@@ -1,5 +1,4 @@
 import streamlit as st
-import scripts.random_ident_string as ris
 from streamlit_extras.switch_page_button import switch_page
 
 # embed streamlit docs in a streamlit app
