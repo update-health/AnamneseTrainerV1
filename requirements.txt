@@ -1,10 +1,5 @@
-altair
-numpy
-pandas
-pydeck
-streamlit
 openai
-streamlit_extras
-pyyaml
+PyYAML
 reportlab
-extra_streamlit_components
+streamlit
+streamlit_extras
