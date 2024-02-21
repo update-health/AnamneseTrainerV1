@@ -4,6 +4,9 @@ import base64
 
 # embed streamlit docs in a streamlit app
 st.set_page_config(layout="centered")
+# Einbinden von benutzerdefinierten CSS-Stilen für die App
+with open("styles/styles.css") as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 st.markdown("""Auf dieser Seite finden Sie umfassende Informationen über die Studie, die Voraussetzungen zur Teilnahme, Ihre Rechte und Pflichten als Teilnehmende*r, Rechte und Pflichten von mir als verantwortlichem Forschenden und der Hochschule.  
             Bitte lesen Sie die Informationen bis Ihnen alle Aspekte ausreichend klar geworden sind um an der Studie teilzunehmen.  
             Insofern Sie sich weiterhin für die Teilnahme entscheiden, müssen Sie das Einverständnisformular unten auf dieser Seite ausfüllen. Sie erhalten dann erneut eine E-Mail in der Sie Ihre Identität bestätigen müssen.  

@@ -3,6 +3,9 @@ import scripts.random_ident_string as ris
 from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")
+# Einbinden von benutzerdefinierten CSS-Stilen für die App
+with open("styles/styles.css") as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 # Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
 if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
         switch_page("Passwort")

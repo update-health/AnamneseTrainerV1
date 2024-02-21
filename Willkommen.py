@@ -8,6 +8,10 @@ import scripts.random_ident_string as ris
 LOGGER = get_logger(__name__)
 
 def display_homepage():
+    # Einbinden von benutzerdefinierten CSS-Stilen für die App
+    with open("styles/styles.css") as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    
     #Display the content of the homepage.
     st.markdown("""
 ### Herzlich Willkommen zur Studie zum KI-basierten Anamnesetraining

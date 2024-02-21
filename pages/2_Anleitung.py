@@ -2,6 +2,9 @@ import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")
+# Einbinden von benutzerdefinierten CSS-Stilen für die App
+with open("styles/styles.css") as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 st.markdown("""
 ### Einsatzzweck des Anamnesetrainers
 
