@@ -9,6 +9,7 @@ p:has(> a[href="#top"]) {
     z-index: 999;
 }
 
-.st-emotion-cache-1y4p8pa{
-    max-width: 100rem;
+
+[data-testid="stAppViewBlockContainer"]{
+    max-width: 76rem;
 }
