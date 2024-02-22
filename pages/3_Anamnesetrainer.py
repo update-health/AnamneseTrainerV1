@@ -45,13 +45,6 @@ if "case_dict" not in st.session_state:
     case_dict = {case['Kurzform']: case for case in case_list}
     st.session_state.case_dict = case_dict
 
-# Weitere Initialisierungen können hier hinzugefügt werden, falls erforderlich
-
-# Aufrufen der initialize_session_state Funktion, um die Sitzungsvariablen zu initialisieren
-
-
-
-
 
 # Festlegen von Avatar-Icons und Eingabeplatzhalter basierend auf dem aktuellen Chat-Modus
 if st.session_state.chat_mode == "KI-Patient":

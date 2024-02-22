@@ -3,7 +3,12 @@
 }
 
 [data-testid="stAppViewBlockContainer"]{
-    max-width: 76rem;
+    max-width: 60rem;
+    padding-top: 2rem;
+}
+
+[data-testid="stBottomBlockContainer"]{
+    max-width: 60rem;
     padding-top: 2rem;
 }
 
