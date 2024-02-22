@@ -174,10 +174,9 @@ with st.sidebar:
     sidebar_options()
 
 # Erstellung eines Header-Containers
-
-headercontainer = st.container(border=True)
+st.subheader('Modus: ' + st.session_state.chat_mode,"top")
+headercontainer = st.expander(label="weitere Informationen")
 with headercontainer:
-    st.subheader('Modus: ' + st.session_state.chat_mode,"top")
     if st.session_state.chat_mode == "KI-Patient":
         st.markdown("""Links befindet sich das Seitenmenü mit wichtigen Optionen wie "Gespräch speichern", "Patient wählen" oder "Modus wechseln".  
                     Sollte das Menü eingeklappt sein klicken Sie oben links auf das Pfeilsymbol ">".  
