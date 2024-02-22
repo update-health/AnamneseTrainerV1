@@ -1,4 +1,5 @@
 import streamlit as st
+import scripts.check_password as check_password
 from streamlit_extras.switch_page_button import switch_page
 
 # embed streamlit docs in a streamlit app
@@ -9,8 +10,8 @@ with open("styles/styles.css") as f:
 
 # Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
 if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
-        switch_page("Passwort")
-        st.stop()
+    check_password.check_password()
+    st.stop()
 
 
 if "random_id_string" not in st.session_state:

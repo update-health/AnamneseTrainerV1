@@ -1,5 +1,6 @@
 import streamlit as st
 import scripts.random_ident_string as ris
+import scripts.check_password as check_password
 from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")
@@ -8,8 +9,8 @@ with open("styles/styles.css") as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 # Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
 if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
-        switch_page("Passwort")
-        st.stop()
+    check_password.check_password()
+    st.stop()
         
 if "random_id_string" not in st.session_state:
     st.session_state.random_id_string=ris.generate_random_string()

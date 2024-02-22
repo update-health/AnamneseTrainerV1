@@ -3,6 +3,7 @@ from openai import OpenAI
 import streamlit as st
 import yaml
 import io
+import scripts.check_password as check_password
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
@@ -11,8 +12,12 @@ from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")
 # Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
+# Einbinden von benutzerdefinierten CSS-Stilen für die App
+with open("styles/styles.css") as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
-    switch_page("Passwort")
+    check_password.check_password()
     st.stop()
 
 if "openai_model" not in st.session_state:
@@ -45,9 +50,7 @@ if "case_dict" not in st.session_state:
 # Aufrufen der initialize_session_state Funktion, um die Sitzungsvariablen zu initialisieren
 
 
-# Einbinden von benutzerdefinierten CSS-Stilen für die App
-with open("styles/styles.css") as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 
 
 # Festlegen von Avatar-Icons und Eingabeplatzhalter basierend auf dem aktuellen Chat-Modus

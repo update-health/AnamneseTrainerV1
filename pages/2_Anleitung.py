@@ -28,9 +28,7 @@ Bei Fragen oder Unklarheiten steht Arne Brödel unter brodela@cardiff.ac.uk zur 
             
 ### Nächster Schritt               
             
-Um zu starten, ist zunächst ein Passwort auf der entsprechenden Seite einzugeben. Dieses Passwort sollte spätestens 24 Stunden nach Zusendung der Einverständniserklärung an die angebene E-Amil-Adresse gesendet worden sein. Falls Sie kein Passwort erhalten haben, schreiben Sie bitte an brodela@cardiff.ac.uk  
-Um das Passwort einzugeben, wechseln Sie bitte jetzt auf die Seite Passwort
- 
+Wechseln Sie zur Seite "Anamnesetrainer". Um zu starten, ist zunächst ein Passwort einzugeben, welches spätestens 24 Stunden nach Zusendung der Einverständniserklärung an die angebene E-Mail-Adresse gesendet worden sein sollte. Falls Sie kein Passwort erhalten haben, schreiben Sie bitte an brodela@cardiff.ac.uk  
     """)
-if st.button("Passwort", use_container_width=True):
-        switch_page("Passwort")
+if st.button("Anamnesetrainer", use_container_width=True):
+        switch_page("Anamnesetrainer")
