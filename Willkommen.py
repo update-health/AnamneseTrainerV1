@@ -18,11 +18,10 @@ Vielen Dank, für Ihre Teilnahme.
 Diese besteht aus den folgenden Schritten:  
 1. Auf der Seite "Einverständnis" das Informationsschreiben lesen und das Einverständnis-Formular ausfüllen und absenden. Sie müssen dabei Ihre E-Mail-Adresse angeben und bestätigen. Danach erhalten Sie eine E-Mail von mir mit dem Zugangspasswort für den Anamnesetrainer.   
 2. Auf der Seite "Anleitung" die detaillierte Anleitung zur Nutzung des Anamnesetrainers lesen.  
-3. Auf der Seite "Passwort" das Passwort eingeben, welches Sie nach der Einverständniserklärung per Email von mir erhalten haben. Wenn Sie auch 24 Stunden nach Einsendung der Einverständniserklrärung keines erhalten haben, melden Sie sich bitte bei mir unter brodela@cardiff.ac.uk  
-4. Auf der Seite "Anamnesetrainer" entsprechend der Anleitung Anamnesegespräch mit mindestens zwei KI-Patienten führen und die Anamnesegespräche mit dem KI-Tutor evaluieren.  Die Gesprächsverläüfe können Sie als PDF speichern.
-5. Auf der Seite "Anleitung Fragebogen" die genaue Durchführung der Datenerfassung mit Fragebogen und Sprachrekorder kennenlernen.  
-6. Auf der Seite "Fragebogen" den Fragebogen ausfüllen und dabei die eigenen Gedanken aussprechen und eine oder mehrere Sprachaufnahmen anfertigen.  
-7. Auf der Seite "Dateiupload" den Link öffnen um dort Ihre Sprachaufnahmen und von Ihnen gespeicherte Gesprächsverläufe mit dem KI-Anamnesetrainer auf einen sicheren Cloud-Speicher der Cardiff University hochladen. 
+3. Auf der Seite "Anamnesetrainer" entsprechend der Anleitung Anamnesegespräch mit mindestens zwei KI-Patienten führen und die Anamnesegespräche mit dem KI-Tutor evaluieren. Die Gesprächsverläüfe können Sie als PDF speichern.  
+4. Auf der Seite "Anleitung Fragebogen" die genaue Durchführung der Datenerfassung mit Fragebogen und Sprachrekorder kennenlernen.  
+5. Auf der Seite "Fragebogen" den Fragebogen ausfüllen und dabei die eigenen Gedanken aussprechen und eine oder mehrere Sprachaufnahmen anfertigen.  
+6. Auf der Seite "Dateiupload" den Link öffnen um dort Ihre Sprachaufnahmen und von Ihnen gespeicherte Gesprächsverläufe mit dem KI-Anamnesetrainer auf einen sicheren Cloud-Speicher der Cardiff University hochladen. 
 
 Die Teilnahme an der Studie sollte an nahezu jedem PC, Laptop, Tablet oder Smartphone möglich sein. Bevorzugt sollte jedoch ein Laptop oder PC mit den Browsern Chrome, Edge oder Firefox verwendet werden.  
                                         
