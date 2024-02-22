@@ -12,8 +12,9 @@
     padding-top: 2rem;
 }
 
-.st-emotion-cache-lrlib {
-    padding-top: 30px;
+
+[data-testid="stSidebarNavItems"]{
+    padding-top: 2rem;
 }
 
 .st-emotion-cache-m8hsoe {
