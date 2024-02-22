@@ -22,7 +22,7 @@ Bitte beachten Sie, dass Sie im Rahmen dieser Studie Sprachaufzeichnungen machen
 Falls Sie während des Ausfüllens des Fragebogens feststellen, dass Sie zeitweise nicht aufgenommen haben oder vergessen haben zu sprechen, ist das kein Problem. Setzen Sie dann die Aufnahme fort und gehen Sie kurz auf die vorherigen Fragen ein. Sollte keine vollständige Aufnahme gelingen, ist auch das Ausfüllen des Fragebogens ohne Sprachaufnahme für die Studie wertvoll.""")
 
 st.write("Dies ist Ihre persönliche Ziffernfolge um den Fragebogen mit den später hochzuladenden Dateien zu verknüpfen:")
-st.write("### "+st.session_state.random_id_string[0]+" - "+st.session_state.random_id_string[1])
+st.write("### "+st.session_state.random_id_string[0]+"-"+st.session_state.random_id_string[1])
 st.write("Der Code wird neu generiert wenn diese Seite geschlossen und neu geladen wird. Es ist aber wichtig, dass Sie beim Upload der Dateien den gleichen Code nutzen wie im Fragebogen.")
 
 st.markdown("""

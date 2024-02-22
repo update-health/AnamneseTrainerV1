@@ -41,7 +41,7 @@ if random_id_string[2]==False:
 if random_id_string[2]==True:
       st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.  
                   Der folgende Code ist daher nur beispielhaft.***  
-                  **Wäre Ihr Code {random_id_string[0]} - {random_id_string[1]}, dann wäre Ihre Eingabe:  First name: _{random_id_string[0]}_ und Last name: _{random_id_string[1]}_**""")
+                  **Wäre Ihr Code {random_id_string[0]}-{random_id_string[1]}, dann wäre Ihre Eingabe:  First name: _{random_id_string[0]}_ und Last name: _{random_id_string[1]}_**""")
 st.markdown("""### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Webseite zum Hochladen der Audiodateien</a>  
                         """,unsafe_allow_html=True)
 st.markdown("""Sollte es irgendwelche Probleme beim Hochladen der Dateien geben, melden Sie sich bitte umgehend bei mir.  
