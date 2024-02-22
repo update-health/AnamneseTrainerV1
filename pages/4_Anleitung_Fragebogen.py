@@ -15,7 +15,10 @@ Bei den meisten Fragen muss eine Antwortoption oder ein Grad der Zustimmung auf 
 Hinzu kommen einige Fragen die mit kurzen freiformulierten Sätzen oder Stichwörtern zu beantworten sind.  
         
 Das zweite Verfahren der Datensammlung, ist die sogenannte "Think-aloud", oder auf Deutsch "Laut-Denken" Methode.  
-Wie der Name schon sagt, sollen Sie dabei versuchen alle Gedanken laut auszusprechen und diese dabei über ein Mikrofon aufzuzeichnen. Zum Einsatz kommt die Methode parallel zum Ausfüllen des Fragebogens. Es geht dabei darum, umfassend Ihre Interpretation der Fragen und Antwortoptionen, sowie Ihre Abwägungen und Gründe zu erfassen, während Sie die Fragen im Fragebogen beantworten.   
+Dabei sollen Sie versuchen alle Gedanken laut auszusprechen und diese dabei über ein Mikrofon aufzuzeichnen.  
+Zum Einsatz kommt die Methode parallel zum Ausfüllen des Fragebogens. Es geht dabei darum, umfassend Ihre Interpretation der Fragen und Antwortoptionen, sowie Ihre Abwägungen und Gründe zu erfassen, welche zu Ihren Antworten führen.  
+Sprechen und Schreiben gleichzeitig ist jedoch nicht ganz einfach. Sie sollen daher bei jeder Frage zunächst Ihre Gedanken äußern und dann anschließend Ihre Wahl treffen bzw. kurze Stichworte dazu aufschreiben.  Anschließend können Sie ergänzende Gedanken aussprechen.  
+***Also bei jeder Frage "Laut-Denken" -> dann Schreiben -> dann evtl. nochmal "Laut-Denken".***    
 Um die Aufnahme durchzuführen gibt es verschiedene Optionen, die ich hier kurz darstellen möchte und vom verwendeten Geräte abhängen.  
 Wenn die Möglichkeit besteht, dann nutzen Sie bitte einen PC oder Laptop mit den Browsern Chrome, Edge oder Firefox.
         """, unsafe_allow_html=True)
@@ -58,8 +61,8 @@ with st.expander("Alternative: Nur Ton aufzeichnen"):
         Sollte keine der oben genannten Varianten der Aufzeichnung möglich sein oder Sie nicht zu einer Aufzeichnung Ihres Bildschirmes bereit sein, können Sie alternativ auch nur Ton über eine entsprechende Anwendung aufnehmen. Eine App mit der Funktion der Sprachaufnahme ist auf nahezu jedem Gerät vorinstalliert. Diese haben meist Bezeichnungen wie "Diktiergerät" oder "Sprachrekorder".     
 """)
 st.write("Sollte keine der oben genannten Möglichkeit der akustischen Aufnahme bestehen, treten Sie bitte mit mir in Kontakt: brodela@cardiff.ac.uk")
-st.markdown("""Sollten in den Aufnahmen irgendwelche vertraulichen Informationen erscheinen oder Ihre Identität daraus hervorgehen, werden diese Informationen nach Möglichkeit umgehend von mir entfernt, aber in jedem Falle streng vertraulich behandelt. Dennoch bitte ich Sie darum die Aufnahmen möglichst frei von persönlichen Informationen zu halten.  
-        Um eine anonyme Datenübermittlung zu ermöglichen und dennoch die Aufnahmen der Laut-Denken-Methode eindeutig verknüpfen zu können, erhalten Sie auf der kommenden Seite einen Zifferncode.  
+st.markdown("""Sollten in den Aufnahmen irgendwelche vertraulichen Informationen erscheinen oder Ihre Identität daraus hervorgehen, werden diese Informationen umgehend von mir entfernt und in jedem Falle streng vertraulich behandelt. Dennoch bitte ich Sie darum die Aufnahmen möglichst frei von persönlichen Informationen zu halten.  
+        Um eine anonyme Datenübermittlung zu ermöglichen und dennoch die Aufnahmen der Laut-Denken-Methode mit dem Fragebogen eindeutig verknüpfen zu können, erhalten Sie auf der kommenden Seite einen Zifferncode.  
 """)
 if st.button("Fragebogen"):
         switch_page("Fragebogen")

@@ -180,7 +180,7 @@ with headercontainer:
     if st.session_state.chat_mode == "KI-Patient":
         st.markdown("""Links befindet sich das Seitenmenü mit wichtigen Optionen wie "Gespräch speichern", "Patient wählen" oder "Modus wechseln".  
                     Sollte das Menü eingeklappt sein klicken Sie oben links auf das Pfeilsymbol ">".  
-                    Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.  
+                    Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch nach eigenem Ermessen zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.  
                     Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF.""")
         
     elif st.session_state.chat_mode == "KI-Tutor":

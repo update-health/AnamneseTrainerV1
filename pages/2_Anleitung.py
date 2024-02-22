@@ -8,11 +8,11 @@ with open("styles/styles.css") as f:
 st.markdown("""
 ### Nutzung des Anamnesetrainers
 
-Nutzer*innen wählen aus einer Dropdownliste einen Patienten aus, dessen Daten im System hinterlegt sind. Das Gespräch erfolgt über eine Chatbox. Jederzeit ermöglicht ein Button das Anamnesegespräch zu beenden und ein Feedbackgespräch mit einem virtuellen Tutor zu starten. Es sollte aber immer erst das Anamnesegespräch vollständig zuende geführt werden. Gespräche können als PDF gespeichert werden.
+Nutzer\*innen wählen aus einer Dropdownliste einen Patienten aus, dessen Daten im System hinterlegt sind. Das Gespräch erfolgt über eine Chatbox. Jederzeit ermöglicht ein Button das Anamnesegespräch zu beenden und ein Feedbackgespräch mit einem virtuellen Tutor zu starten. Es sollte aber immer erst das Anamnesegespräch vollständig zuende geführt werden. Gespräche können als PDF gespeichert werden.
 
 ### Verhaltenshinweise
 
-Nutzer*innen sollten mit dem Chatbot möglichst wie echten Patient*innen umgehen, um ihre Anamnesefähigkeiten zu verbessern. Absurdes oder unangemessenes Verhalten sollte vermieden werden, um ein realistisches Trainingsszenario zu ermöglichen.
+Nutzer\*innen sollten mit dem Chatbot möglichst wie echten Patient\*innen umgehen, um ihre Anamnesefähigkeiten zu verbessern. Absurdes oder unangemessenes Verhalten sollte vermieden werden, um ein realistisches Trainingsszenario zu ermöglichen.
 
 ### Anzahl der Patientengespräche
 
@@ -28,7 +28,7 @@ Bei Fragen oder Unklarheiten steht Arne Brödel unter brodela@cardiff.ac.uk zur 
             
 ### Nächster Schritt               
             
-Wechseln Sie zur Seite "Anamnesetrainer". Um zu starten, ist zunächst ein Passwort einzugeben, welches spätestens 24 Stunden nach Zusendung der Einverständniserklärung an die angebene E-Mail-Adresse gesendet worden sein sollte. Falls Sie kein Passwort erhalten haben, schreiben Sie bitte an brodela@cardiff.ac.uk  
+Wechseln Sie zur Seite "Anamnesetrainer".
     """)
 if st.button("Anamnesetrainer", use_container_width=True):
         switch_page("Anamnesetrainer")

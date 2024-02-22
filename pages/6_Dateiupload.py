@@ -15,7 +15,7 @@ if 'password_correct' not in st.session_state or st.session_state["password_corr
 
 
 if "random_id_string" not in st.session_state:
-    random_id_string=["12AB","34xy",True]
+    random_id_string=["1ab","xy2",True]
 else:
      random_id_string=st.session_state.random_id_string 
 
@@ -27,7 +27,7 @@ st.markdown("""Über den folgenden Link gelangen Sie zu einer Seite, auf der Sie
 st.image("assets/InkognitoFenster.jpg")
 st.write('oder klicken auf den unten stehenden Link mit der rechten Maustaste und wählen dann dort "InPrivate-Fenster" öffnen, wie in diesem Bild zu sehen:')
 st.image("assets/InkognitoFensterRechtsklick.jpg")
-st.markdown("""Statt Ihrem Vornamen und Nachnamen, sollen Sie die beiden Hälften Ihres Zifferncodes eingeben.  
+st.markdown("""##### :red[Statt Ihrem Vornamen und Nachnamen, sollen Sie die beiden Hälften Ihres Zifferncodes eingeben.]  
             """)
 
 if random_id_string[2]==False:
@@ -41,8 +41,7 @@ if random_id_string[2]==False:
 if random_id_string[2]==True:
       st.markdown(f"""***Nutzen Sie den unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.  
                   Der folgende Code ist daher nur beispielhaft.***  
-                  ***Wäre Ihr Code also {random_id_string[0]} - {random_id_string[1]},  
-                  dann nutzen Sie einfach:  First name: :red[{random_id_string[0]}] Last name: :red[{random_id_string[1]}]***""")
+                  **Wäre Ihr Code {random_id_string[0]} - {random_id_string[1]}, dann wäre Ihre Eingabe:  First name: _{random_id_string[0]}_ und Last name: _{random_id_string[1]}_**""")
 st.markdown("""### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Webseite zum Hochladen der Audiodateien</a>  
                         """,unsafe_allow_html=True)
 st.markdown("""Sollte es irgendwelche Probleme beim Hochladen der Dateien geben, melden Sie sich bitte umgehend bei mir.  

@@ -2,7 +2,6 @@ import streamlit as st
 import hmac
 from streamlit.logger import get_logger
 from streamlit_extras.switch_page_button import switch_page
-import scripts.random_ident_string as ris
 
 
 LOGGER = get_logger(__name__)
@@ -42,8 +41,7 @@ Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Anamnesetrai
 def run():
     st.set_page_config(page_title="Anamnesetrainer", page_icon="👩‍⚕️",layout="centered")
     display_homepage()
-    if "random_id_string" not in st.session_state:
-        st.session_state.random_id_string=ris.generate_random_string()
+    
 
 
 
