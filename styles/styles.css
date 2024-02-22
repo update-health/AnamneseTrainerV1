@@ -12,4 +12,13 @@ p:has(> a[href="#top"]) {
 
 [data-testid="stAppViewBlockContainer"]{
     max-width: 76rem;
+    padding-top: 2rem;
+}
+
+.st-emotion-cache-lrlib {
+    padding-top: 3rem;
+}
+
+.st-emotion-cache-m8hsoe {
+    padding-top: 3rem;
 }

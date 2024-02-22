@@ -146,12 +146,10 @@ def print_button(key):
                 label="Gespräch als PDF speichern",
                 data=create_pdf_in_memory(),
                 file_name="chat_history.pdf",
-                mime="application/octet-stream"
+                mime="application/octet-stream",
+                use_container_width=True
             )
     return btn
-
-with st.sidebar:
-    print_button("sidebar_print_btn")
 
 def patient_selectbox():
     pt_sbx=st.selectbox(
@@ -161,34 +159,42 @@ def patient_selectbox():
         )
     return pt_sbx
 
+def sidebar_options():
+    print_button("sidebar_print_btn")
+    if st.session_state.chat_mode == "KI-Patient":
+        with st.spinner('Warte bis der Anamnese-Tutor bereit ist...'):
+                if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
+                    start_feedback()
+    with st.container(border=1):
+        st.session_state.selected_patient=patient_selectbox()
+        st.write("Achtung: Das vorherige Anamnesegespräch wird dann gelöscht. Weder Sie noch der Tutor kann dann darauf zurückgreifen.")
+    
+    if st.session_state.chat_mode == "KI-Tutor":
+        st.write("Wenn Sie ausreichend Anamnesegespräche geführt haben, wechseln Sie zum Fragebogen")
+        if st.button("Fragebogen der Studie", use_container_width=True):
+            switch_page("Anleitung_Fragebogen")
+
+with st.sidebar:
+    sidebar_options()
+
 # Erstellung eines Header-Containers
 
 headercontainer = st.container(border=True)
 with headercontainer:
     st.subheader('Modus: ' + st.session_state.chat_mode,"top")
     if st.session_state.chat_mode == "KI-Patient":
-        st.write(
-            "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie hier einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.")
-        st.session_state.selected_patient = patient_selectbox()
-        st.write("Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF")
-        print_button("ki_patient_print_btn")
-        with st.spinner('Warte bis der Anamnese-Tutor bereit ist...'):
-            if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
-                start_feedback()
+        st.markdown("""Links befindet sich das Seitenmenü mit wichtigen Optionen wie "Gespräch speichern", "Patient wählen" oder "Modus wechseln".  
+                    Sollte das Menü eingeklappt sein klicken Sie oben links auf das Pfeilsymbol ">".  
+                    Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.  
+                    Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF.""")
+        
     elif st.session_state.chat_mode == "KI-Tutor":
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück. Wenn Sie mit dem Gespräch fertig sind, können Sie einen neuen Patienten wählen, um ein neues Anamnesegespräch zu starten.")
-        st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF")
-        print_button("ki_tutor_print_btn")
-        with st.expander(
-                "Wenn Sie ein neues Anamnesegespräch beginnen wollen, wählen Sie einfach einen neuen Patienten."):
-            st.write(
-                "Achtung: Das vorherige Anamnesegespräch wird dann gelöscht. Weder Sie noch der Tutor kann dann darauf zurückgreifen.")
-            st.session_state.selected_patient =  patient_selectbox()
-        st.write(
-            "Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zur Anleitung des Fragebogens, um den nächsten Schritt der Studienteilnahme zu absolvieren.")
-        if st.button("Fragebogen der Studie", use_container_width=True):
-            switch_page("Anleitung_Fragebogen")
+        st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF.")
+        st.markdown("""Wenn Sie ein neues Anamnesegespräch beginnen wollen, wählen Sie einfach einen neuen Patienten.  
+                    Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zur Anleitung des Fragebogens, um den nächsten Schritt der Studienteilnahme zu absolvieren.""")
+
 
 # Anzeige des aktuellen Patienten
 st.write('**Aktueller Patient: ' +st.session_state.case_dict[st.session_state.selected_patient]['Kurzform']+'**')
