@@ -167,7 +167,7 @@ def sidebar_options():
     
     if st.session_state.chat_mode == "KI-Tutor":
         st.write("Wenn Sie ausreichend Anamnesegespräche geführt haben, wechseln Sie zum Fragebogen")
-        if st.button("Fragebogen der Studie", use_container_width=True):
+        if st.button("Anleitung zum Fragebogen", use_container_width=True):
             switch_page("Anleitung_Fragebogen")
 
 with st.sidebar:
