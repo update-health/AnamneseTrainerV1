@@ -12,9 +12,16 @@
     padding-top: 2rem;
 }
 
+[data-testid="stSidebar"]{
+    max-width: 70vw;
+}
 
 [data-testid="stSidebarNavItems"]{
     padding-top: 2rem;
+}
+
+[data-testid="stSidebarUserContent"]{
+    padding: 2px;
 }
 
 .st-emotion-cache-m8hsoe {

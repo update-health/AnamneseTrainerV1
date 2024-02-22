@@ -11,7 +11,7 @@ from streamlit_extras.switch_page_button import switch_page
 # Streamlit set_page_config-Methode hat ein 'initial_sidebar_state'-Argument, das den Zustand der Seitenleiste steuert.
 
 st.set_page_config(layout="centered")
-# Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
+
 # Einbinden von benutzerdefinierten CSS-Stilen für die App
 with open("styles/styles.css") as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -57,6 +57,7 @@ else:
     st.session_state.chat_input_placeholder = "Sprechen Sie mit Ihrem Anamnese-Tutor"
 
 
+
 # Funktion zum Erstellen eines PDF im Speicher
 def create_pdf_in_memory():
     buffer = io.BytesIO()  # Puffer für das PDF erstellen
@@ -96,7 +97,6 @@ def start_feedback():
     # Weiter im Button-Event-Block
     with open('data/Tutor_instructions.yaml', 'r', encoding='utf-8') as file:
         tutor_instructions = yaml.safe_load(file)
-
     for message in tutor_instructions['messages']:
         if "{MessageHistory}" in message['content']:
             formatted_history = ""
