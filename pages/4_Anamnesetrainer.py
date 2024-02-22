@@ -15,9 +15,6 @@ if 'password_correct' not in st.session_state or st.session_state["password_corr
     switch_page("Passwort")
     st.stop()
 
-if 'anamnesetrainer_is_init' not in st.session_state:
-    st.session_state.anamnesetrainer_is_init = True
-
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-4-0125-preview"
 
