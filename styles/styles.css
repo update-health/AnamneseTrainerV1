@@ -2,14 +2,6 @@
     padding: 1 rem 1 rem 1 rem;
 }
 
-
-p:has(> a[href="#top"]) {
-    position: fixed;
-    bottom: 10px;
-    z-index: 999;
-}
-
-
 [data-testid="stAppViewBlockContainer"]{
     max-width: 76rem;
     padding-top: 2rem;
