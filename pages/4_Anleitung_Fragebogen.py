@@ -9,15 +9,15 @@ with open("styles/styles.css") as f:
 st.header("Fragebogen und Laut-Denken")
 
 st.markdown("""Wenn Sie mindestens zwei Durchgänge mit dem Anamnesetrainer absolviert haben, kommt nun der nächste entscheidende Schritt im Rahmen dieser Studie: Die Datensammlung über Ihre gesammelten Erfahrungen und Eindrücke mit dem KI-Anamnesetrainer.  
-        Dazu kommen zwei Verfahren parallel zum Einsatz.  
-        Das erste Verfahren der Datensammlung ist das Ausfüllen eines Fragebogens.  
-        Bei den meisten Fragen muss eine Antwortoption oder ein Grad der Zustimmung auf einer Skala gewählt werden.  
-        Hinzu kommen einige Fragen die mit kurzen freiformulierten Sätzen oder Stichwörtern zu beantworten sind.  
-          
-        Das zweite Verfahren der Datensammlung, ist die sogenannte "Think-aloud", oder auf Deutsch "Laut-Denken" Methode.  
-        Wie der Name schon sagt, sollen Sie dabei versuchen alle Gedanken laut auszusprechen und diese dabei über ein Mikrofon aufzuzeichnen. Zum Einsatz kommt die Methode parallel zum Ausfüllen des Fragebogens. Es geht dabei darum, umfassend Ihre Interpretation der Fragen und Antwortoptionen, sowie Ihre Abwägungen und Gründe zu erfassen, während Sie die Fragen im Fragebogen beantworten.   
-        Um die Aufnahme durchzuführen gibt es verschiedene Optionen, die ich hier kurz darstellen möchte und vom verwendeten Geräte abhängen.  
-        Wenn die Möglichkeit besteht, dann nutzen Sie bitte einen PC oder Laptop mit den Browsern Chrome, Edge oder Firefox.
+Dazu kommen zwei Verfahren parallel zum Einsatz.  
+Das erste Verfahren der Datensammlung ist das Ausfüllen eines Fragebogens.  
+Bei den meisten Fragen muss eine Antwortoption oder ein Grad der Zustimmung auf einer Skala gewählt werden.  
+Hinzu kommen einige Fragen die mit kurzen freiformulierten Sätzen oder Stichwörtern zu beantworten sind.  
+        
+Das zweite Verfahren der Datensammlung, ist die sogenannte "Think-aloud", oder auf Deutsch "Laut-Denken" Methode.  
+Wie der Name schon sagt, sollen Sie dabei versuchen alle Gedanken laut auszusprechen und diese dabei über ein Mikrofon aufzuzeichnen. Zum Einsatz kommt die Methode parallel zum Ausfüllen des Fragebogens. Es geht dabei darum, umfassend Ihre Interpretation der Fragen und Antwortoptionen, sowie Ihre Abwägungen und Gründe zu erfassen, während Sie die Fragen im Fragebogen beantworten.   
+Um die Aufnahme durchzuführen gibt es verschiedene Optionen, die ich hier kurz darstellen möchte und vom verwendeten Geräte abhängen.  
+Wenn die Möglichkeit besteht, dann nutzen Sie bitte einen PC oder Laptop mit den Browsern Chrome, Edge oder Firefox.
         """, unsafe_allow_html=True)
 st.markdown(
         """
