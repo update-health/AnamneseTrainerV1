@@ -27,3 +27,9 @@
 .st-emotion-cache-m8hsoe {
     padding-top: 3rem;
 }
+
+p:has(> a[href="#top"]) {
+    position: fixed;
+    bottom: 10px;
+    z-index: 999;
+}
