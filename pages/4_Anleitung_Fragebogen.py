@@ -17,8 +17,9 @@ Hinzu kommen einige Fragen die mit kurzen freiformulierten Sätzen oder Stichwö
 Das zweite Verfahren der Datensammlung, ist die sogenannte "Think-aloud", oder auf Deutsch "Laut-Denken" Methode.  
 Dabei sollen Sie versuchen alle Gedanken laut auszusprechen und diese dabei über ein Mikrofon aufzuzeichnen.  
 Zum Einsatz kommt die Methode parallel zum Ausfüllen des Fragebogens. Es geht dabei darum, umfassend Ihre Interpretation der Fragen und Antwortoptionen, sowie Ihre Abwägungen und Gründe zu erfassen, welche zu Ihren Antworten führen.  
-Sprechen und Schreiben gleichzeitig ist jedoch nicht ganz einfach. Sie sollen daher bei jeder Frage zunächst Ihre Gedanken äußern und dann anschließend Ihre Wahl treffen bzw. kurze Stichworte dazu aufschreiben.  Anschließend können Sie ergänzende Gedanken aussprechen.  
-***Also bei jeder Frage "Laut-Denken" -> dann Schreiben -> dann evtl. nochmal "Laut-Denken".***    
+Sprechen und Schreiben gleichzeitig ist jedoch nicht ganz einfach. Sie sollten daher bei jeder Frage zunächst Ihre Gedanken äußern und dann anschließend Ihre Wahl treffen bzw. kurze Stichworte dazu aufschreiben.  Anschließend können Sie ergänzende Gedanken aussprechen.  
+***Also bei jeder Frage "Laut-Denken" -> dann Schreiben -> dann evtl. nochmal "Laut-Denken".***  
+Ich erhoffe mir wertvolle zusätzliche Informationen durch die Tonaufnahme. Sollte dies jedoch für Sie nicht möglich sein, oder Sie sich mit der Think-Aloud-Methode unwohl fühlen, ist es in Ordnung auch nur den Fragebogen schriftlich auszufüllen.  
 Um die Aufnahme durchzuführen gibt es verschiedene Optionen, die ich hier kurz darstellen möchte und vom verwendeten Geräte abhängen.  
 Wenn die Möglichkeit besteht, dann nutzen Sie bitte einen PC oder Laptop mit den Browsern Chrome, Edge oder Firefox.
         """, unsafe_allow_html=True)
@@ -49,20 +50,18 @@ with st.expander("PC oder Laptop"):
 with st.expander("iPad oder iPhone"):
         st.markdown("""Auch auf iOS Geräten gibt es eine vorinstallierte Screenrekorder-Funktion. Wichtig ist dabei darauf zu achten das die Tonaufnahme aktiviert ist. Sonst wird nur der Bildschirm aufgezeichnet.  
                 Anleitung dazu im Video:  
-                <iframe width="560" height="315" style="max-width: 100%" src="https://www.youtube-nocookie.com/embed/acKuOw84C98?si=Bo5V6xu-skeGKG3b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="315" height="560" style="max-width: 100%" src="https://www.youtube-nocookie.com/embed/acKuOw84C98?si=Bo5V6xu-skeGKG3b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 """,unsafe_allow_html=True)
 with st.expander("Android"):
         st.markdown("""Androidgeräte sind sehr unterschiedlich, die meisten haben jedoch eine eingebaute Screenrekorder-Funktion. Wichtig ist dabei darauf zu achten das die Tonaufnahme aktiviert ist. Sonst wird nur der Bildschirm aufgezeichnet.  
                 Anleitung dazu im Video:  
-                <iframe width="560" height="315" style="max-width: 100%" src="https://www.youtube-nocookie.com/embed/0ngnC7YoDO4?si=OfkOLg3LGNoxahO_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="315" height="560" style="max-width: 100%" src="https://www.youtube.com/embed/Gju89EXCb58" title="AnleitungScreenRecAndroidVertical" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 """,unsafe_allow_html=True)
 with st.expander("Alternative: Nur Ton aufzeichnen"):
         st.markdown("""Bevorzugt wird die Aufzeichnung von Bildschirmaktivität und Ton gemeinsam, da diese die Auswertung erleichtert.  
         Sollte keine der oben genannten Varianten der Aufzeichnung möglich sein oder Sie nicht zu einer Aufzeichnung Ihres Bildschirmes bereit sein, können Sie alternativ auch nur Ton über eine entsprechende Anwendung aufnehmen. Eine App mit der Funktion der Sprachaufnahme ist auf nahezu jedem Gerät vorinstalliert. Diese haben meist Bezeichnungen wie "Diktiergerät" oder "Sprachrekorder".     
 """)
-st.write("Sollte keine der oben genannten Möglichkeit der akustischen Aufnahme bestehen, treten Sie bitte mit mir in Kontakt: brodela@cardiff.ac.uk")
-st.markdown("""Sollten in den Aufnahmen irgendwelche vertraulichen Informationen erscheinen oder Ihre Identität daraus hervorgehen, werden diese Informationen umgehend von mir entfernt und in jedem Falle streng vertraulich behandelt. Dennoch bitte ich Sie darum die Aufnahmen möglichst frei von persönlichen Informationen zu halten.  
-        Um eine anonyme Datenübermittlung zu ermöglichen und dennoch die Aufnahmen der Laut-Denken-Methode mit dem Fragebogen eindeutig verknüpfen zu können, erhalten Sie auf der kommenden Seite einen Zifferncode.  
+st.markdown("""Um eine anonyme Datenübermittlung zu ermöglichen und dennoch die Aufnahmen der Laut-Denken-Methode mit dem Fragebogen eindeutig verknüpfen zu können, erhalten Sie auf der kommenden Seite einen Zifferncode.  
 """)
 if st.button("Fragebogen"):
         switch_page("Fragebogen")

@@ -18,7 +18,7 @@ if "random_id_string" not in st.session_state:
 st.header("Fragebogen und Laut-Denken")
 st.markdown("""
 Bitte nehmen Sie sich die Zeit, alle Fragen so umfassend wie möglich zu beantworten. Wenn Sie bestimmte Fragen nicht beantworten können oder möchten, haben Sie die Möglichkeit, "möchte ich nicht angeben" auszuwählen oder die Frage zu überspringen.  
-Bitte beachten Sie, dass Sie im Rahmen dieser Studie Sprachaufzeichnungen machen sollen, während Sie den Fragebogen ausfüllen. Testen Sie daher zunächst, ob Ihre gewählte Methode zur Sprachaufzeichnung funktioniert und ob der Ton in der Aufnahme gut hörbar ist. Stellen Sie sicher, dass die Aufnahme läuft, bevor Sie mit dem Ausfüllen des Fragebogens beginnen. Überprüfen Sie zwischendurch, ob die Aufnahme noch läuft und nicht unterbrochen wurde.  
+Ich wäre Ihnen dankbar, wenn Sie parallel zum Ausfüllen des Fragebogens Tonaufnamen machen. Testen Sie dafür zunächst, ob Ihre gewählte Methode zur Sprachaufzeichnung funktioniert und ob der Ton in der Aufnahme gut hörbar ist. Stellen Sie sicher, dass die Aufnahme läuft, bevor Sie mit dem Ausfüllen des Fragebogens beginnen. Überprüfen Sie zwischendurch, ob die Aufnahme noch läuft und nicht unterbrochen wurde.  
 Falls Sie während des Ausfüllens des Fragebogens feststellen, dass Sie zeitweise nicht aufgenommen haben oder vergessen haben zu sprechen, ist das kein Problem. Setzen Sie dann die Aufnahme fort und gehen Sie kurz auf die vorherigen Fragen ein. Sollte keine vollständige Aufnahme gelingen, ist auch das Ausfüllen des Fragebogens ohne Sprachaufnahme für die Studie wertvoll.""")
 
 st.write("Dies ist Ihre persönliche Ziffernfolge um den Fragebogen mit den später hochzuladenden Dateien zu verknüpfen:")
