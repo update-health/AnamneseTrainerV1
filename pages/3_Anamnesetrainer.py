@@ -3,21 +3,22 @@ from openai import OpenAI
 import streamlit as st
 import yaml
 import io
+import scripts.check_password as check_password
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from streamlit_extras.switch_page_button import switch_page
 # Streamlit set_page_config-Methode hat ein 'initial_sidebar_state'-Argument, das den Zustand der Seitenleiste steuert.
-if 'sidebar_state' not in st.session_state:
-    st.session_state.sidebar_state = 'expanded'
-st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state, layout="centered")
-# Überprüfung, ob das Passwort korrekt ist; wenn nicht, wird zur Passworteingabe-Seite gewechselt
-if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
-    switch_page("Passwort")
-    st.stop()
 
-if 'anamnesetrainer_is_init' not in st.session_state:
-    st.session_state.anamnesetrainer_is_init = True
+st.set_page_config(layout="centered")
+
+# Einbinden von benutzerdefinierten CSS-Stilen für die App
+with open("styles/styles.css") as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+if 'password_correct' not in st.session_state or st.session_state["password_correct"] == False:
+    check_password.check_password()
+    st.stop()
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-4-0125-preview"
@@ -44,15 +45,6 @@ if "case_dict" not in st.session_state:
     case_dict = {case['Kurzform']: case for case in case_list}
     st.session_state.case_dict = case_dict
 
-# Weitere Initialisierungen können hier hinzugefügt werden, falls erforderlich
-
-# Aufrufen der initialize_session_state Funktion, um die Sitzungsvariablen zu initialisieren
-
-
-# Einbinden von benutzerdefinierten CSS-Stilen für die App
-with open("styles/styles.css") as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
 
 # Festlegen von Avatar-Icons und Eingabeplatzhalter basierend auf dem aktuellen Chat-Modus
 if st.session_state.chat_mode == "KI-Patient":
@@ -63,6 +55,7 @@ else:
     st.session_state.avatar_user = "👩‍⚕️"
     st.session_state.avatar_assistant = "👨‍🏫"
     st.session_state.chat_input_placeholder = "Sprechen Sie mit Ihrem Anamnese-Tutor"
+
 
 
 # Funktion zum Erstellen eines PDF im Speicher
@@ -104,7 +97,6 @@ def start_feedback():
     # Weiter im Button-Event-Block
     with open('data/Tutor_instructions.yaml', 'r', encoding='utf-8') as file:
         tutor_instructions = yaml.safe_load(file)
-
     for message in tutor_instructions['messages']:
         if "{MessageHistory}" in message['content']:
             formatted_history = ""
@@ -150,12 +142,10 @@ def print_button(key):
                 label="Gespräch als PDF speichern",
                 data=create_pdf_in_memory(),
                 file_name="chat_history.pdf",
-                mime="application/octet-stream"
+                mime="application/octet-stream",
+                use_container_width=True
             )
     return btn
-
-with st.sidebar:
-    print_button("sidebar_print_btn")
 
 def patient_selectbox():
     pt_sbx=st.selectbox(
@@ -165,34 +155,41 @@ def patient_selectbox():
         )
     return pt_sbx
 
-# Erstellung eines Header-Containers
-
-headercontainer = st.container(border=True)
-with headercontainer:
-    st.subheader('Modus: ' + st.session_state.chat_mode,"top")
+def sidebar_options():
+    print_button("sidebar_print_btn")
     if st.session_state.chat_mode == "KI-Patient":
-        st.write(
-            "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie hier einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.")
-        st.session_state.selected_patient = patient_selectbox()
-        st.write("Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF")
-        print_button("ki_patient_print_btn")
         with st.spinner('Warte bis der Anamnese-Tutor bereit ist...'):
-            if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
-                start_feedback()
+                if st.button("Beende Anamnese, Starte Feedback/Tutor Modus"):
+                    start_feedback()
+    with st.container(border=1):
+        st.session_state.selected_patient=patient_selectbox()
+        st.write("Achtung: Das vorherige Anamnesegespräch wird dann gelöscht. Weder Sie noch der Tutor kann dann darauf zurückgreifen.")
+    
+    if st.session_state.chat_mode == "KI-Tutor":
+        st.write("Wenn Sie ausreichend Anamnesegespräche geführt haben, wechseln Sie zum Fragebogen")
+        if st.button("Anleitung zum Fragebogen", use_container_width=True):
+            switch_page("Anleitung_Fragebogen")
+
+with st.sidebar:
+    sidebar_options()
+
+# Erstellung eines Header-Containers
+st.subheader('Modus: ' + st.session_state.chat_mode,"top")
+headercontainer = st.expander(label="weitere Informationen")
+with headercontainer:
+    if st.session_state.chat_mode == "KI-Patient":
+        st.markdown("""Links befindet sich das Seitenmenü mit wichtigen Optionen wie "Gespräch speichern", "Patient wählen" oder "Modus wechseln".  
+                    Sollte das Menü eingeklappt sein klicken Sie oben links auf das Pfeilsymbol ">".  
+                    Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch nach eigenem Ermessen zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.  
+                    Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF.""")
+        
     elif st.session_state.chat_mode == "KI-Tutor":
         st.write(
             "Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück. Wenn Sie mit dem Gespräch fertig sind, können Sie einen neuen Patienten wählen, um ein neues Anamnesegespräch zu starten.")
-        st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF")
-        print_button("ki_tutor_print_btn")
-        with st.expander(
-                "Wenn Sie ein neues Anamnesegespräch beginnen wollen, wählen Sie einfach einen neuen Patienten."):
-            st.write(
-                "Achtung: Das vorherige Anamnesegespräch wird dann gelöscht. Weder Sie noch der Tutor kann dann darauf zurückgreifen.")
-            st.session_state.selected_patient =  patient_selectbox()
-        st.write(
-            "Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zur Anleitung des Fragebogens, um den nächsten Schritt der Studienteilnahme zu absolvieren.")
-        if st.button("Fragebogen der Studie", use_container_width=True):
-            switch_page("Anleitung_Fragebogen")
+        st.write("Speichern Sie das Gespräch mit dem Tutor zu einem beliebigen Zeitpunkt als PDF.")
+        st.markdown("""Wenn Sie ein neues Anamnesegespräch beginnen wollen, wählen Sie einfach einen neuen Patienten.  
+                    Wenn Sie ausreichend und mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zur Anleitung des Fragebogens, um den nächsten Schritt der Studienteilnahme zu absolvieren.""")
+
 
 # Anzeige des aktuellen Patienten
 st.write('**Aktueller Patient: ' +st.session_state.case_dict[st.session_state.selected_patient]['Kurzform']+'**')
@@ -268,7 +265,6 @@ if prompt := st.chat_input(st.session_state.chat_input_placeholder):
     print(st.session_state.messages)
     #rerun dient nur dazu, dass die beiden letzten Messages auch im PDF enthalten sind wenn auf Drucken geklickt wird
     st.rerun()
-st.markdown('[Zurück nach oben scrollen für weitere Optionen](#top)')
 
 
 

@@ -2,9 +2,28 @@
     padding: 1 rem 1 rem 1 rem;
 }
 
+[data-testid="stAppViewBlockContainer"]{
+    max-width: 60rem;
+    padding-top: 2rem;
+}
 
-p:has(> a[href="#top"]) {
-    position: fixed;
-    bottom: 10px;
-    z-index: 999;
+[data-testid="stBottomBlockContainer"]{
+    max-width: 60rem;
+    padding-top: 2rem;
+}
+
+[data-testid="stSidebar"]{
+    max-width: 70vw;
+}
+
+[data-testid="stSidebarNavItems"]{
+    padding-top: 2rem;
+}
+
+[data-testid="stSidebarUserContent"]{
+    padding: 2px;
+}
+
+.st-emotion-cache-m8hsoe {
+    padding-top: 3rem;
 }
