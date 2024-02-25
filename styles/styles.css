@@ -36,4 +36,12 @@ p:has(> a[href="#top"]) {
 
 a[href="https://streamlit.io/cloud"]{
     display: none !important;
+    width: 0px;
+    height: 0px;
+}
+
+.viewerBadge_link__qRIco {
+    display:none;
+    width:0px;
+    height:0px;
 }
