@@ -33,3 +33,7 @@ p:has(> a[href="#top"]) {
     bottom: 10px;
     z-index: 999;
 }
+
+a[href="https://streamlit.io/cloud"]{
+    display: none !important;
+}
