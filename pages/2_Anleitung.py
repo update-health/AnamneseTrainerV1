@@ -12,7 +12,8 @@ Nutzer\*innen wählen aus einer Dropdownliste einen fiktiven Patienten aus, dess
 
 ### Verhaltenshinweise
 
-Nutzer\*innen sollten mit dem Chatbot möglichst wie mit echten Patient\*innen kommunizieren, um ihre Anamnesefähigkeiten zu verbessern. Absurdes oder unangemessenes Verhalten sollte vermieden werden, um ein realistisches Trainingsszenario zu ermöglichen.
+Nutzer\*innen sollten mit dem Chatbot möglichst wie mit echten Patient\*innen kommunizieren, um ihre Anamnesefähigkeiten zu verbessern. Absurdes oder unangemessenes Verhalten sollte vermieden werden, um ein realistisches Trainingsszenario zu ermöglichen.  
+Die Patienten erscheinen ohne Verordnung. Die Situation entspricht dem Direktzugang zur Physiotherapie.  
 
 ### Anzahl der Patientengespräche
 
