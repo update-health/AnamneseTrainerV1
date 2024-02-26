@@ -34,6 +34,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 if "chat_mode" not in st.session_state:
+    print("No chat_mode in session_state")
     st.session_state.chat_mode = "KI-Patient"
 
 if "selected_patient" not in st.session_state:
@@ -137,10 +138,8 @@ def start_feedback():
 
 # Funktion, die aufgerufen wird, wenn sich die Auswahl ändert
 def on_patient_change():
-    # Diese Funktion könnte zum Beispiel das Gespräch zurücksetzen oder andere Aktionen ausführen
-    del st.session_state.messages
-    del st.session_state.selected_patient
-    st.session_state.chat_mode = "KI-Patient"
+    st.session_state.messages = []
+
 
 
 def print_button(key):
@@ -158,8 +157,10 @@ def patient_selectbox():
     pt_sbx=st.selectbox(
             "Wählen Sie nach Wunsch einen neuen Patienten",
             tuple(st.session_state.case_dict.keys()),  # Jetzt sind die Schlüssel 'Zusammenfassung'
-            on_change=on_patient_change
+            on_change=on_patient_change,
+            key="patient_sbx"
         )
+    print("Def Selectbox")
     return pt_sbx
 
 
@@ -172,8 +173,7 @@ with headercontainer:
     if st.session_state.chat_mode == "KI-Patient":
         st.markdown("""
                     Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Patienten. Führen Sie immer ein Anamnesegespräch nach eigenem Ermessen zu Ende. Dann haben Sie die Wahl ein Feedbackgespräch mit einem Tutor zu führen oder ein neues Gespräch mit einem Patienten zu beginnen, in dem Sie einen neuen Patienten wählen. Das alte Gespräch wird dann gelöscht. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.  
-                    Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF.""")
-        
+                    Speichern Sie das Gespräch mit dem Patienten zu einem beliebigen Zeitpunkt als PDF.""")   
     elif st.session_state.chat_mode == "KI-Tutor":
         st.markdown("""
                     Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.     
@@ -184,15 +184,20 @@ with headercontainer:
         with st.spinner('Warte bis der Anamnese-Tutor bereit ist...'):
                 if st.button("Beende Anamnese, Starte Feedback/Tutor Modus", use_container_width=True):
                     start_feedback()
-    st.session_state.selected_patient=patient_selectbox()
+        st.session_state.selected_patient=patient_selectbox()
     
     if st.session_state.chat_mode == "KI-Tutor":
+        if st.button("Starte Anamnese/Patienten Modus", use_container_width=True):
+            st.session_state.chat_mode = "KI-Patient"
+            st.session_state.messages = []
+            st.rerun()
         st.write("Wenn Sie ausreichend Anamnesegespräche geführt haben, wechseln Sie zum Fragebogen")
         if st.button("Anleitung zum Fragebogen", use_container_width=True):
             switch_page("Anleitung_Fragebogen")
 
 # Anzeige des aktuellen Patienten
-st.write('**Aktueller Patient: ' +st.session_state.case_dict[st.session_state.selected_patient]['Kurzform']+'**')
+if st.session_state.chat_mode == "KI-Patient":
+    st.write('**Aktueller Patient: ' +st.session_state.case_dict[st.session_state.selected_patient]['Kurzform']+'**')
 
 # Überprüfung, ob Nachrichten vorhanden sind, und Anzeigen von Anweisungen, falls nicht
 if st.session_state.messages == []:
