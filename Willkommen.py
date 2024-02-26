@@ -16,7 +16,7 @@ def display_homepage():
 ### Herzlich Willkommen zur Studie zum KI-basierten Anamnesetraining
 Vielen Dank, für Ihre Teilnahme.  
 Auf diesen Seiten wird die Durchührung auch schriftlich genau beschrieben. Das folgende Video kann aber sehr hilfreich sein, um einen guten Überblick über alle Schritte der Teilnahme zu bekommen.  
-<iframe width="820" height="460" style="max-width: 100%" src="https://www.youtube-nocookie.com/embed/WcmfYNFyw8E?si=khY47k4a_E-M7Z27" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="820" height="460" style="max-width: 100%" src="https://www.youtube.com/embed/DiWaal9TymY?si=IsNPRJpuEQ6ByDZc&amp;" title="Video Teilnahmeanleitung Teil1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>  
   
 Die Teilnahme besteht aus den folgenden Schritten:  
 1. Auf der Seite "Einverständnis" das Einverständnis-Formular ausfüllen und absenden. Sie müssen dabei Ihre E-Mail-Adresse angeben und bestätigen. Danach erhalten Sie eine E-Mail von mir mit dem Zugangspasswort für den Anamnesetrainer.   
