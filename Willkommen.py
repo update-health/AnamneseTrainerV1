@@ -14,7 +14,7 @@ def display_homepage():
     #Display the content of the homepage.
     st.markdown("""
 ### Herzlich Willkommen zur Studie zum KI-basierten Anamnesetraining
-Vielen Dank, für Ihre Teilnahme.  
+Vielen Dank für Ihre Teilnahme.  
 Auf diesen Seiten wird die Durchührung auch schriftlich genau beschrieben. Das folgende Video kann aber sehr hilfreich sein, um einen guten Überblick über alle Schritte der Teilnahme zu bekommen.  
 <iframe width="820" height="460" style="max-width: 100%" src="https://www.youtube.com/embed/DiWaal9TymY?si=IsNPRJpuEQ6ByDZc&amp;" title="Video Teilnahmeanleitung Teil1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>  
   
