@@ -20,7 +20,7 @@ else:
      random_id_string=st.session_state.random_id_string 
 
 st.header("Dateiupload")
-st.write("Auf dieser Seite sollen Sie alle Aufnahmen und Gesprächsprotokolle von Ihnen hochladen.")
+st.write("Auf dieser Seite können Sie alle Aufnahmen und Gesprächsprotokolle von Ihnen hochladen.")
 
 if random_id_string[2]==False:
       st.markdown(f"""***Nutzen Sie unbedingt den gleichen Zifferncode, den Sie auch in den Fragebogen eingetragen haben. Dieser wird immer neu erstellt, sobald die Seite verlassen wurde.***  

@@ -177,7 +177,7 @@ with headercontainer:
     elif st.session_state.chat_mode == "KI-Tutor":
         st.markdown("""
                     Ganz unten ist die Eingabezeile. Darüber kommunizieren Sie mit dem Tutor. Beim Feedback greift der Tutor immer nur auf das letzte Gespräch zurück.     
-                    Wenn Sie ein neues Anamnesegespräch beginnen wollen, wählen Sie einfach einen neuen Patienten.  
+                    Wenn Sie ein neues Anamnesegespräch beginnen wollen, klicken Sie auf "Starte Anamnese/Patienten Modus" und wählen dann einen neuen Patienten.  
                     Wenn Sie mindestens 2 Durchgänge mit dem Anamnesetrainer trainiert haben, wechseln Sie zur Anleitung des Fragebogens.""")
     print_button("print_btn")
     if st.session_state.chat_mode == "KI-Patient":
@@ -191,7 +191,7 @@ with headercontainer:
             st.session_state.chat_mode = "KI-Patient"
             st.session_state.messages = []
             st.rerun()
-        st.write("Wenn Sie ausreichend Anamnesegespräche geführt haben, wechseln Sie zum Fragebogen")
+        st.write("Wenn Sie ausreichend Anamnesegespräche geführt haben, wechseln Sie zum Fragebogen.")
         if st.button("Anleitung zum Fragebogen", use_container_width=True):
             switch_page("Anleitung_Fragebogen")
 
