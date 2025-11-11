@@ -2,4 +2,3 @@ openai
 PyYAML
 reportlab
 streamlit
-streamlit_extras

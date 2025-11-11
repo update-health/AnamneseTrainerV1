@@ -1,7 +1,6 @@
 import streamlit as st
 import hmac
 from streamlit.logger import get_logger
-from streamlit_extras.switch_page_button import switch_page
 
 
 LOGGER = get_logger(__name__)
@@ -35,7 +34,7 @@ Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Anamnesetrai
     """, unsafe_allow_html=True)
     st.markdown('Wechseln Sie jetzt zur Seite "Einverständnis"')
     if st.button("Einverständnis"):
-        switch_page("Einverständnis")
+        st.switch_page("pages/1_Einverständnis.py")
     
 
 

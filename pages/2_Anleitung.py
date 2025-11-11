@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")
 # Einbinden von benutzerdefinierten CSS-Stilen für die App
@@ -32,4 +31,4 @@ Bei Fragen oder Unklarheiten steht Arne Brödel unter brodela@cardiff.ac.uk zur 
 Wechseln Sie zur Seite "Anamnesetrainer".
     """)
 if st.button("Anamnesetrainer", use_container_width=True):
-        switch_page("Anamnesetrainer")
+        st.switch_page("pages/3_Anamnesetrainer.py")

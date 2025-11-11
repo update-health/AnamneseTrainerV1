@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 import base64
 
 # embed streamlit docs in a streamlit app
@@ -17,4 +16,4 @@ st.markdown("""Bitte lesen Sie die Informationen in der Einverständniserklärun
             """, unsafe_allow_html=True)
 st.markdown("Wenn das Dokument ausgefüllt und signiert ist, und auch die Unterschrift per E-Mail bestätigt wurde, wechseln Sie zur Anleitung.")
 if st.button("Anleitung", use_container_width=True):
-    switch_page("Anleitung")
+    st.switch_page("pages/2_Anleitung.py")

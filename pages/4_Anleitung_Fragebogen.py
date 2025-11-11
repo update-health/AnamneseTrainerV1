@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")
 # Einbinden von benutzerdefinierten CSS-Stilen für die App
@@ -68,4 +67,4 @@ with st.expander("Alternative: Nur Ton aufzeichnen"):
 st.markdown("""Um eine anonyme Datenübermittlung zu ermöglichen und dennoch die Aufnahmen der Laut-Denken-Methode mit dem Fragebogen eindeutig verknüpfen zu können, erhalten Sie auf der kommenden Seite einen Zifferncode.  
 """)
 if st.button("Fragebogen"):
-        switch_page("Fragebogen")
+        st.switch_page("pages/5_Fragebogen.py")

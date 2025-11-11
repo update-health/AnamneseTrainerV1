@@ -1,7 +1,6 @@
 import streamlit as st
 import scripts.random_ident_string as ris
 import scripts.check_password as check_password
-from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="centered")
 # Einbinden von benutzerdefinierten CSS-Stilen für die App
@@ -34,4 +33,4 @@ st.markdown("""Vielen Dank für Ihre Teilnahme.
             Fehlt nur noch der letzte Schritt: Laden Sie auf der folgenden Seite alle Audio- bzw. Bildschirmaufzeichnungen und weitere Dateien wie Gesprächsprotokolle zur Auswertung hoch.
             """)
 if st.button("Dateiupload"):
-        switch_page("Dateiupload")
+        st.switch_page("pages/6_Dateiupload.py")
