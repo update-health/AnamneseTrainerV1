@@ -7,7 +7,6 @@ import scripts.check_password as check_password
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
-from streamlit_extras.switch_page_button import switch_page
 # Streamlit set_page_config-Methode hat ein 'initial_sidebar_state'-Argument, das den Zustand der Seitenleiste steuert.
 
 st.set_page_config(layout="centered")
@@ -193,7 +192,7 @@ with headercontainer:
             st.rerun()
         st.write("Wenn Sie ausreichend Anamnesegespräche geführt haben, wechseln Sie zum Fragebogen.")
         if st.button("Anleitung zum Fragebogen", use_container_width=True):
-            switch_page("Anleitung_Fragebogen")
+            st.switch_page("pages/4_Anleitung_Fragebogen.py")
 
 # Anzeige des aktuellen Patienten
 if st.session_state.chat_mode == "KI-Patient":

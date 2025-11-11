@@ -1,6 +1,5 @@
 import streamlit as st
 import scripts.check_password as check_password
-from streamlit_extras.switch_page_button import switch_page
 
 # embed streamlit docs in a streamlit app
 st.set_page_config(layout="centered")
@@ -50,4 +49,4 @@ st.markdown("""Sollte es irgendwelche Probleme beim Hochladen der Dateien geben,
             Wenn Sie Erfahren wollen wie es weiter geht und wie Sie Einblick in die Ergebnisse erhalten können, lesen Sie auf der nächsten Seite weiter.
             """)
 if st.button("Danke"):
-        switch_page("Danke")
+        st.switch_page("pages/7_Danke.py")
