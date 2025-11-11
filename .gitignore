@@ -1,2 +1,5 @@
 .streamlit/secrets.toml
 scripts/__pycache__/*
+__pycache__/
+*.pyc
+pages/__pycache__/
