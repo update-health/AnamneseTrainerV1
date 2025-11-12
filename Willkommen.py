@@ -29,7 +29,7 @@ Die Teilnahme an der Studie sollte an nahezu jedem PC, Laptop, Tablet oder Smart
                                         
 ### Wohin wende ich mich bei Fragen?
 
-Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Anamnesetrainers haben, wenden Sie sich bitte per E-Mail an Arne Brödel unter brodela@cardiff.ac.uk.
+Wenn Sie Fragen zur Studie oder Unklarheiten bei der Verwendung des Anamnesetrainers haben, wenden Sie sich bitte per E-Mail an Arne Brödel unter arne@update.health .
 
     """, unsafe_allow_html=True)
     st.markdown('Wechseln Sie jetzt zur Seite "Einverständnis"')
