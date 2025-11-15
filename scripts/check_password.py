@@ -16,9 +16,9 @@ def check_password():
         st.markdown("""Bitte geben Sie Ihr Passwort ein. """)
         st.text_input("Passwort", type="password", on_change=password_entered, key="password")
         st.markdown("""Das Passwort wurde oder wird Ihnen nach Zusenden der Einverständniserklärung per Email zugesendet.
-Sollten Sie dieses spätestens 24 Stunden nach Zusendung der Einverständniserklärung nicht erhalten haben, schreiben Sie bitte an brodela@cardiff.ac.uk  """)
+Sollten Sie dieses spätestens 24 Stunden nach Zusendung der Einverständniserklärung nicht erhalten haben, schreiben Sie bitte an arne@update.health  """)
         if "password_correct" in st.session_state:
-            st.error("😕 Passwort fehlerhaft. Probieren Sie es erneut. Wenden Sie sich ansonsten an brodela@cardiff.ac.uk")
+            st.error("😕 Passwort fehlerhaft. Probieren Sie es erneut. Wenden Sie sich ansonsten an arne@update.health")
         return False
 
     return True

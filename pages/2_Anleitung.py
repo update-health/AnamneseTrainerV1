@@ -24,7 +24,7 @@ Sobald Sie im Anamnesetrainer einen neuen Patienten wählen oder zwischen dem Mo
 
 ### Kontakt bei Fragen
 
-Bei Fragen oder Unklarheiten steht Arne Brödel unter brodela@cardiff.ac.uk zur Verfügung.  
+Bei Fragen oder Unklarheiten steht Arne Brödel unter arne@update.health zur Verfügung.  
             
 ### Nächster Schritt               
             
