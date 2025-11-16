@@ -27,7 +27,7 @@ if 'password_correct' not in st.session_state or st.session_state["password_corr
     st.stop()
 
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-5-nano"  #Original: "gpt-4-0125-preview"
+    st.session_state["openai_model"] = "gpt-4o-mini"  #Original: "gpt-4-0125-preview"
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
