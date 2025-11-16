@@ -5,6 +5,7 @@
 [data-testid="stAppViewBlockContainer"]{
     max-width: 60rem;
     padding-top: 2rem;
+    padding-bottom: 6rem !important;
 }
 
 [data-testid="stBottomBlockContainer"]{
@@ -30,7 +31,7 @@
 
 p:has(> a[href="#top"]) {
     position: fixed;
-    bottom: 10px;
-    z-index: 999;
+    bottom: 4.5rem; /* give space above the chat input */
+    z-index: 9999;
 }
 
