@@ -1,4 +1,4 @@
 openai
-PyYAML
+pyyaml
 reportlab
 streamlit

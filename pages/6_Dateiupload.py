@@ -36,8 +36,7 @@ if random_id_string[2]==True:
 
 st.markdown("""##### :red[Statt Ihrem Vornamen und Nachnamen, sollen Sie die beiden Hälften Ihres Zifferncodes eingeben.]  
 Über den folgenden Link gelangen Sie zu einer Seite, auf der Sie Bildschirm- und Sprachaufzeichnungen sowie gespeicherte Gesprächsprotokolle in meinen Cloudspeicher bei der Cardiff University hochladen können. """)
-st.markdown("""### <a href="https://cf-my.sharepoint.com/:f:/g/personal/brodela_cardiff_ac_uk/EtexNRViovRPtM1d8eXJHp8BGAnWNJfnHF_idSz1xjqDyA" target="_blank">Webseite zum Hochladen der Audiodateien</a>  
-            """,unsafe_allow_html=True)
+st.markdown("""### LINK DEAKTIVIERT  Webseite zum Hochladen der Audiodateien""")
 with st.expander("Sie können den Code auf der verlinkten Seite nicht eingeben?..."):
         st.markdown("""Falls Sie in Ihrem Browser mit einem Microsoft-Konto angemeldet sind, werden automatisch Ihr Vorname und Nachname übernommen.  
             Um Ihre Anonymität zu wahren, bitte ich Sie, den Link in einem neuen privaten Browserfenster zu öffnen. Je nach Browser können diese Modi als “Privat”, “In-private” oder “Inkognito” bezeichnet sein.    
