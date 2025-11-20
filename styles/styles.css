@@ -29,9 +29,28 @@
     padding-top: 3rem;
 }
 
-p:has(> a[href="#top"]) {
+/* explicit class for the back-to-top link so it's consistently placed above chat input */
+.scroll-to-top {
     position: fixed;
-    bottom: 4.5rem; /* give space above the chat input */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 6.5rem; /* move higher than the chat input to avoid overlap */
     z-index: 9999;
+    max-width: 60rem; /* keep within the main content width */
+    text-align: left;
+    pointer-events: auto;
+}
+.scroll-to-top a{
+    text-decoration: none;
+}
+
+/* For narrower screens or when the page layout has a sidebar, ensure the link doesn't get hidden */
+@media (max-width: 960px) {
+    .scroll-to-top {
+        left: 1rem;
+        right: 1rem;
+        transform: none;
+        text-align: left;
+    }
 }
 

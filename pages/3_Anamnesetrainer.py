@@ -271,7 +271,7 @@ if prompt := st.chat_input(st.session_state.chat_input_placeholder):
     #rerun dient nur dazu, dass die beiden letzten Messages auch im PDF enthalten sind wenn auf Drucken geklickt wird
     st.rerun()
 
-st.markdown('[Zurück nach oben scrollen für weitere Optionen](#top)')
+st.markdown('<p class="scroll-to-top"><a href="#top">Zurück nach oben scrollen für weitere Optionen</a></p>', unsafe_allow_html=True)
 
 
 
